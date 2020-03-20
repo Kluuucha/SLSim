@@ -1,0 +1,14 @@
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\bin\Debug\SLSim.exe.config
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\bin\Debug\SLSim.exe
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\bin\Debug\SLSim.pdb
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim.csprojAssemblyReference.cache
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\MainWindow.g.cs
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\App.g.cs
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim_MarkupCompile.cache
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim_MarkupCompile.lref
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\MainWindow.baml
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim.g.resources
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim.Properties.Resources.resources
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim.csproj.GenerateResource.cache
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim.exe
+C:\Users\Student242441\Desktop\SLSim-master\SLSim\SLSim\obj\Debug\SLSim.pdb
