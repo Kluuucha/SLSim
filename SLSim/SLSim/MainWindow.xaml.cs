@@ -24,6 +24,17 @@ namespace SLSim
         public MainWindow()
         {
             InitializeComponent();
+
+            /* commit - pozywienie v1:
+             *  - na razie generowane tylko raz - trzeba dodać następne wywołania co określoną ilość czasu
+             *  - na razie podane wartości rozmiaru mapy i ilości na sztywno
+             *  
+             */
+            GenerowaniePozywienia generowaniePozywienia = new GenerowaniePozywienia(50, MyCanvas, 980, 460);
+            generowaniePozywienia.generujPozywienie();
+            /*GenerowaniePozywienia generowaniePozywienia = new GenerowaniePozywienia(5,10, MyCanvas, 980, 460);
+            generowaniePozywienia.generujPozywienieLosowa();*/
+
         }
         private void Canvas_KeyDown(object sender, KeyEventArgs e)
         {
