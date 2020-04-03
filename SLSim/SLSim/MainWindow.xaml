@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="1000" FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
-    <Canvas x:Name="MyCanvas" KeyDown="Canvas_KeyDown" Focusable="True">
+    <Canvas x:Name="MyCanvas" KeyDown="Canvas_KeyDown"  Focusable="True">
         <Canvas.Background>
             <SolidColorBrush Color="Aquamarine"/>
         </Canvas.Background>

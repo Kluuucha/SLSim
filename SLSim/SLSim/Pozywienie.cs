@@ -1,4 +1,6 @@
-﻿namespace SLSim
+﻿using System.Windows.Shapes;
+
+namespace SLSim
 {
     internal class Pozywienie
     {
@@ -13,6 +15,8 @@
             this.y = y;
             wartosc = 1;
         }
+
+
         public Pozywienie(int x, int y, int wartosc)
         {
             this.x = x;
@@ -29,5 +33,16 @@
         {
             this.wartosc = wartosc;
         }
+
+        public int getX()
+        {
+            return x;
+        }
+
+        public int getY()
+        {
+            return y;
+        }
+
     }
 }

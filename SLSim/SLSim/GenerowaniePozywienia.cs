@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -9,8 +11,10 @@ namespace SLSim
     {
 
         private SolidColorBrush ellipseBruch = new SolidColorBrush(Colors.Green);
+        private SolidColorBrush ellipseBruch2 = new SolidColorBrush(Colors.Aquamarine);
         Random rnd = new Random();
         Pozywienie[] pozywienie;
+
 
         private int ilosc;
 
@@ -67,13 +71,13 @@ namespace SLSim
             {
                 x = rnd.Next(0, planszaX);
                 y = rnd.Next(0, planszaY);
-                pozywienie[i] = new Pozywienie(x, y);
                 ellipse = new Ellipse();
                 ellipse.Fill = ellipseBruch;
                 ellipse.Width = ellipseWidth;
                 ellipse.Height = ellipseHeight;
                 Canvas.SetTop(ellipse, y);
                 Canvas.SetLeft(ellipse, x);
+                pozywienie[i] = new Pozywienie(x, y);
                 canvas.Children.Add(ellipse);
             }
         }
@@ -102,6 +106,23 @@ namespace SLSim
                 Canvas.SetLeft(ellipse, x);
                 canvas.Children.Add(ellipse);
             }
+        }
+        /*
+         * Na razie kompletnie nie działa
+         * 
+         */
+        public void zjedzone(double dx, double dy)
+        {
+   
+               Point point = new Point(dx, dy);
+               HitTestResult result = VisualTreeHelper.HitTest(canvas, point);
+               if (result != null)
+               {
+                  canvas.Children.Remove(result.VisualHit as Ellipse);
+               }
+
+                
+            
         }
 
 
