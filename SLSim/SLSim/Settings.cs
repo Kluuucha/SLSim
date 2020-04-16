@@ -14,8 +14,8 @@ namespace SLSim
     }
     public class ProgramData
     {
-        public static IList<Organism> organisms = new IList<Organism>();
-        public static IList<Pozywienie> food = new IList<Pozywienie>();
+        public static List<Organism> organisms = new List<Organism>();
+        public static List<Food> food = new List<Food>();
        
     }
 }

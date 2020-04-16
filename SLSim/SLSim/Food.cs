@@ -2,14 +2,14 @@
 
 namespace SLSim
 {
-    internal class Pozywienie
+    public class Food
     {
         private int x;
         private int y;
         //wartosc - wartość punktowa zdobywana po zjedzeniu pożywienia - domyślnie 1;
         private int wartosc;
 
-        public Pozywienie(int x, int y)
+        public Food(int x, int y)
         {
             this.x = x;
             this.y = y;
@@ -17,7 +17,7 @@ namespace SLSim
         }
 
 
-        public Pozywienie(int x, int y, int wartosc)
+        public Food(int x, int y, int wartosc)
         {
             this.x = x;
             this.y = y;

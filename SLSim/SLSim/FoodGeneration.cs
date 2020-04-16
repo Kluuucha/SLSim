@@ -7,13 +7,13 @@ using System.Windows.Shapes;
 
 namespace SLSim
 {
-    internal class GenerowaniePozywienia
+    internal class FoodGeneration
     {
 
         private SolidColorBrush ellipseBruch = new SolidColorBrush(Colors.Green);
         private SolidColorBrush ellipseBruch2 = new SolidColorBrush(Colors.Aquamarine);
         Random rnd = new Random();
-        Pozywienie[] pozywienie;
+        Food[] pozywienie;
 
 
         private int ilosc;
@@ -35,7 +35,7 @@ namespace SLSim
          * planszaX, planszaY - wymiar planszy
          * 
          */
-        public GenerowaniePozywienia(int ilosc, Canvas MyCanvas, int planszaX, int planszaY)
+        public FoodGeneration(int ilosc, Canvas MyCanvas, int planszaX, int planszaY)
         {
             this.ilosc = ilosc;
             this.canvas = MyCanvas;
@@ -49,7 +49,7 @@ namespace SLSim
          * planszaX, planszaY - wymiar planszy
          * 
          */
-        public GenerowaniePozywienia(int min, int max, Canvas MyCanvas, int planszaX, int planszaY)
+        public FoodGeneration(int min, int max, Canvas MyCanvas, int planszaX, int planszaY)
         {
             this.min = min;
             this.max = max;
@@ -65,7 +65,7 @@ namespace SLSim
         {
             int x;
             int y;
-            pozywienie = new Pozywienie[ilosc];
+            pozywienie = new Food[ilosc];
 
             for (int i = 0; i < ilosc; i++)
             {
@@ -77,7 +77,7 @@ namespace SLSim
                 ellipse.Height = ellipseHeight;
                 Canvas.SetTop(ellipse, y);
                 Canvas.SetLeft(ellipse, x);
-                pozywienie[i] = new Pozywienie(x, y);
+                pozywienie[i] = new Food(x, y);
                 canvas.Children.Add(ellipse);
             }
         }
@@ -91,13 +91,13 @@ namespace SLSim
 
             int x;
             int y;
-            pozywienie = new Pozywienie[ilosc];
+            pozywienie = new Food[ilosc];
 
             for (int i = 0; i < ilosc; i++)
             {
                 x = rnd.Next(0, planszaX);
                 y = rnd.Next(0, planszaY);
-                pozywienie[i] = new Pozywienie(x, y);
+                pozywienie[i] = new Food(x, y);
                 ellipse = new Ellipse();
                 ellipse.Fill = ellipseBruch;
                 ellipse.Width = ellipseWidth;

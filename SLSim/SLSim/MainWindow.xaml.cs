@@ -21,7 +21,7 @@ namespace SLSim
     /// </summary>
     public partial class MainWindow : Window
     {
-        GenerowaniePozywienia generowaniePozywienia;
+        FoodGeneration generowaniePozywienia;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace SLSim
              *  - na razie podane wartości rozmiaru mapy i ilości na sztywno
              *  
              */
-            generowaniePozywienia = new GenerowaniePozywienia(10, MyCanvas, 980, 460);
+            generowaniePozywienia = new FoodGeneration(10, MyCanvas, 980, 460);
             generowaniePozywienia.generujPozywienie();
             /*GenerowaniePozywienia generowaniePozywienia = new GenerowaniePozywienia(5,10, MyCanvas, 980, 460);
             generowaniePozywienia.generujPozywienieLosowa();*/
