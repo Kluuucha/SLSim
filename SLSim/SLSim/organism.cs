@@ -19,5 +19,16 @@ namespace SLSim
             fixPosition();
             ProgramData.organisms.Add(this);
         }
+        void randomMovement()
+        {
+            Random rand = new Random();
+            x += rand.Next(-3, 3);
+            y += rand.Next(-3, 3);
+            fixPosition();
+        }
+        void die()
+        {
+            ProgramData.organisms.Remove(this);
+        }
     }
 }
