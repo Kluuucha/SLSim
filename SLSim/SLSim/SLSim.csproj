@@ -58,6 +58,8 @@
     <Compile Include="Organism.cs" />
     <Compile Include="RuchOrganizmu.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="SimObject.cs" />
+    <Compile Include="Simulation.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

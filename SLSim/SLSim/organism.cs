@@ -2,40 +2,39 @@
 
 namespace SLSim
 {
-    public class Organism
+    public class Organism : SimObject
     {
-        int x, y;
         Organism()
         {
             Random random = new Random();
-            x = random.Next(0, Settings.xResolution - 1);
-            y = random.Next(0, Settings.yResolution - 1);
-            ProgramData.organisms.Add(this);
+            posX = random.Next(0, Settings.xResolution - 1);
+            posY = random.Next(0, Settings.yResolution - 1);
+           // ProgramData.organisms.Add(this);
         }
         Organism(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.posX = x;
+            this.posY = y;
             fixPosition();
-            ProgramData.organisms.Add(this);
+           // ProgramData.organisms.Add(this);
         }
         void randomMovement()
         {
             Random rand = new Random();
-            x += rand.Next(-3, 3);
-            y += rand.Next(-3, 3);
+            posX += rand.Next(-3, 3);
+            posY += rand.Next(-3, 3);
             fixPosition();
         }
         void die()
         {
-            ProgramData.organisms.Remove(this);
+           // ProgramData.organisms.Remove(this);
         }
         void fixPosition()
         {
-            if (x < 0) x = 0;
-            else if (x > Settings.xResolution) x = Settings.xResolution - 1;
-            if (y < 0) x = 0;
-            else if (y > Settings.yResolution) y = Settings.yResolution - 1;
+            if (posX < 0) posX = 0;
+            else if (posX > Settings.xResolution) posX = Settings.xResolution - 1;
+            if (posY < 0) posX = 0;
+            else if (posY > Settings.yResolution) posY = Settings.yResolution - 1;
         }
     }
 }
