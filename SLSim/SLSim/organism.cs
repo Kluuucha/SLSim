@@ -5,11 +5,13 @@ namespace SLSim
     public class Organism
     {
         int x, y;
+        int power;
         Organism()
         {
             Random random = new Random();
             x = random.Next(0, Settings.xResolution - 1);
             y = random.Next(0, Settings.yResolution - 1);
+            ProgramData.organisms.
             ProgramData.organisms.Add(this);
         }
         Organism(int x, int y)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+using System.Collections.Generic.Dictionary;
 
 namespace SLSim
 {
@@ -14,8 +14,8 @@ namespace SLSim
     }
     public class ProgramData
     {
-        public static List<Organism> organisms = new List<Organism>();
-        public static List<Food> food = new List<Food>();
+        public static Dictionary<int,Organism> organisms = new HashSet<int,Organism>();
+        public static HashSet<int,Food> food = new HashSet<int,Food>();
        
     }
 }
