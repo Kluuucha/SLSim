@@ -2,7 +2,7 @@
 
 namespace SLSim
 {
-    public class Food
+    public class Food : SimObject
     {
         private int x;
         private int y;
