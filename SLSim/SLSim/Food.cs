@@ -4,45 +4,32 @@ namespace SLSim
 {
     public class Food : SimObject
     {
-        private int x;
-        private int y;
-        //wartosc - wartość punktowa zdobywana po zjedzeniu pożywienia - domyślnie 1;
-        private int wartosc;
+        //value - wartość punktowa zdobywana po zjedzeniu pożywienia - domyślnie 1;
+        private int value;
 
         public Food(int x, int y)
         {
-            this.x = x;
-            this.y = y;
-            wartosc = 1;
+            this.posX = x;
+            this.posY = y;
+            value = 1;
         }
 
 
-        public Food(int x, int y, int wartosc)
+        public Food(int x, int y, int value)
         {
-            this.x = x;
-            this.y = y;
-            this.wartosc = wartosc;
+            this.posX = x;
+            this.posY = y;
+            this.value = value;
         }
 
 
-        public int getWartosc()
+        public int getValue()
         {
-            return wartosc;
+            return value;
         }
-        public void setWartosc(int wartosc)
+        public void setValue(int value)
         {
-            this.wartosc = wartosc;
+            this.value = value;
         }
-
-        public int getX()
-        {
-            return x;
-        }
-
-        public int getY()
-        {
-            return y;
-        }
-
     }
 }
