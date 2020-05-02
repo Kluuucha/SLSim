@@ -8,7 +8,9 @@ namespace SLSim
 {
     public abstract class SimObject
     {
-        public int posX, posY;
-
+        public int posX;
+        public int posY;
+        public int key() { return posX + posY * Settings.xResolution; }
+        public int key(int posX,int posY) { return posX + posY * Settings.xResolution; }
     }
 }

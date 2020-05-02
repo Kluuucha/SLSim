@@ -8,6 +8,6 @@ namespace SLSim
 {
     class Simulation
     {
-        static Dictionary<int, SimObject> simulationGrid = new Dictionary<int, SimObject>();
+        public static Dictionary<int, SimObject> simulationGrid = new Dictionary<int, SimObject>();
     }
 }
