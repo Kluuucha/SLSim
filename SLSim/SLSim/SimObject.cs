@@ -44,7 +44,7 @@ namespace SLSim
             return Tuple.Create(posX, posY);
         }
 
-        public void getPosition(Tuple<int, int> position)
+        public void setPosition(Tuple<int, int> position)
         {
             this.posX = position.Item1;
             this.posY = position.Item2;

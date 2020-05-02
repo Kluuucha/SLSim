@@ -29,9 +29,9 @@ namespace SLSim
 
             Random rand = new Random();
             if(rand.Next(0, 1)==0)
-                posX += rand.Next(-1, 1);
+                posX += (rand.Next(1, 2) * 2) - 3;
             else
-                posY += rand.Next(-1, 1);
+                posY += (rand.Next(1, 2) * 2) - 3;
             fixPosition();
 
             Simulation.simulationGrid.Add(this.key(), this);
