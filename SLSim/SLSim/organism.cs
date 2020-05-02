@@ -11,7 +11,7 @@ namespace SLSim
             posY = random.Next(0, Settings.yResolution - 1);
            // ProgramData.organisms.Add(this);
         }
-        Organism(int x, int y)
+        public Organism(int x, int y)
         {
             this.posX = x;
             this.posY = y;
