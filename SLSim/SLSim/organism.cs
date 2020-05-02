@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SLSim
 {
@@ -7,6 +8,7 @@ namespace SLSim
     {
         private int sightDistance;
         private int movementDirection = 5;
+        Random random = new Random();
 
         public Organism()
         {
@@ -76,6 +78,214 @@ namespace SLSim
 
 
 
+        // ruch do jakiegoś miejsca z jakąś prędkością (im mniejsza tym szybciej)
+
+        void movement(int pointX, int pointY, int speed)
+        {
+
+            while (!(posX == pointX && posY == pointY))
+            {
+                if (posX < pointX)
+                {
+                    move_right();
+                }
+                else if (posX > pointX)
+                {
+                    move_left();
+                }
+                else if (posY < pointY)
+                {
+                    move_down();
+                }
+                else if (posY > pointY)
+                {
+                    move_up();
+                }
+                Thread.Sleep(speed);
+            }
+
+
+
+
+
+        }
+
+        // losowy ruch do jakiegoś miejsca z jakąś prędkością
+
+        void random_movement(int seconds, int speed)
+        {
+            int milliseconds_passed = 0;
+            long time_in_milliseconds = seconds * 1000;
+
+            while (milliseconds_passed < time_in_milliseconds)
+            {
+                random_movement();
+                Thread.Sleep(speed);
+                milliseconds_passed = milliseconds_passed + speed;
+            }
+        }
+
+
+        // losowy ruch o 1 kratkę
+        private void random_movement()
+        {
+            double randomDouble;
+            randomDouble = random.NextDouble();
+            if (movementDirection == 2)
+            {
+                if (randomDouble < 0.75)
+                {
+                    move_down();
+                }
+                else if (randomDouble < 0.85)
+                {
+                    move_left();
+                }
+                else if (randomDouble < 0.95)
+                {
+                    move_right();
+                }
+                else
+                {
+                    move_up();
+                }
+            }
+            else if (movementDirection == 8)
+            {
+                if (randomDouble < 0.75)
+                {
+                    move_up();
+                }
+                else if (randomDouble < 0.85)
+                {
+                    move_left();
+                }
+                else if (randomDouble < 0.95)
+                {
+                    move_right();
+                }
+                else
+                {
+                    move_down();
+                }
+            }
+            else if (movementDirection == 4)
+            {
+                if (randomDouble < 0.75)
+                {
+                    move_left();
+                }
+                else if (randomDouble < 0.85)
+                {
+                    move_up();
+                }
+                else if (randomDouble < 0.95)
+                {
+                    move_down();
+                }
+                else
+                {
+                    move_right();
+                }
+            }
+            else if (movementDirection == 6)
+            {
+                if (randomDouble < 0.75)
+                {
+                    move_right();
+                }
+                else if (randomDouble < 0.85)
+                {
+                    move_up();
+                }
+                else if (randomDouble < 0.95)
+                {
+                    move_down();
+                }
+                else
+                {
+                    move_left();
+                }
+            }
+            else
+            {
+                if (randomDouble < 0.25)
+                {
+                    move_up();
+                }
+                else if (randomDouble < 0.5)
+                {
+                    move_down();
+                }
+                else if (randomDouble < 0.75)
+                {
+                    move_left();
+                }
+                else
+                {
+                    move_right();
+                }
+            }
+        }
+
+
+
+        // ruch o 1 kratkę w jakimś kierunku
+        private bool move_left()
+        {
+            bool accomplished = false;
+            Simulation.simulationGrid.Remove(this.key());
+            if (posX > 0)
+            {
+                posX = posX - 1;
+                accomplished = true;
+                movementDirection = 4;
+            }
+            else
+            {
+                movementDirection = 6;
+            }
+            Simulation.simulationGrid.Add(this.key(), this);
+            return accomplished;
+        }
+
+
+
+        private bool move_right()
+        {
+            bool accomplished = false;
+            Simulation.simulationGrid.Remove(this.key());
+            if (posX < Settings.xResolution - 1)
+            {
+                posX = posX + 1;
+                accomplished = true;
+                movementDirection = 6;
+            }
+            else
+            {
+                movementDirection = 4;
+            }
+            Simulation.simulationGrid.Add(this.key(), this);
+            return accomplished;
+        }
+
+        private bool move_up()
+        {
+            bool accomplished = false;
+            Simulation.simulationGrid.Remove(this.key());
+            if (posY > 0)
+            {
+                posY = posY - 1;
+                accomplished = true;
+                movementDirection = 8;
+            }
+            else
+            {
+                movementDirection = 2;
+            }
+            Simulation.simulationGrid.Add(this.key(), this);
+            return accomplished;
+        }
 
         private bool move_down()
         {
