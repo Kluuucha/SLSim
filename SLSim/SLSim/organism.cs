@@ -7,14 +7,17 @@ namespace SLSim
     public class Organism : SimObject
     {
         private int sightDistance;
-        private int movementDirection = 5;
+        
         Random random = new Random();
+        enum Directions { up, down, left, right, no};
+        Directions movementDirection = Directions.no;
 
         public Organism()
         {
-            Random random = new Random();
+            
             posX = random.Next(0, Settings.xResolution - 1);
             posY = random.Next(0, Settings.yResolution - 1);
+            
             Simulation.simulationGrid.Add(this.key(), this);
         }
 
@@ -131,178 +134,165 @@ namespace SLSim
         {
             double randomDouble;
             randomDouble = random.NextDouble();
-            if (movementDirection == 2)
+            if (movementDirection == Directions.down)
             {
                 if (randomDouble < 0.75)
                 {
-                    move_down();
+                    move_in_a_direction(Directions.down);
                 }
                 else if (randomDouble < 0.85)
                 {
-                    move_left();
+                    move_in_a_direction(Directions.left);
                 }
                 else if (randomDouble < 0.95)
                 {
-                    move_right();
+                    move_in_a_direction(Directions.right);
                 }
                 else
                 {
-                    move_up();
+                    move_in_a_direction(Directions.up);
                 }
             }
-            else if (movementDirection == 8)
+            else if (movementDirection == Directions.up)
             {
                 if (randomDouble < 0.75)
                 {
-                    move_up();
+                    move_in_a_direction(Directions.up);
                 }
                 else if (randomDouble < 0.85)
                 {
-                    move_left();
+                    move_in_a_direction(Directions.left);
                 }
                 else if (randomDouble < 0.95)
                 {
-                    move_right();
+                    move_in_a_direction(Directions.right);
                 }
                 else
                 {
-                    move_down();
+                    move_in_a_direction(Directions.down);
                 }
             }
-            else if (movementDirection == 4)
+            else if (movementDirection == Directions.left)
             {
                 if (randomDouble < 0.75)
                 {
-                    move_left();
+                    move_in_a_direction(Directions.left);
                 }
                 else if (randomDouble < 0.85)
                 {
-                    move_up();
+                    move_in_a_direction(Directions.up);
                 }
                 else if (randomDouble < 0.95)
                 {
-                    move_down();
+                    move_in_a_direction(Directions.down);
                 }
                 else
                 {
-                    move_right();
+                    move_in_a_direction(Directions.right);
                 }
             }
-            else if (movementDirection == 6)
+            else if (movementDirection == Directions.right)
             {
                 if (randomDouble < 0.75)
                 {
-                    move_right();
+                    move_in_a_direction(Directions.right);
                 }
                 else if (randomDouble < 0.85)
                 {
-                    move_up();
+                    move_in_a_direction(Directions.up);
                 }
                 else if (randomDouble < 0.95)
                 {
-                    move_down();
+                    move_in_a_direction(Directions.down);
                 }
                 else
                 {
-                    move_left();
+                    move_in_a_direction(Directions.left);
                 }
             }
             else
             {
                 if (randomDouble < 0.25)
                 {
-                    move_up();
+                    move_in_a_direction(Directions.up);
                 }
                 else if (randomDouble < 0.5)
                 {
-                    move_down();
+                    move_in_a_direction(Directions.down);
                 }
                 else if (randomDouble < 0.75)
                 {
-                    move_left();
+                    move_in_a_direction(Directions.left);
                 }
                 else
                 {
-                    move_right();
+                    move_in_a_direction(Directions.right);
                 }
             }
         }
 
 
 
-        // ruch o 1 kratkę w jakimś kierunku
-        private bool move_left()
+        private void move_in_a_direction(Directions direction)
         {
-            bool accomplished = false;
+            
             Simulation.simulationGrid.Remove(this.key());
-            if (posX > 0)
+
+            if(direction == Directions.left)
             {
-                posX = posX - 1;
-                accomplished = true;
-                movementDirection = 4;
-            }
-            else
+                if (posX > 0)
+                {
+                    posX = posX - 1;                    
+                    movementDirection = Directions.left;
+                }
+                else
+                {
+                    movementDirection = Directions.right;
+                }
+            } 
+            else if(direction == Directions.right)
             {
-                movementDirection = 6;
+                if (posX < Settings.xResolution - 1)
+                {
+                    posX = posX + 1;                    
+                    movementDirection = Directions.right;
+                }
+                else
+                {
+                    movementDirection = Directions.left;
+                }
             }
+            else if(direction == Directions.up)
+            {
+                if (posY > 0)
+                {
+                    posY = posY - 1;                    
+                    movementDirection = Directions.up;
+                }
+                else
+                {
+                    movementDirection = Directions.down;
+                }
+                Simulation.simulationGrid.Add(this.key(), this);
+            }
+            else if(direction == Directions.down)
+            {
+                if (posY < Settings.yResolution)
+                {
+                    posY = posY + 1;                   
+                    movementDirection = Directions.down;
+                }
+                else
+                {
+                    movementDirection = Directions.up;
+                }
+            }
+
+
             Simulation.simulationGrid.Add(this.key(), this);
-            return accomplished;
+            
         }
 
-
-
-        private bool move_right()
-        {
-            bool accomplished = false;
-            Simulation.simulationGrid.Remove(this.key());
-            if (posX < Settings.xResolution - 1)
-            {
-                posX = posX + 1;
-                accomplished = true;
-                movementDirection = 6;
-            }
-            else
-            {
-                movementDirection = 4;
-            }
-            Simulation.simulationGrid.Add(this.key(), this);
-            return accomplished;
-        }
-
-        private bool move_up()
-        {
-            bool accomplished = false;
-            Simulation.simulationGrid.Remove(this.key());
-            if (posY > 0)
-            {
-                posY = posY - 1;
-                accomplished = true;
-                movementDirection = 8;
-            }
-            else
-            {
-                movementDirection = 2;
-            }
-            Simulation.simulationGrid.Add(this.key(), this);
-            return accomplished;
-        }
-
-        private bool move_down()
-        {
-            bool accomplished = false;
-            Simulation.simulationGrid.Remove(this.key());
-            if (posY < Settings.yResolution)
-            {
-                posY = posY + 1;
-                accomplished = true;
-                movementDirection = 2;
-            }
-            else
-            {
-                movementDirection = 8;
-            }
-            Simulation.simulationGrid.Add(this.key(), this);
-            return accomplished;
-        }
+        
     }
 }
