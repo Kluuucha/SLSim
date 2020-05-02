@@ -45,9 +45,9 @@ namespace SLSim
         void fixPosition()
         {
             if (posX < 0) posX = 0;
-            else if (posX > Settings.xResolution) posX = Settings.xResolution - 1;
+            else if (posX >= Settings.xResolution) posX = Settings.xResolution - 1;
             if (posY < 0) posY = 0;
-            else if (posY > Settings.yResolution) posY = Settings.yResolution - 1;
+            else if (posY >= Settings.yResolution) posY = Settings.yResolution - 1;
         }
 
         public Tuple<int, int> getInterest() {
