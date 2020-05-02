@@ -1,48 +1,37 @@
-﻿using System.Windows.Shapes;
+﻿using System;
+using System.Windows.Shapes;
 
 namespace SLSim
 {
     public class Food : SimObject
     {
-        private int x;
-        private int y;
-        //wartosc - wartość punktowa zdobywana po zjedzeniu pożywienia - domyślnie 1;
-        private int wartosc;
+        public int value { get; private set; }
 
-        public Food(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-            wartosc = 1;
+        public static Food newRandomFood(int value = 1) {
+            Food temp = new Food(value);
+            int key = 0;
+            do
+            {   
+                Random random = new Random();
+                temp.posX = random.Next(Settings.xResolution - 1);
+                temp.posY = random.Next(Settings.yResolution - 1);
+                key = temp.key();
+            } while (Simulation.simulationGrid[key] != null);
+            Simulation.simulationGrid.Add(key, temp);
+            return temp;
         }
-
-
-        public Food(int x, int y, int wartosc)
+        public static void generateFood()
         {
-            this.x = x;
-            this.y = y;
-            this.wartosc = wartosc;
+            for (int i = 0; i < Settings.foodNumber; i++)
+                newRandomFood();
         }
+        private Food(int value) { this.value = 1; }
 
-
-        public int getWartosc()
+        public Food(int x, int y, int value = 1 )//uwaga, nie obsługuje operacji na słowniku!
         {
-            return wartosc;
+            posX = x;
+            posY = y;
+            this.value = value;
         }
-        public void setWartosc(int wartosc)
-        {
-            this.wartosc = wartosc;
-        }
-
-        public int getX()
-        {
-            return x;
-        }
-
-        public int getY()
-        {
-            return y;
-        }
-
     }
 }
