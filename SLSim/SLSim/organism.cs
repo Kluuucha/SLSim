@@ -6,6 +6,7 @@ namespace SLSim
     public class Organism : SimObject
     {
         private int sightDistance;
+        private int movementDirection = 5;
 
         public Organism()
         {
@@ -72,6 +73,26 @@ namespace SLSim
         private bool checkInterest(SimObject o) {
             return o is Food; //TODO: replace 'is Food' with check for list of interest classes
         }
-        
+
+
+
+
+        private bool move_down()
+        {
+            bool accomplished = false;
+            Simulation.simulationGrid.Remove(this.key());
+            if (posY < Settings.yResolution)
+            {
+                posY = posY + 1;
+                accomplished = true;
+                movementDirection = 2;
+            }
+            else
+            {
+                movementDirection = 8;
+            }
+            Simulation.simulationGrid.Add(this.key(), this);
+            return accomplished;
+        }
     }
 }
