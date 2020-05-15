@@ -35,5 +35,10 @@ namespace SLSim
             posY = y;
             this.value = value;
         }
+
+        public void destroy()
+        {
+            Simulation.simulationGrid.Remove(this.key());
+        }
     }
 }

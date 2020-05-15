@@ -6,9 +6,8 @@ namespace SLSim
 {
     public class Organism : SimObject
     {
-        private int sightDistance = 5;
+        private int sightDistance = 7;
         enum Directions { up, down, left, right, no};
-        Directions movementDirection = Directions.no;
 
         public static Organism newRandomOrganism()
         {
@@ -40,9 +39,10 @@ namespace SLSim
 
        public Organism(int x, int y)
         {
-            this.posX = x;
-            this.posY = y;
+            posX = x;
+            posY = y;
             fixPosition();
+            Simulation.simulationGrid.Add(this.key(), this);
         }
 
         void randomMovement() 
@@ -57,7 +57,44 @@ namespace SLSim
 
             Simulation.simulationGrid.Add(this.key(), this);
         }
-        public void act() { random_movement(); }
+        public void act()
+        {
+            Tuple<int, int> interest = getInterest();
+            if (!(interest == null))
+            {
+                target_movement(interest);
+            }
+            else
+                random_movement();
+        }
+
+        public void eat(Food food)
+        {
+            var foodX = food.posX;
+            var foodY = food.posY;
+
+            food.destroy();
+            move(foodX, foodY);
+            Food.newRandomFood();
+            multiply();
+        }
+
+        public void multiply()
+        {
+            for (var i = -1; i < 2; i += 1)
+            {
+                for (var j = -1; j < 2; j += 1)
+                {
+                    Tuple<int, int> fixedPosition = fixValues(posX + i, posY + j);
+                    if (!Simulation.simulationGrid.ContainsKey(encode(fixedPosition.Item1, fixedPosition.Item2)))
+                    {
+                        Organism o = new Organism(fixedPosition.Item1, fixedPosition.Item2);
+                        return;
+                    }  
+                }
+            }
+        }
+
         void die()
         {
             Simulation.simulationGrid.Remove(this.key());
@@ -71,15 +108,27 @@ namespace SLSim
             else if (posY >= Settings.yResolution) posY = Settings.yResolution - 1;
         }
 
+        Tuple <int, int> fixValues(int valueX, int valueY)
+        {
+            var outX = valueX;
+            var outY = valueY;
+
+            if (outX < 0) outX = 0;
+            else if (outX >= Settings.xResolution) outX = Settings.xResolution - 1;
+            if (outY < 0) outY = 0;
+            else if (outY >= Settings.yResolution) outY = Settings.yResolution - 1;
+            return Tuple.Create(outX, outY);
+        }
+
         public Tuple<int, int> getInterest() {
 
-            for (int x = 1; x < sightDistance; x++) {
-                for (int y = 0; y <= x; y++) {
+            for (var x = 1; x < sightDistance; x++) {
+                for (var y = 0; y <= x; y++) {
 
                     for (var i = -1; i < 2; i += 2){
                         for (var j = -1; j < 2; j += 2){
 
-                            if (checkInterest(Simulation.simulationGrid[encode(posX + (x - y) * i, posY + y * j)]))
+                            if (Simulation.simulationGrid.ContainsKey(encode(posX + (x - y) * i, posY + y * j)) && checkInterest(Simulation.simulationGrid[encode(posX + (x - y) * i, posY + y * j)]))
                                 return Tuple.Create(posX + (x - y) * i, posY + y * j);
                             
                         }
@@ -94,36 +143,28 @@ namespace SLSim
             return o is Food; //TODO: replace 'is Food' with check for list of interest classes
         }
 
-
-
-        // ruch do jakiegoś miejsca z jakąś prędkością (im mniejsza tym szybciej)
-
-        void movement(int pointX, int pointY, int speed)
+        void target_movement(Tuple<int, int> interest)
         {
+            var pointX = interest.Item1;
+            var pointY = interest.Item2;
 
-            while (!(posX == pointX && posY == pointY))
+            if (posX < pointX)
             {
-                if (posX < pointX)
-                {
-                    move_in_a_direction(Directions.right);
-                }
-                else if (posX > pointX)
-                {
-                    move_in_a_direction(Directions.left);
-                }
-                else if (posY < pointY)
-                {
-                    move_in_a_direction(Directions.down);
-                }
-                else if (posY > pointY)
-                {
-                    move_in_a_direction(Directions.up);
-                }
-                Thread.Sleep(speed);
+                move_in_a_direction(Directions.right);
+            }
+            else if (posX > pointX)
+            {
+                move_in_a_direction(Directions.left);
+            }
+            else if (posY < pointY)
+            {
+                move_in_a_direction(Directions.down);
+            }
+            else if (posY > pointY)
+            {
+                move_in_a_direction(Directions.up);
             }
         }
-
-        // losowy ruch do jakiegoś miejsca z jakąś prędkością
 
         void random_movement(int seconds, int speed)
         {
@@ -137,7 +178,6 @@ namespace SLSim
                 milliseconds_passed = milliseconds_passed + speed;
             }
         }
-
 
         private void random_movement()
         {
@@ -162,69 +202,48 @@ namespace SLSim
             }
         }
 
-
-
         private void move_in_a_direction(Directions direction)
         {
             var currentX = posX;
             var currentY = posY;
 
-            if (direction == Directions.left)
+            if (direction == Directions.left && currentX > 0)
             {
-                if (currentX > 0)
-                {
-                    currentX = currentX - 1;
-                    movementDirection = Directions.left;
-                }
-                else
-                {
-                    movementDirection = Directions.right;
-                }
+                currentX--;
             }
-            else if (direction == Directions.right)
+            else if (direction == Directions.right && currentX < Settings.xResolution - 1)
             {
-                if (currentX < Settings.xResolution - 1)
-                {
-                    currentX = currentX + 1;
-                    movementDirection = Directions.right;
-                }
-                else
-                {
-                    movementDirection = Directions.left;
-                }
+                currentX++;
             }
-            else if (direction == Directions.up)
+            else if (direction == Directions.up && currentY > 0)
             {
-                if (currentY > 0)
-                {
-                    currentY = currentY - 1;
-                    movementDirection = Directions.up;
-                }
-                else
-                {
-                    movementDirection = Directions.down;
-                }
+                currentY--;
             }
-            else if (direction == Directions.down)
+            else if (direction == Directions.down && currentY < Settings.yResolution)
             {
-                if (currentY < Settings.yResolution)
-                {
-                    currentY = currentY + 1;
-                    movementDirection = Directions.down;
-                }
-                else
-                {
-                    movementDirection = Directions.up;
-                }
+                currentY++;
             }
 
-            if (!Simulation.simulationGrid.ContainsKey(encode(currentX, currentY)))
+            if (Simulation.simulationGrid.ContainsKey(encode(currentX, currentY)))
             {
-                Simulation.simulationGrid.Remove(this.key());
-                posX = currentX;
-                posY = currentY;
-                Simulation.simulationGrid.Add(this.key(), this);
+                if (Simulation.simulationGrid[encode(currentX, currentY)] is Food)
+                {
+                    eat((Food)Simulation.simulationGrid[encode(currentX, currentY)]);
+                }  
             }
+
+            else
+            {
+                move(currentX, currentY);
+            }
+        }
+
+        private void move(int currentX, int currentY)
+        {
+            Simulation.simulationGrid.Remove(this.key());
+            posX = currentX;
+            posY = currentY;
+            Simulation.simulationGrid.Add(this.key(), this);
         }
     }
 }
