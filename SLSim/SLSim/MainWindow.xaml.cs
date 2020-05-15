@@ -47,7 +47,6 @@ namespace SLSim
 
         }
         public void kd(object sender, KeyEventArgs e){
-            if(e.Key == Key.Down)
                 plansza.czyscPlansze();
 
         }
