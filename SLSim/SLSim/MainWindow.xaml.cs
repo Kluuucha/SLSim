@@ -49,7 +49,8 @@ namespace SLSim
         public void kd(object sender, KeyEventArgs e){
             if (e.Key == Key.Down) {
                 plansza.czyscPlansze();
-                Simulation.nextStep();
+                //for(int i=0;i<10;i++)
+                    Simulation.nextStep();
                 plansza.rysujPlansze(Simulation.simulationGrid);
             }
 

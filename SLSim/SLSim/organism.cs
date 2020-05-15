@@ -7,21 +7,18 @@ namespace SLSim
     public class Organism : SimObject
     {
         private int sightDistance = 5;
-
-        Random random = new Random();
         enum Directions { up, down, left, right, no};
         Directions movementDirection = Directions.no;
 
         public static Organism newRandomOrganism()
         {
-            Random random = new Random();
             Organism temp = new Organism();
             int key = 0;
             do
             {
 
-                temp.posX = random.Next(Settings.xResolution - 1);
-                temp.posY = random.Next(Settings.yResolution - 1);
+                temp.posX = Simulation.random.Next(Settings.xResolution - 1);
+                temp.posY = Simulation.random.Next(Settings.yResolution - 1);
                 key = temp.key();
             }
             while (Simulation.simulationGrid.ContainsKey(key));
@@ -36,8 +33,8 @@ namespace SLSim
 
         public Organism()
         {
-            posX = random.Next(0, Settings.xResolution - 1);
-            posY = random.Next(0, Settings.yResolution - 1);
+            posX = Simulation.random.Next(0, Settings.xResolution - 1);
+            posY = Simulation.random.Next(0, Settings.yResolution - 1);
 
         }
 
@@ -52,10 +49,10 @@ namespace SLSim
         {
             Simulation.simulationGrid.Remove(this.key());
 
-            if(random.Next(0, 1)==0)
-                posX += (random.Next(1, 2) * 2) - 3;
+            if(Simulation.random.Next(0, 1)==0)
+                posX += (Simulation.random.Next(1, 2) * 2) - 3;
             else
-                posY += (random.Next(1, 2) * 2) - 3;
+                posY += (Simulation.random.Next(1, 2) * 2) - 3;
             fixPosition();
 
             Simulation.simulationGrid.Add(this.key(), this);
@@ -142,105 +139,26 @@ namespace SLSim
         }
 
 
-        // losowy ruch o 1 kratkę
         private void random_movement()
         {
             double randomDouble;
-            randomDouble = random.NextDouble();
-            if (movementDirection == Directions.down)
+            randomDouble = Simulation.random.NextDouble();
+
+            if (randomDouble < 0.25)
             {
-                if (randomDouble < 0.75)
-                {
-                    move_in_a_direction(Directions.down);
-                }
-                else if (randomDouble < 0.85)
-                {
-                    move_in_a_direction(Directions.left);
-                }
-                else if (randomDouble < 0.95)
-                {
-                    move_in_a_direction(Directions.right);
-                }
-                else
-                {
-                    move_in_a_direction(Directions.up);
-                }
+                move_in_a_direction(Directions.down);
             }
-            else if (movementDirection == Directions.up)
+            else if (randomDouble < 0.50)
             {
-                if (randomDouble < 0.75)
-                {
-                    move_in_a_direction(Directions.up);
-                }
-                else if (randomDouble < 0.85)
-                {
-                    move_in_a_direction(Directions.left);
-                }
-                else if (randomDouble < 0.95)
-                {
-                    move_in_a_direction(Directions.right);
-                }
-                else
-                {
-                    move_in_a_direction(Directions.down);
-                }
+                move_in_a_direction(Directions.left);
             }
-            else if (movementDirection == Directions.left)
+            else if (randomDouble < 0.75)
             {
-                if (randomDouble < 0.75)
-                {
-                    move_in_a_direction(Directions.left);
-                }
-                else if (randomDouble < 0.85)
-                {
-                    move_in_a_direction(Directions.up);
-                }
-                else if (randomDouble < 0.95)
-                {
-                    move_in_a_direction(Directions.down);
-                }
-                else
-                {
-                    move_in_a_direction(Directions.right);
-                }
-            }
-            else if (movementDirection == Directions.right)
-            {
-                if (randomDouble < 0.75)
-                {
-                    move_in_a_direction(Directions.right);
-                }
-                else if (randomDouble < 0.85)
-                {
-                    move_in_a_direction(Directions.up);
-                }
-                else if (randomDouble < 0.95)
-                {
-                    move_in_a_direction(Directions.down);
-                }
-                else
-                {
-                    move_in_a_direction(Directions.left);
-                }
+                move_in_a_direction(Directions.right);
             }
             else
             {
-                if (randomDouble < 0.25)
-                {
-                    move_in_a_direction(Directions.up);
-                }
-                else if (randomDouble < 0.5)
-                {
-                    move_in_a_direction(Directions.down);
-                }
-                else if (randomDouble < 0.75)
-                {
-                    move_in_a_direction(Directions.left);
-                }
-                else
-                {
-                    move_in_a_direction(Directions.right);
-                }
+                move_in_a_direction(Directions.up);
             }
         }
 
