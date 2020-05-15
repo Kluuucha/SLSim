@@ -6,16 +6,9 @@
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="1000" FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
-    <Canvas x:Name="MyCanvas" KeyDown="Canvas_KeyDown"  Focusable="True">
+    <Canvas x:Name="MyCanvas" KeyDown="kd" Focusable="True">
         <Canvas.Background>
             <SolidColorBrush Color="Aquamarine"/>
         </Canvas.Background>
-        <Rectangle x:Name="rec1" Width="20" Height="20" Margin="0" Canvas.Left="40" Canvas.Top="20">
-
-            <Rectangle.Fill>
-                <SolidColorBrush Color="Magenta"/>
-            </Rectangle.Fill>
-
-        </Rectangle>
     </Canvas>
 </Window>
