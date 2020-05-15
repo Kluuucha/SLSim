@@ -21,24 +21,39 @@ namespace SLSim
     /// </summary>
     public partial class MainWindow : Window
     {
-        FoodGeneration generowaniePozywienia;
+        //FoodGeneration generowaniePozywienia;
+        Simulation sim = new Simulation();
+        Plansza plansza;
+
+
         public MainWindow()
         {
+            /*inicjalizacja planszy
+             * generowanie danych testowych
+             * rysowanie planszy - usówanie poniżej dla testów - kliknięcie strzałki w dół*/
             InitializeComponent();
-
+            plansza =  new Plansza(MyCanvas);
+            sim.generowanieTestowe();
+            plansza.rysujPlansze(sim.getDictionary());
+            
             /* commit - pozywienie v1:
              *  - na razie generowane tylko raz - trzeba dodać następne wywołania co określoną ilość czasu
              *  - na razie podane wartości rozmiaru mapy i ilości na sztywno
              *  
              */
-            generowaniePozywienia = new FoodGeneration(10, MyCanvas, 980, 460);
+            /*generowaniePozywienia = new FoodGeneration(10, MyCanvas, 980, 460);
             generowaniePozywienia.generujPozywienie();
             /*GenerowaniePozywienia generowaniePozywienia = new GenerowaniePozywienia(5,10, MyCanvas, 980, 460);
             generowaniePozywienia.generujPozywienieLosowa();*/
 
         }
+        public void kd(object sender, KeyEventArgs e){
+            if(e.Key == Key.Down)
+                plansza.czyscPlansze();
 
-        private void Canvas_KeyDown(object sender, KeyEventArgs e)
+        }
+
+       /* private void Canvas_KeyDown(object sender, KeyEventArgs e)
         {
             Random rnd = new Random();
             // This is the key down event linked to the canvas
@@ -110,6 +125,6 @@ namespace SLSim
                 }
                 Thread.Sleep(100);
             }*/
-        }
+       // }
     }
 }
