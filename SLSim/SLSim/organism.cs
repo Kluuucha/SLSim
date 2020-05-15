@@ -106,11 +106,6 @@ namespace SLSim
                 }
                 Thread.Sleep(speed);
             }
-
-
-
-
-
         }
 
         // losowy ruch do jakiegoś miejsca z jakąś prędkością
@@ -235,26 +230,26 @@ namespace SLSim
 
         private void move_in_a_direction(Directions direction)
         {
-            
+
             Simulation.simulationGrid.Remove(this.key());
 
-            if(direction == Directions.left)
+            if (direction == Directions.left)
             {
                 if (posX > 0)
                 {
-                    posX = posX - 1;                    
+                    posX = posX - 1;
                     movementDirection = Directions.left;
                 }
                 else
                 {
                     movementDirection = Directions.right;
                 }
-            } 
-            else if(direction == Directions.right)
+            }
+            else if (direction == Directions.right)
             {
                 if (posX < Settings.xResolution - 1)
                 {
-                    posX = posX + 1;                    
+                    posX = posX + 1;
                     movementDirection = Directions.right;
                 }
                 else
@@ -262,11 +257,11 @@ namespace SLSim
                     movementDirection = Directions.left;
                 }
             }
-            else if(direction == Directions.up)
+            else if (direction == Directions.up)
             {
                 if (posY > 0)
                 {
-                    posY = posY - 1;                    
+                    posY = posY - 1;
                     movementDirection = Directions.up;
                 }
                 else
@@ -275,11 +270,11 @@ namespace SLSim
                 }
                 Simulation.simulationGrid.Add(this.key(), this);
             }
-            else if(direction == Directions.down)
+            else if (direction == Directions.down)
             {
                 if (posY < Settings.yResolution)
                 {
-                    posY = posY + 1;                   
+                    posY = posY + 1;
                     movementDirection = Directions.down;
                 }
                 else
@@ -287,12 +282,7 @@ namespace SLSim
                     movementDirection = Directions.up;
                 }
             }
-
-
             Simulation.simulationGrid.Add(this.key(), this);
-            
         }
-
-        
     }
 }

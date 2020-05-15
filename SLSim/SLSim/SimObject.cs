@@ -9,7 +9,8 @@ namespace SLSim
 {
     public abstract class SimObject
     {
-        protected int posX, posY;
+        public int posX { get; protected set; }
+        public int posY { get; protected set; }
 
         public int key() {
             return encode(posX, posY);
@@ -20,26 +21,7 @@ namespace SLSim
             return x + y * Settings.xResolution;
         }
 
-        public int getX()
-        {
-            return posX;
-        }
-
-        public int getY()
-        {
-            return posY;
-        }
-
-        public void setX(int posX)
-        {
-            this.posX = posX;
-        }
-
-        public void setY(int posY)
-        {
-            this.posY = posY;
-        }
-
+       
         public Tuple<int, int> getPosition()
         {
             return Tuple.Create(posX, posY);
