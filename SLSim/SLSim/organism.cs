@@ -15,7 +15,6 @@ namespace SLSim
         public static Organism newRandomOrganism()
         {
             Random random = new Random();
-
             Organism temp = new Organism();
             int key = 0;
             do
@@ -61,7 +60,7 @@ namespace SLSim
 
             Simulation.simulationGrid.Add(this.key(), this);
         }
-
+        public void act() { random_movement(); }
         void die()
         {
             Simulation.simulationGrid.Remove(this.key());
@@ -249,14 +248,14 @@ namespace SLSim
 
         private void move_in_a_direction(Directions direction)
         {
-
-            Simulation.simulationGrid.Remove(this.key());
+            var currentX = posX;
+            var currentY = posY;
 
             if (direction == Directions.left)
             {
-                if (posX > 0)
+                if (currentX > 0)
                 {
-                    posX = posX - 1;
+                    currentX = currentX - 1;
                     movementDirection = Directions.left;
                 }
                 else
@@ -266,9 +265,9 @@ namespace SLSim
             }
             else if (direction == Directions.right)
             {
-                if (posX < Settings.xResolution - 1)
+                if (currentX < Settings.xResolution - 1)
                 {
-                    posX = posX + 1;
+                    currentX = currentX + 1;
                     movementDirection = Directions.right;
                 }
                 else
@@ -278,22 +277,21 @@ namespace SLSim
             }
             else if (direction == Directions.up)
             {
-                if (posY > 0)
+                if (currentY > 0)
                 {
-                    posY = posY - 1;
+                    currentY = currentY - 1;
                     movementDirection = Directions.up;
                 }
                 else
                 {
                     movementDirection = Directions.down;
                 }
-                Simulation.simulationGrid.Add(this.key(), this);
             }
             else if (direction == Directions.down)
             {
-                if (posY < Settings.yResolution)
+                if (currentY < Settings.yResolution)
                 {
-                    posY = posY + 1;
+                    currentY = currentY + 1;
                     movementDirection = Directions.down;
                 }
                 else
@@ -301,7 +299,14 @@ namespace SLSim
                     movementDirection = Directions.up;
                 }
             }
-            Simulation.simulationGrid.Add(this.key(), this);
+
+            if (!Simulation.simulationGrid.ContainsKey(encode(currentX, currentY)))
+            {
+                Simulation.simulationGrid.Remove(this.key());
+                posX = currentX;
+                posY = currentY;
+                Simulation.simulationGrid.Add(this.key(), this);
+            }
         }
     }
 }

@@ -20,5 +20,22 @@ namespace SLSim
         public static void addObject(SimObject o) {
             simulationGrid.Add(o.key(), o);
         }
+
+        public static void nextStep()
+        {
+            List<Organism> organisms = new List<Organism>();
+            foreach(KeyValuePair<int, SimObject> kvp in simulationGrid)
+                if (kvp.Value is Organism)
+                {
+                    organisms.Add((Organism)kvp.Value);
+                }
+            foreach(Organism o in organisms)
+            {
+                if (simulationGrid.ContainsKey(o.key()))
+                {
+                    o.act();
+                }
+            }
+        }
     }
 }
