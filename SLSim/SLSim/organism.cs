@@ -7,22 +7,18 @@ namespace SLSim
     public class Organism : SimObject
     {
         private int sightDistance = 5;
-
-        
         enum Directions { up, down, left, right, no};
         Directions movementDirection = Directions.no;
 
         public static Organism newRandomOrganism()
         {
-            Random random = new Random();
-
             Organism temp = new Organism();
             int key = 0;
             do
             {
 
-                temp.posX = random.Next(Settings.xResolution - 1);
-                temp.posY = random.Next(Settings.yResolution - 1);
+                temp.posX = Simulation.random.Next(Settings.xResolution - 1);
+                temp.posY = Simulation.random.Next(Settings.yResolution - 1);
                 key = temp.key();
             }
             while (Simulation.simulationGrid.ContainsKey(key));
@@ -37,9 +33,8 @@ namespace SLSim
 
         public Organism()
         {
-            Random random = new Random();
-            posX = random.Next(0, Settings.xResolution - 1);
-            posY = random.Next(0, Settings.yResolution - 1);
+            posX = Simulation.random.Next(0, Settings.xResolution - 1);
+            posY = Simulation.random.Next(0, Settings.yResolution - 1);
 
         }
 
@@ -52,18 +47,17 @@ namespace SLSim
 
         void randomMovement() 
         {
-            Random random = new Random();
             Simulation.simulationGrid.Remove(this.key());
 
-            if(random.Next(0, 1)==0)
-                posX += (random.Next(1, 2) * 2) - 3;
+            if(Simulation.random.Next(0, 1)==0)
+                posX += (Simulation.random.Next(1, 2) * 2) - 3;
             else
-                posY += (random.Next(1, 2) * 2) - 3;
+                posY += (Simulation.random.Next(1, 2) * 2) - 3;
             fixPosition();
 
             Simulation.simulationGrid.Add(this.key(), this);
         }
-
+        public void act() { random_movement(); }
         void die()
         {
             Simulation.simulationGrid.Remove(this.key());
@@ -90,6 +84,7 @@ namespace SLSim
                             
                         }
                     }
+
                 }
             }
             return null;
@@ -144,13 +139,11 @@ namespace SLSim
         }
 
 
-        // losowy ruch o 1 kratkę
         private void random_movement()
         {
-            Random random = new Random();
             double randomDouble;
-            randomDouble = random.NextDouble(); 
-            
+            randomDouble = Simulation.random.NextDouble();
+
             if (randomDouble < 0.25)
             {
                 move_in_a_direction(Directions.down);
@@ -225,12 +218,13 @@ namespace SLSim
                 }
             }
 
-            if (!Simulation.simulationGrid.ContainsKey(encode(currentX, currentY))) {
+            if (!Simulation.simulationGrid.ContainsKey(encode(currentX, currentY)))
+            {
                 Simulation.simulationGrid.Remove(this.key());
                 posX = currentX;
                 posY = currentY;
                 Simulation.simulationGrid.Add(this.key(), this);
-            } 
+            }
         }
     }
 }

@@ -9,16 +9,13 @@ namespace SLSim
 
         public static Food newRandomFood(int value = 1)
         {
-            Random random = new Random();
-
             Food temp = new Food(value);
             int key = 0;
-
             do
             {
                 
-                temp.posX = random.Next(Settings.xResolution - 1);
-                temp.posY = random.Next(Settings.yResolution - 1);
+                temp.posX = Simulation.random.Next(Settings.xResolution - 1);
+                temp.posY = Simulation.random.Next(Settings.yResolution - 1);
                 key = temp.key();
             }
             while (Simulation.simulationGrid.ContainsKey(key));
