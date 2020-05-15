@@ -8,9 +8,11 @@ namespace SLSim
 {
     public class Settings
     {
-        public static int xResolution = 1000;
-        public static int yResolution = 500;
+        public static int xResolution = 100;
+        public static int yResolution = 50;
+        public static int elementSize = 10;
         public static int foodNumber = 100;
+        public static int organismNumber = 30;
 
     }
 }

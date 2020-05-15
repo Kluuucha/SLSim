@@ -6,19 +6,40 @@ namespace SLSim
 {
     public class Organism : SimObject
     {
-        private int sightDistance;
-        
+        private int sightDistance = 5;
+
         Random random = new Random();
         enum Directions { up, down, left, right, no};
         Directions movementDirection = Directions.no;
 
+        public static Organism newRandomOrganism()
+        {
+            Random random = new Random();
+
+            Organism temp = new Organism();
+            int key = 0;
+            do
+            {
+
+                temp.posX = random.Next(Settings.xResolution - 1);
+                temp.posY = random.Next(Settings.yResolution - 1);
+                key = temp.key();
+            }
+            while (Simulation.simulationGrid.ContainsKey(key));
+            Simulation.simulationGrid.Add(key, temp);
+            return temp;
+        }
+        public static void generateOrganisms()
+        {
+            for (int i = 0; i < Settings.organismNumber; i++)
+                newRandomOrganism();
+        }
+
         public Organism()
         {
-            
             posX = random.Next(0, Settings.xResolution - 1);
             posY = random.Next(0, Settings.yResolution - 1);
-            
-            Simulation.simulationGrid.Add(this.key(), this);
+
         }
 
        public Organism(int x, int y)
@@ -26,18 +47,16 @@ namespace SLSim
             this.posX = x;
             this.posY = y;
             fixPosition();
-            Simulation.simulationGrid.Add(this.key(), this);
         }
 
         void randomMovement() 
         {
             Simulation.simulationGrid.Remove(this.key());
 
-            Random rand = new Random();
-            if(rand.Next(0, 1)==0)
-                posX += (rand.Next(1, 2) * 2) - 3;
+            if(random.Next(0, 1)==0)
+                posX += (random.Next(1, 2) * 2) - 3;
             else
-                posY += (rand.Next(1, 2) * 2) - 3;
+                posY += (random.Next(1, 2) * 2) - 3;
             fixPosition();
 
             Simulation.simulationGrid.Add(this.key(), this);
@@ -90,19 +109,19 @@ namespace SLSim
             {
                 if (posX < pointX)
                 {
-                    move_right();
+                    move_in_a_direction(Directions.right);
                 }
                 else if (posX > pointX)
                 {
-                    move_left();
+                    move_in_a_direction(Directions.left);
                 }
                 else if (posY < pointY)
                 {
-                    move_down();
+                    move_in_a_direction(Directions.down);
                 }
                 else if (posY > pointY)
                 {
-                    move_up();
+                    move_in_a_direction(Directions.up);
                 }
                 Thread.Sleep(speed);
             }

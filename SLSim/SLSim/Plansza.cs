@@ -16,11 +16,7 @@ namespace SLSim
 	    private SolidColorBrush foodBruch = new SolidColorBrush(Colors.Green);
         private SolidColorBrush osobnikBruch = new SolidColorBrush(Colors.Red);
         Ellipse ellipse;
-        int ellipseWidth = 10;
-        int ellipseHeight = 10;
         Rectangle rectangle;
-        int rectangleWidth = 10;
-        int rectangleHeight = 10;
 
         /*zrobiłem to na canvasie bo wydało się to proste
          * jak ma być inaczej to dajcie znać
@@ -37,18 +33,19 @@ namespace SLSim
                 if(kvp.Value is Organism){
                     rectangle = new Rectangle();
                     rectangle.Fill = osobnikBruch;
-                    rectangle.Width = rectangleWidth;
-                    rectangle.Height = rectangleHeight;
-                    Canvas.SetTop(rectangle, kvp.Value.posY);
-                    Canvas.SetLeft(rectangle, kvp.Value.posX);
+                    rectangle.Width = Settings.elementSize;
+                    rectangle.Height = Settings.elementSize;
+                    Canvas.SetTop(rectangle, (kvp.Value.posY)* Settings.elementSize);
+                    Canvas.SetLeft(rectangle, (kvp.Value.posX)* Settings.elementSize);
                     canvas.Children.Add(rectangle);
-                }else if (kvp.Value is Food){
+                }
+                else if (kvp.Value is Food){
                     ellipse = new Ellipse();
                     ellipse.Fill = foodBruch;
-                    ellipse.Width = ellipseWidth;
-                    ellipse.Height = ellipseHeight;
-                    Canvas.SetTop(ellipse, kvp.Value.posY);
-                    Canvas.SetLeft(ellipse, kvp.Value.posX);
+                    ellipse.Width = Settings.elementSize;
+                    ellipse.Height = Settings.elementSize;
+                    Canvas.SetTop(ellipse, (kvp.Value.posY)* Settings.elementSize);
+                    Canvas.SetLeft(ellipse, (kvp.Value.posX)* Settings.elementSize);
                     canvas.Children.Add(ellipse);
                 }
             }
