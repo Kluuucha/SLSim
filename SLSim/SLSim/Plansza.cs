@@ -15,6 +15,9 @@ namespace SLSim
 	{
 	    private SolidColorBrush foodBruch = new SolidColorBrush(Colors.Green);
         private SolidColorBrush osobnikBruch = new SolidColorBrush(Colors.Red);
+
+        
+
         Ellipse ellipse;
         Rectangle rectangle;
 
@@ -25,7 +28,8 @@ namespace SLSim
 
 		public Plansza(Canvas canvas) { 
            this.canvas = canvas;
-		}
+
+        }
 
         public void rysujPlansze(Dictionary<int, SimObject> simulationGrid){
 

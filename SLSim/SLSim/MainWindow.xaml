@@ -5,10 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000" FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
-    <Canvas x:Name="MyCanvas" KeyDown="kd" Focusable="True">
-        <Canvas.Background>
-            <SolidColorBrush Color="Aquamarine"/>
-        </Canvas.Background>
-    </Canvas>
+        Title="Symulacja Prostych Organizmów Żywych" Height="500" Width="1000" FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
+    <Grid x:Name="MainG" Background="DarkGray">
+        <Canvas x:Name="MyCanvas" Focusable="True" Margin="195,0,-0.4,0.4">
+            <Canvas.Background>
+                <SolidColorBrush Color="LightBlue"/>
+            </Canvas.Background>
+
+        </Canvas>
+        <Button Content="Panel Kontrolny" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="otworzPanelKontrolny"/>
+        <Button Content="Start Symulacji" HorizontalAlignment="Left" Margin="10,415,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="StartSymulacji"/>
+        <Button x:Name="NT" Content="Następny Tik" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,365,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="nextTik"/>
+
+    </Grid>
 </Window>

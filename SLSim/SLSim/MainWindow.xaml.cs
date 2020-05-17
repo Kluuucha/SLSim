@@ -28,12 +28,7 @@ namespace SLSim
         {
 
             InitializeComponent();
-            plansza =  new Plansza(MyCanvas);
 
-            Simulation.generateOrganisms(1);
-            Food.generateFood();
-            Organism.generateOrganisms();
-            plansza.rysujPlansze(Simulation.simulationGrid);
             
             /* commit - pozywienie v1:
              *  - na razie generowane tylko raz - trzeba dodać następne wywołania co określoną ilość czasu
@@ -46,14 +41,32 @@ namespace SLSim
             generowaniePozywienia.generujPozywienieLosowa();*/
 
         }
-        public void kd(object sender, KeyEventArgs e){
-            if (e.Key == Key.Down) {
-                plansza.czyscPlansze();
-                //for(int i=0;i<10;i++)
-                    Simulation.nextStep();
-                plansza.rysujPlansze(Simulation.simulationGrid);
-            }
 
+
+
+        private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
+        {
+            PanelKontrolny panel = new PanelKontrolny();
+            panel.Show();
+
+        }
+
+        private void StartSymulacji(object sender, RoutedEventArgs e)
+        {
+            plansza = new Plansza(MyCanvas);
+            Simulation.generateOrganisms(1);
+            Food.generateFood();
+            Organism.generateOrganisms();
+            plansza.rysujPlansze(Simulation.simulationGrid);
+            NT.Visibility = Visibility.Visible;
+        }
+
+        private void nextTik(object sender, RoutedEventArgs e)
+        {
+            plansza.czyscPlansze();
+            //for(int i=0;i<10;i++)
+            Simulation.nextStep();
+            plansza.rysujPlansze(Simulation.simulationGrid);
         }
     }
 }
