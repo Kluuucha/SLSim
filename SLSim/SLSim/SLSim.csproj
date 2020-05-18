@@ -63,6 +63,9 @@
     <Compile Include="SimObject.cs" />
     <Compile Include="Simulation.cs" />
     <Compile Include="Plansza.cs" />
+    <Compile Include="stats.xaml.cs">
+      <DependentUpon>stats.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +79,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PanelKontrolny.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="stats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

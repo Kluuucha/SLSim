@@ -59,6 +59,8 @@ namespace SLSim
             Organism.generateOrganisms();
             plansza.rysujPlansze(Simulation.simulationGrid);
             NT.Visibility = Visibility.Visible;
+            PT.Visibility = Visibility.Hidden;
+            S.Visibility = Visibility.Visible;
         }
 
         private void nextTik(object sender, RoutedEventArgs e)
@@ -67,6 +69,11 @@ namespace SLSim
             //for(int i=0;i<10;i++)
             Simulation.nextStep();
             plansza.rysujPlansze(Simulation.simulationGrid);
+        }
+        private void showStats(object sender, RoutedEventArgs e)
+        {
+            stats s = new stats();
+            s.Show();
         }
     }
 }
