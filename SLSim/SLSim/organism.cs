@@ -15,7 +15,6 @@ namespace SLSim
             int key = 0;
             do
             {
-
                 temp.posX = Simulation.random.Next(Settings.xResolution - 1);
                 temp.posY = Simulation.random.Next(Settings.yResolution - 1);
                 key = temp.key();
@@ -57,6 +56,7 @@ namespace SLSim
 
             Simulation.simulationGrid.Add(this.key(), this);
         }
+
         public void act()
         {
             Tuple<int, int> interest = getInterest();
@@ -81,19 +81,24 @@ namespace SLSim
 
         public void multiply()
         {
-            for (var i = -1; i < 2; i += 1)
+            double chance = Simulation.random.NextDouble();
+            if (chance <= Settings.breedingChance)
             {
-                for (var j = -1; j < 2; j += 1)
+                for (var i = -1; i < 2; i += 1)
                 {
-                    Tuple<int, int> fixedPosition = fixValues(posX + i, posY + j);
-                    if (!Simulation.simulationGrid.ContainsKey(encode(fixedPosition.Item1, fixedPosition.Item2)))
+                    for (var j = -1; j < 2; j += 1)
                     {
-                        Organism o = new Organism(fixedPosition.Item1, fixedPosition.Item2);
-                        return;
-                    }  
+                        Tuple<int, int> fixedPosition = fixValues(posX + i, posY + j);
+                        if (!Simulation.simulationGrid.ContainsKey(encode(fixedPosition.Item1, fixedPosition.Item2)))
+                        {
+                            Organism o = new Organism(fixedPosition.Item1, fixedPosition.Item2);
+                            return;
+                        }
+                    }
                 }
             }
         }
+
 
         void die()
         {
@@ -163,19 +168,6 @@ namespace SLSim
             else if (posY > pointY)
             {
                 move_in_a_direction(Directions.up);
-            }
-        }
-
-        void random_movement(int seconds, int speed)
-        {
-            int milliseconds_passed = 0;
-            long time_in_milliseconds = seconds * 1000;
-
-            while (milliseconds_passed < time_in_milliseconds)
-            {
-                random_movement();
-                Thread.Sleep(speed);
-                milliseconds_passed = milliseconds_passed + speed;
             }
         }
 
