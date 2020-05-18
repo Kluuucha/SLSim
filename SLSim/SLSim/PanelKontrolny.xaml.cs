@@ -71,7 +71,7 @@ namespace SLSim
         {
             double v = Math.Round(snrs.Value, 2);
             val.Text = v.ToString();
-            snr = snrs.Value;
+            snr = v;
         }
     }
 }
