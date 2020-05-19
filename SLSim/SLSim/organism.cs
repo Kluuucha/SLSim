@@ -6,12 +6,14 @@ namespace SLSim
 {
     public class Organism : SimObject
     {
-        private int sightDistance = 7;
+        private int sightDistance, currValue, maxValue;
+        public int speed { get; private set; }
+        private double ferocity;
         enum Directions { up, down, left, right, no};
 
-        public static Organism newRandomOrganism()
+        public static Organism newRandomOrganism(int sight = 7, double fer = 1, int maxvalue = 100, int speed = 2, int currvalue=50)
         {
-            Organism temp = new Organism();
+            Organism temp = new Organism(sight,fer,maxvalue,speed,currvalue);
             int key = 0;
             do
             {
@@ -30,11 +32,13 @@ namespace SLSim
                 newRandomOrganism();
         }
 
-        public Organism()
+        private Organism(int sight, double fer, int maxvalue, int speed, int currvalue)
         {
-            posX = Simulation.random.Next(0, Settings.xResolution - 1);
-            posY = Simulation.random.Next(0, Settings.yResolution - 1);
-
+            sightDistance = sight;
+            ferocity = fer;
+            maxValue = maxvalue;
+            currValue = currvalue;
+            this.speed = speed;
         }
 
        public Organism(int x, int y)
@@ -43,6 +47,28 @@ namespace SLSim
             posY = y;
             fixPosition();
             Simulation.simulationGrid.Add(this.key(), this);
+        }
+
+        private void hunger() {
+            int hunger = (int)(currValue * 0.01 * (ferocity + (0.5 * speed * speed + speed + 1) + sightDistance * 0.5));
+            if (hunger < 1) hunger = 1;
+            currValue -= hunger;
+            if (currValue * 10 < maxValue) {
+                die();
+                if (Simulation.enclosedSystem)
+                {
+                    Food food = new Food(this.posX, this.posY, currValue);
+                    Simulation.simulationGrid.Add(key(), food);
+                }
+            }
+            else if (Simulation.enclosedSystem)
+            {
+                Food.newRandomFood(hunger);
+            }
+        }
+        public double strength()
+        {
+            return currValue * ferocity;
         }
 
         void randomMovement() 
@@ -59,13 +85,17 @@ namespace SLSim
         }
         public void act()
         {
-            Tuple<int, int> interest = getInterest();
-            if (!(interest == null))
-            {
-                target_movement(interest);
+            for(int i = 0; i < speed; i++) {
+                Tuple<int, int> interest = getInterest();
+                if (!(interest == null))
+                {
+                    target_movement(interest);
+                }
+                else
+                    random_movement();
             }
-            else
-                random_movement();
+            hunger();
+                
         }
 
         public void eat(Food food)

@@ -10,11 +10,10 @@ namespace SLSim
     {
         public static Random random = new Random();
         public static Dictionary<int, SimObject> simulationGrid = new Dictionary<int, SimObject>();
-
+        public static bool enclosedSystem = true;
         public static void generateOrganisms(int quantity) {
             for (int i = 0; i < quantity; i++) {
-                Organism o = new Organism();
-                addObject(o);
+                Organism.generateOrganisms();
             }
         }
 
