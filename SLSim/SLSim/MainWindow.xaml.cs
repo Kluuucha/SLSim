@@ -16,52 +16,64 @@ using System.Threading;
 
 namespace SLSim
 {
+    /// <summary>
+    /// Logika interakcji dla klasy MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
+        //FoodGeneration generowaniePozywienia;
         Plansza plansza;
-        bool isCorrect = false;
 
         public MainWindow()
         {
 
             InitializeComponent();
-            plansza = new Plansza(MyCanvas);
 
+            
+            /* commit - pozywienie v1:
+             *  - na razie generowane tylko raz - trzeba dodać następne wywołania co określoną ilość czasu
+             *  - na razie podane wartości rozmiaru mapy i ilości na sztywno
+             *  
+             */
+            /*generowaniePozywienia = new FoodGeneration(10, MyCanvas, 980, 460);
+            generowaniePozywienia.generujPozywienie();
+            /*GenerowaniePozywienia generowaniePozywienia = new GenerowaniePozywienia(5,10, MyCanvas, 980, 460);
+            generowaniePozywienia.generujPozywienieLosowa();*/
+
+        }
+
+
+
+        private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
+        {
+            PanelKontrolny panel = new PanelKontrolny();
+            panel.Show();
+
+        }
+
+        private void StartSymulacji(object sender, RoutedEventArgs e)
+        {
+            plansza = new Plansza(MyCanvas);
+            Simulation.generateOrganisms(1);
             Food.generateFood();
             Organism.generateOrganisms();
-            
             plansza.rysujPlansze(Simulation.simulationGrid);
-
-            //var drawing = new Thread(new ThreadStart(draw));
-            //drawing.Start();
-
-
+            NT.Visibility = Visibility.Visible;
+            PT.Visibility = Visibility.Hidden;
+            S.Visibility = Visibility.Visible;
         }
 
-        public void kd(object sender, KeyEventArgs e){
-            if (e.Key == Key.Down) {
-                plansza.czyscPlansze();
-
-                for (int i=0;i<Settings.stepsPerTic;i++)
-                    Simulation.nextStep();
-                //isCorrect = false;
-
-                plansza.rysujPlansze(Simulation.simulationGrid);
-            }
-
-        }
-
-        public void draw()
+        private void nextTik(object sender, RoutedEventArgs e)
         {
-            while (true)
-            {
-                if (!isCorrect)
-                {
-                    plansza.czyscPlansze();
-                    plansza.rysujPlansze(Simulation.simulationGrid);
-                    isCorrect = true;
-                }
-            }
+            plansza.czyscPlansze();
+            //for(int i=0;i<10;i++)
+            Simulation.nextStep();
+            plansza.rysujPlansze(Simulation.simulationGrid);
+        }
+        private void showStats(object sender, RoutedEventArgs e)
+        {
+            stats s = new stats();
+            s.Show();
         }
     }
 }
