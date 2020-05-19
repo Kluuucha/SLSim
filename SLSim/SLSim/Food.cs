@@ -6,8 +6,7 @@ namespace SLSim
     public class Food : SimObject
     {
         public int value { get; private set; }
-
-        public static Food newRandomFood(int value = 1)
+        public static Food newRandomFood(int value = 5)
         {
             Food temp = new Food(value);
             int key = 0;
@@ -27,9 +26,14 @@ namespace SLSim
             for (int i = 0; i < Settings.foodNumber; i++)
                 newRandomFood();
         }
-        private Food(int value) { this.value = 1; }
+        public static void generateFood(int n,int value)
+        {
+            for (int i = 0; i < n; i++)
+                newRandomFood(value);
+        }
+        private Food(int value = 5) { this.value = value; }
 
-        public Food(int x, int y, int value = 1)
+        public Food(int x, int y, int value = 5)
         {
             posX = x;
             posY = y;

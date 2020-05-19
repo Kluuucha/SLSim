@@ -11,7 +11,7 @@ namespace SLSim
         private double ferocity;
         enum Directions { up, down, left, right, no};
 
-        public static Organism newRandomOrganism(int sight = 7, double fer = 1, int maxvalue = 100, int speed = 2, int currvalue=50)
+        public static Organism newRandomOrganism(int sight = 7, double fer = 1, int maxvalue = 100, int speed = 3, int currvalue=50)
         {
             Organism temp = new Organism(sight,fer,maxvalue,speed,currvalue);
             int key = 0;
@@ -40,6 +40,23 @@ namespace SLSim
             currValue = currvalue;
             this.speed = speed;
         }
+        private void mutate() {
+            int mutate = Simulation.random.Next(100);
+            if (Simulation.mutationChance > mutate) {
+                sightDistance += Simulation.random.Next(-1, 1);
+                if (sightDistance == 0) sightDistance = 1;
+            }
+            mutate = Simulation.random.Next(100);
+            if (Simulation.mutationChance > mutate)
+            {
+                speed += Simulation.random.Next(-1, 1);
+                if (speed == 0) speed = 1;
+            }
+            maxValue += Simulation.random.Next(-5, 5);
+            if (maxValue < 10) maxValue = 10;
+            ferocity += (Simulation.random.NextDouble()-0.5)*0.1;
+            if (ferocity < 0.1) ferocity = 0.1;
+        }
 
        public Organism(int x, int y)
         {
@@ -50,20 +67,19 @@ namespace SLSim
         }
 
         private void hunger() {
-            int hunger = (int)(currValue * 0.01 * (ferocity + (0.5 * speed * speed + speed + 1) + sightDistance * 0.5));
+            int hunger = (int)(currValue * 0.01 * (ferocity + (0.5 * speed * speed + speed) + sightDistance * 0.5));
             if (hunger < 1) hunger = 1;
             currValue -= hunger;
             if (currValue * 10 < maxValue) {
                 die();
                 if (Simulation.enclosedSystem)
                 {
-                    Food food = new Food(this.posX, this.posY, currValue);
-                    Simulation.simulationGrid.Add(key(), food);
+                    Simulation.deficit += currValue;
                 }
             }
             else if (Simulation.enclosedSystem)
             {
-                Food.newRandomFood(hunger);
+                Simulation.deficit += hunger;
             }
         }
         public double strength()
