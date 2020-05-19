@@ -43,7 +43,7 @@ namespace SLSim
             int newX = int.Parse(x.Text);
             Settings.xResolution = newX;
             int newY = int.Parse(y.Text);
-            Settings.yResolution = int.Parse(x.Text);
+            Settings.yResolution = newY;
             Settings.elementSize = elementS;
             Settings.breedingChance = snr;
             int newspt = int.Parse(spt.Text);
