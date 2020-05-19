@@ -11,7 +11,7 @@ namespace SLSim
         private double ferocity;
         enum Directions { up, down, left, right, no};
 
-        public static Organism newRandomOrganism(int sight = 7, double fer = 1, int maxvalue = 100, int speed = 3, int currvalue=50)
+        public static Organism newRandomOrganism(int sight = 7, double fer = 1, int maxvalue = 50, int speed = 3, int currvalue=25)
         {
             Organism temp = new Organism(sight,fer,maxvalue,speed,currvalue);
             int key = 0;
