@@ -15,6 +15,6 @@ namespace SLSim
         public static int organismNumber = 10;
         public static int stepsPerTic = 10;
         public static double breedingChance = 0.5;
-
+        public static int maximumTicsPerSecond = 10; 
     }
 }

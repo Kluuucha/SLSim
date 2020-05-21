@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace SLSim
 {
@@ -10,6 +11,7 @@ namespace SLSim
     {
         public static Random random = new Random();
         public static Dictionary<int, SimObject> simulationGrid = new Dictionary<int, SimObject>();
+        public static DispatcherTimer t1 = new System.Windows.Threading.DispatcherTimer();
 
         public static void nextStep()
         {
