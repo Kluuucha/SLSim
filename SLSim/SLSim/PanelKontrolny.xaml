@@ -14,23 +14,27 @@
             <RowDefinition Height="140*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,40,0,0" TextWrapping="Wrap" Text="Początkowa ilość pożywienia:" VerticalAlignment="Top" Width="210"/>
-        <TextBox x:Name="food" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="210,40,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <TextBox x:Name="food" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="185,40,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
         <Button Content="Zapisz" HorizontalAlignment="Left" Margin="185,85.6,0,0" VerticalAlignment="Top" Width="95" Height="39" Click="Zapisz" Grid.Row="3" />
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,70,0,0" TextWrapping="Wrap" Text="Początkowa ilość organizmów:" VerticalAlignment="Top" Width="210"/>
-        <TextBox x:Name="organism" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="210,70,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,95,0,0" TextWrapping="Wrap" Text="Rozmiar elementów:" VerticalAlignment="Top" Width="210"/>
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Ilość gatunków:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="22,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"><Run Text="Rozmiar elementów:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,44.6,0,0" TextWrapping="Wrap" Text="X:" VerticalAlignment="Top" Width="210" Grid.Row="3"/>
         <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,69.6,0,0" TextWrapping="Wrap" Text="Y:" VerticalAlignment="Top" Width="210" Grid.Row="3"/>
         <TextBox x:Name="x" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="45,44.6,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417" Grid.Row="3"/>
         <TextBox x:Name="y" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="45,69.6,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417" Grid.Row="3"/>
-        <RadioButton x:Name="piatka" Content="Mały" HorizontalAlignment="Left" Margin="44,119,0,0" VerticalAlignment="Top" Checked="piatka_Checked" Height="31" Width="61"/>
-        <RadioButton x:Name="dycha" Content="Średni&#xA;" HorizontalAlignment="Left" Margin="43,134,0,0" VerticalAlignment="Top" Checked="dycha_Checked" Height="31" Width="52" IsChecked="True" />
-        <RadioButton x:Name="dwie" Content="Duży" HorizontalAlignment="Left" Margin="43,150,0,0" VerticalAlignment="Top" Checked="dwie_Checked" Height="31" Width="52" />
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,180,0,0" TextWrapping="Wrap" Text="Ilość kroków na tik:" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.476,3.32" Grid.RowSpan="3"/>
-        <TextBox x:Name="spt" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="135,180,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,4.4,0,0" TextWrapping="Wrap" Text="Szansa na rozmnażanie:" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.476,3.32" Grid.Row="2" Grid.RowSpan="2"/>
-        <Slider x:Name="snrs" Minimum="0" TickFrequency="0.01" Maximum="1" HorizontalAlignment="Left" Margin="115,21.6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="105" ValueChanged="Slider_ValueChanged" Background="{x:Null}"/>
-        <TextBlock x:Name="val" HorizontalAlignment="Left" Margin="235,23.6,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <RadioButton x:Name="piatka" Content="Mały" HorizontalAlignment="Left" Margin="46,164,0,0" VerticalAlignment="Top" Checked="piatka_Checked" Height="31" Width="61"/>
+        <RadioButton x:Name="dycha" Content="Średni&#xA;" HorizontalAlignment="Left" Margin="45,179,0,0" VerticalAlignment="Top" Checked="dycha_Checked" Height="31" Width="52" IsChecked="True" Grid.RowSpan="3" />
+        <RadioButton x:Name="dwie" Content="Duży" HorizontalAlignment="Left" Margin="45,195,0,0" VerticalAlignment="Top" Checked="dwie_Checked" Height="31" Width="52" Grid.RowSpan="4" />
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="25,9.6,0,0" TextWrapping="Wrap" Text="Ilość kroków na tik:" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.476,3.32" Grid.Row="3"/>
+        <TextBox x:Name="spt" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="135,9.6,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417" Grid.Row="3"/>
+        <ComboBox x:Name="ilegatunkow" Margin="110,65,133.6,109.8" RenderTransformOrigin="0.615,0.054">
+            <ComboBoxItem x:Name="jeden" Content="1"/>
+            <ComboBoxItem x:Name="dwa" Content="2"/>
+            <ComboBoxItem x:Name="trzy" Content="3"/>
+            <ComboBoxItem x:Name="cztery" Content="4"/>
+            <ComboBoxItem x:Name="piec" Content="5"/>
+        </ComboBox>
+        <Button Content="Ustaw statystyki gatunków" HorizontalAlignment="Left" Margin="35,106,0,0" VerticalAlignment="Top" Width="180" Height="19" Click="spiciesStats"/>
 
 
     </Grid>

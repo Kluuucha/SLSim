@@ -28,29 +28,9 @@ namespace SLSim
 
         public MainWindow()
         {
-
             InitializeComponent();
-            
-
-
-
-
-            /* commit - pozywienie v1:
-             *  - na razie generowane tylko raz - trzeba dodać następne wywołania co określoną ilość czasu
-             *  - na razie podane wartości rozmiaru mapy i ilości na sztywno
-             *  
-             */
-            /*generowaniePozywienia = new FoodGeneration(10, MyCanvas, 980, 460);
-            generowaniePozywienia.generujPozywienie();
-            /*GenerowaniePozywienia generowaniePozywienia = new GenerowaniePozywienia(5,10, MyCanvas, 980, 460);
-            generowaniePozywienia.generujPozywienieLosowa();*/
 
         }
-
-
-
-
-
 
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
         {
@@ -78,10 +58,9 @@ namespace SLSim
             PT.Visibility = Visibility.Hidden;
             S.Visibility = Visibility.Visible;
 
-            Simulation.t1.Interval = TimeSpan.FromMilliseconds(1000 / Settings.maximumTicsPerSecond);
-            Simulation.t1.IsEnabled = true;
-            Simulation.t1.Tick += new EventHandler(dispatcherTimer_Tick);
-            Simulation.t1.Start();
+
+            startSym.Visibility = Visibility.Visible;
+            start.Visibility = Visibility.Hidden;
             
 
         }
@@ -92,11 +71,16 @@ namespace SLSim
             Simulation.t1.IsEnabled = true;
             Simulation.t1.Tick += new EventHandler(dispatcherTimer_Tick);
             Simulation.t1.Start();
+
+            startSym.Visibility = Visibility.Hidden;
+            pauza.Visibility = Visibility.Visible;
         }
 
         private void StopSymulacjiWCzasieRzeczywistym(object sender, RoutedEventArgs e)
         {
             Simulation.t1.Stop();
+            startSym.Visibility = Visibility.Visible;
+            pauza.Visibility = Visibility.Hidden;
         }
 
         

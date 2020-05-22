@@ -25,21 +25,18 @@ namespace SLSim
         {
             InitializeComponent();
             food.Text = Settings.foodNumber.ToString();
-            organism.Text = Settings.organismNumber.ToString();
             x.Text = Settings.xResolution.ToString();
             y.Text = Settings.yResolution.ToString();
             elementS = Settings.elementSize;
             snr = Settings.breedingChance;
             spt.Text = Settings.elementSize.ToString();
-            snrs.Value = Settings.breedingChance;
+            ilegatunkow.SelectedItem = jeden;
         }
 
         private void Zapisz(object sender, RoutedEventArgs e)
         {
             int jedzenie = int.Parse(food.Text);
             Settings.foodNumber = jedzenie;
-            int organizmy = int.Parse(organism.Text);
-            Settings.organismNumber = organizmy;
             int newX = int.Parse(x.Text);
             Settings.xResolution = newX;
             int newY = int.Parse(y.Text);
@@ -67,11 +64,10 @@ namespace SLSim
             elementS = 20;
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void spiciesStats(object sender, RoutedEventArgs e)
         {
-            double v = Math.Round(snrs.Value, 2);
-            val.Text = v.ToString();
-            snr = v;
+            PanelGatunkow panelGatunkow = new PanelGatunkow();
+            panelGatunkow.Show();
         }
     }
 }
