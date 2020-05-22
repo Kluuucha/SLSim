@@ -54,9 +54,17 @@ namespace SLSim
         private void StartSymulacji(object sender, RoutedEventArgs e)
         {
             plansza = new Plansza(MyCanvas);
-            Simulation.generateOrganisms(1);
+
+            Species spec1 = new Species(Colors.Red,"Species 1", Settings.breedingChance, Settings.organismNumber, true, true);
+            Species spec2 = new Species(Colors.Blue, "Species 2", Settings.breedingChance, Settings.organismNumber);
+            Species spec3 = new Species(Colors.Orange, "Species 3", Settings.breedingChance, Settings.organismNumber);
+
             Food.generateFood();
-            Organism.generateOrganisms();
+
+            Organism.generateOrganisms(spec1);
+            Organism.generateOrganisms(spec2);
+            Organism.generateOrganisms(spec3);
+
             plansza.rysujPlansze(Simulation.simulationGrid);
             NT.Visibility = Visibility.Visible;
             PT.Visibility = Visibility.Hidden;
@@ -66,8 +74,8 @@ namespace SLSim
         private void nextTik(object sender, RoutedEventArgs e)
         {
             plansza.czyscPlansze();
-            //for(int i=0;i<10;i++)
-            Simulation.nextStep();
+            for(int i=0;i<Settings.stepsPerTic;i++)
+                Simulation.nextStep();
             plansza.rysujPlansze(Simulation.simulationGrid);
         }
         private void showStats(object sender, RoutedEventArgs e)

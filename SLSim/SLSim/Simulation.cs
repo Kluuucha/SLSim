@@ -21,7 +21,7 @@ namespace SLSim
                 }
             foreach(Organism o in organisms)
             {
-                if (simulationGrid.ContainsKey(o.key()))
+                if (simulationGrid.ContainsKey(o.key()) && o == simulationGrid[o.key()])
                 {
                     o.act();
                 }

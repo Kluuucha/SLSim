@@ -12,9 +12,11 @@ namespace SLSim
         public static int yResolution = 50;
         public static int elementSize = 10;
         public static int foodNumber = 200;
-        public static int organismNumber = 10;
         public static int stepsPerTic = 10;
-        public static double breedingChance = 0.5;
+
+        //TODO: usunąć po wprowadzeniu panelu edycji pojedynczego gatunku
+        public static int organismNumber = 10; //przeniesione do Species.startingPopulation 
+        public static double breedingChance = 0.5; //przeniesione do Species.breedingChance
 
     }
 }

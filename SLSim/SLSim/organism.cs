@@ -8,10 +8,11 @@ namespace SLSim
     {
         private int sightDistance = 7;
         enum Directions { up, down, left, right, no};
+        public Species species { get; protected set; }
 
-        public static Organism newRandomOrganism()
+        public static Organism newRandomOrganism(Species spec)
         {
-            Organism temp = new Organism();
+            Organism temp = new Organism(spec);
             int key = 0;
             do
             {
@@ -23,21 +24,23 @@ namespace SLSim
             Simulation.simulationGrid.Add(key, temp);
             return temp;
         }
-        public static void generateOrganisms()
+        public static void generateOrganisms(Species spec)
         {
-            for (int i = 0; i < Settings.organismNumber; i++)
-                newRandomOrganism();
+            for (int i = 0; i < spec.startingPopulation; i++)
+                newRandomOrganism(spec);
         }
 
-        public Organism()
+        public Organism(Species spec)
         {
+            species = spec;
             posX = Simulation.random.Next(0, Settings.xResolution - 1);
             posY = Simulation.random.Next(0, Settings.yResolution - 1);
 
         }
 
-       public Organism(int x, int y)
+       public Organism(int x, int y, Species spec)
         {
+            species = spec;
             posX = x;
             posY = y;
             fixPosition();
@@ -68,6 +71,19 @@ namespace SLSim
                 random_movement();
         }
 
+        public void devour(Organism prey)
+        {
+            var preyX = prey.posX;
+            var preyY = prey.posY;
+
+            prey.die();
+
+            Console.WriteLine(this.species.name + " has devoured "+prey.species.name);
+
+            move(preyX, preyY);
+            multiply();
+        }
+
         public void eat(Food food)
         {
             var foodX = food.posX;
@@ -82,7 +98,7 @@ namespace SLSim
         public void multiply()
         {
             double chance = Simulation.random.NextDouble();
-            if (chance <= Settings.breedingChance)
+            if (chance <= species.breedingChance)
             {
                 for (var i = -1; i < 2; i += 1)
                 {
@@ -91,7 +107,7 @@ namespace SLSim
                         Tuple<int, int> fixedPosition = fixValues(posX + i, posY + j);
                         if (!Simulation.simulationGrid.ContainsKey(encode(fixedPosition.Item1, fixedPosition.Item2)))
                         {
-                            Organism o = new Organism(fixedPosition.Item1, fixedPosition.Item2);
+                            Organism o = new Organism(fixedPosition.Item1, fixedPosition.Item2, this.species);
                             return;
                         }
                     }
@@ -145,7 +161,12 @@ namespace SLSim
         }
 
         private bool checkInterest(SimObject o) {
-            return o is Food; //TODO: replace 'is Food' with check for list of interest classes
+            if (this.species.isHerbivore)
+                return o is Food;
+            else if (this.species.isCarnivore)
+                if (o is Organism)
+                    return ((Organism)o).species != this.species;
+            return false;
         }
 
         void target_movement(Tuple<int, int> interest)
@@ -218,10 +239,15 @@ namespace SLSim
 
             if (Simulation.simulationGrid.ContainsKey(encode(currentX, currentY)))
             {
-                if (Simulation.simulationGrid[encode(currentX, currentY)] is Food)
+                if (this.species.isHerbivore && Simulation.simulationGrid[encode(currentX, currentY)] is Food)
                 {
                     eat((Food)Simulation.simulationGrid[encode(currentX, currentY)]);
-                }  
+                }
+
+                else if (this.species.isCarnivore && Simulation.simulationGrid[encode(currentX, currentY)] is Organism && ((Organism)Simulation.simulationGrid[encode(currentX, currentY)]).species != this.species)
+                {
+                    devour((Organism)Simulation.simulationGrid[encode(currentX, currentY)]);
+                }
             }
 
             else

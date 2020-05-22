@@ -63,6 +63,7 @@
     <Compile Include="SimObject.cs" />
     <Compile Include="Simulation.cs" />
     <Compile Include="Plansza.cs" />
+    <Compile Include="Species.cs" />
     <Compile Include="stats.xaml.cs">
       <DependentUpon>stats.xaml</DependentUpon>
     </Compile>

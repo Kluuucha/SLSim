@@ -19,7 +19,7 @@ namespace SLSim
     /// </summary>
     public partial class PanelKontrolny : Window
     {
-        int elementS = 0;
+        int elementS = 10;
         double snr = 0;
         public PanelKontrolny()
         {

@@ -13,11 +13,8 @@ namespace SLSim
 {
 	class Plansza
 	{
-	    private SolidColorBrush foodBruch = new SolidColorBrush(Colors.Green);
-        private SolidColorBrush osobnikBruch = new SolidColorBrush(Colors.Red);
+        private SolidColorBrush foodBrush = new SolidColorBrush(Colors.Green);
         private SolidColorBrush ramka = new SolidColorBrush(Colors.Yellow);
-
-        
 
         Ellipse ellipse;
         Rectangle rectangle;
@@ -34,12 +31,12 @@ namespace SLSim
 
         public void rysujPlansze(Dictionary<int, SimObject> simulationGrid){
 
-            rysuhRamke();
+            rysujRamke();
 
             foreach (KeyValuePair<int,SimObject> kvp in simulationGrid){
                 if(kvp.Value is Organism){
                     rectangle = new Rectangle();
-                    rectangle.Fill = osobnikBruch;
+                    rectangle.Fill = new SolidColorBrush(((Organism)kvp.Value).species.color);
                     rectangle.Width = Settings.elementSize;
                     rectangle.Height = Settings.elementSize;
                     Canvas.SetTop(rectangle, (kvp.Value.posY)* Settings.elementSize);
@@ -48,7 +45,7 @@ namespace SLSim
                 }
                 else if (kvp.Value is Food){
                     ellipse = new Ellipse();
-                    ellipse.Fill = foodBruch;
+                    ellipse.Fill = foodBrush;
                     ellipse.Width = Settings.elementSize;
                     ellipse.Height = Settings.elementSize;
                     Canvas.SetTop(ellipse, (kvp.Value.posY)* Settings.elementSize);
@@ -58,7 +55,7 @@ namespace SLSim
             }
         }
 
-        public void rysuhRamke()
+        public void rysujRamke()
         {
             Line myLine = new Line();
             myLine.Stroke = ramka;
