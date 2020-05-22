@@ -13,7 +13,7 @@ namespace SLSim
         public static int elementSize = 10;
         public static int foodNumber = 200;
         public static int stepsPerTic = 10;
-        public static int maximumTicsPerSecond = 10;
+        public static int maximumTicsPerSecond = 3;
 
         //TODO: usunąć po wprowadzeniu panelu edycji pojedynczego gatunku
         public static int organismNumber = 10; //przeniesione do Species.startingPopulation 

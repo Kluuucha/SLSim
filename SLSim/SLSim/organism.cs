@@ -8,7 +8,7 @@ namespace SLSim
     {
         private int sightDistance, currValue, maxValue;
         public int speed { get; private set; }
-        private double ferocity;
+        private double power;
         enum Directions { up, down, left, right, no};
 
         public Species species { get; protected set; }
@@ -38,7 +38,7 @@ namespace SLSim
         {
             species = spec;
             sightDistance = sight;
-            ferocity = fer;
+            power = fer;
             maxValue = maxvalue;
             currValue = currvalue;
             this.speed = speed;
@@ -57,8 +57,8 @@ namespace SLSim
             }
             maxValue += Simulation.random.Next(-5, 5);
             if (maxValue < 10) maxValue = 10;
-            ferocity += (Simulation.random.NextDouble()-0.5)*0.1;
-            if (ferocity < 0.1) ferocity = 0.1;
+            power += (Simulation.random.NextDouble()-0.5)*0.1;
+            if (power < 0.1) power = 0.1;
         }
 
        public Organism(int x, int y, Species spec)
@@ -71,15 +71,17 @@ namespace SLSim
         }
 
         private void hunger() {
-            int hunger = (int)(currValue * 0.01 * (ferocity + (0.5 * speed * speed + speed) + sightDistance * 0.5));
+            int omnivorePenalty = 1;
+            if (species.isCarnivore && species.isHerbivore) omnivorePenalty = 2;
+            int hunger = (int)(currValue * 0.005 * (power + (0.5 * speed * speed + speed) + sightDistance * 0.5)*omnivorePenalty);
             if (hunger < 1) hunger = 1;
             currValue -= hunger;
             if (currValue * 10 < maxValue) {
-                die();
                 if (Simulation.enclosedSystem)
                 {
                     Simulation.deficit += currValue;
                 }
+                die();
             }
             else if (Simulation.enclosedSystem)
             {
@@ -90,7 +92,7 @@ namespace SLSim
 
         public double strength()
         {
-            return currValue * ferocity;
+            return currValue * power;
         }
 
         void randomMovement() 
@@ -124,42 +126,53 @@ namespace SLSim
         {
             var foodX = food.posX;
             var foodY = food.posY;
-
+            if (!species.isHerbivore)
+            {
+                if (Simulation.enclosedSystem) Simulation.deficit += Simulation.foodValue;
+            }
+            else
+            {
+                currValue += Simulation.foodValue;
+                if (currValue > maxValue) multiply();
+            }
             food.destroy();
             move(foodX, foodY);
-            Food.newRandomFood();
-            multiply();
         }
 
         public void devour(Organism prey)
         {
             var preyX = prey.posX;
             var preyY = prey.posY;
-
+            currValue += prey.currValue;
+            if (currValue > maxValue) multiply();
             prey.die();
-
             move(preyX, preyY);
-            multiply();
         }
 
         public void multiply()
         {
-            double chance = Simulation.random.NextDouble();
-            if (chance <= species.breedingChance)
+            for (var i = -1; i < 2; i += 1)
             {
-                for (var i = -1; i < 2; i += 1)
+                for (var j = -1; j < 2; j += 1)
                 {
-                    for (var j = -1; j < 2; j += 1)
+                    Tuple<int, int> fixedPosition = fixValues(posX + i, posY + j);
+                    if (!Simulation.simulationGrid.ContainsKey(encode(fixedPosition.Item1, fixedPosition.Item2)))
                     {
-                        Tuple<int, int> fixedPosition = fixValues(posX + i, posY + j);
-                        if (!Simulation.simulationGrid.ContainsKey(encode(fixedPosition.Item1, fixedPosition.Item2)))
-                        {
-                            Organism o = new Organism(fixedPosition.Item1, fixedPosition.Item2, this.species);
-                            return;
-                        }
+                        split(fixedPosition.Item1, fixedPosition.Item2);
+                        return;
                     }
                 }
             }
+
+        }
+        public void split(int x, int y)
+        {
+            Organism next = new Organism(species,sightDistance,power,maxValue,speed,currValue/2);
+            currValue -= currValue / 2;
+            next.posX = x;
+            next.posY = y;
+            next.mutate();
+            Simulation.simulationGrid.Add(next.key(), next);
         }
 
         void die()
@@ -235,19 +248,6 @@ namespace SLSim
             else if (posY > pointY)
             {
                 move_in_a_direction(Directions.up);
-            }
-        }
-
-        void random_movement(int seconds, int speed)
-        {
-            int milliseconds_passed = 0;
-            long time_in_milliseconds = seconds * 1000;
-
-            while (milliseconds_passed < time_in_milliseconds)
-            {
-                random_movement();
-                Thread.Sleep(speed);
-                milliseconds_passed = milliseconds_passed + speed;
             }
         }
 

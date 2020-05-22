@@ -10,11 +10,11 @@ namespace SLSim
     class Simulation
     {
         public static Random random = new Random();
-        public static int deficit = 0, defFoodValue = 5, foodPerTick=10;
+        public static int deficit = 0, foodValue = 5, foodPerTick=10;
         public static Dictionary<int, SimObject> simulationGrid = new Dictionary<int, SimObject>();
         public static DispatcherTimer t1 = new System.Windows.Threading.DispatcherTimer();
         public static bool enclosedSystem = true;
-        public static int mutationChance;
+        public static int mutationChance = 50;
         public static void generateOrganisms(int quantity, Species spec) {
             for (int i = 0; i < quantity; i++) {
                 Organism.generateOrganisms(spec);
@@ -41,10 +41,10 @@ namespace SLSim
                 }
             }
             if (enclosedSystem) {
-                Food.generateFood((int)deficit / defFoodValue, defFoodValue);
-                deficit %= defFoodValue;
+                Food.generateFood((int)(deficit / foodValue));
+                deficit %= foodValue;
             }else{
-                Food.generateFood(foodPerTick, defFoodValue);
+                Food.generateFood(foodPerTick);
             }
 
         }

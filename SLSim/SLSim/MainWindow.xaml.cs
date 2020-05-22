@@ -63,9 +63,9 @@ namespace SLSim
             plansza = new Plansza(MyCanvas);
             Simulation.t1 = new System.Windows.Threading.DispatcherTimer();
 
-            Species spec1 = new Species(Colors.Red, "Species 1", Settings.breedingChance, Settings.organismNumber, true, true);
+            Species spec1 = new Species(Colors.Red, "Species 1", Settings.breedingChance, Settings.organismNumber, true,false);
             Species spec2 = new Species(Colors.Blue, "Species 2", Settings.breedingChance, Settings.organismNumber);
-            Species spec3 = new Species(Colors.Orange, "Species 3", Settings.breedingChance, Settings.organismNumber);
+            Species spec3 = new Species(Colors.Orange, "Species 3", Settings.breedingChance, Settings.organismNumber,true);
 
             Food.generateFood();
 
