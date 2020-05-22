@@ -6,17 +6,20 @@ namespace SLSim
 {
     public class Organism : SimObject
     {
-        private int sightDistance = 7;
-        private int life = 15;
+        private int sightDistance, currValue, maxValue;
+        public int speed { get; private set; }
+        private double ferocity;
         enum Directions { up, down, left, right, no};
+
         public Species species { get; protected set; }
 
-        public static Organism newRandomOrganism(Species spec)
+        public static Organism newRandomOrganism(Species spec, int sight = 7, double fer = 1, int maxvalue = 50, int speed = 3, int currvalue=25)
         {
-            Organism temp = new Organism(spec);
+            Organism temp = new Organism(spec,sight,fer,maxvalue,speed,currvalue);
             int key = 0;
             do
             {
+
                 temp.posX = Simulation.random.Next(Settings.xResolution - 1);
                 temp.posY = Simulation.random.Next(Settings.yResolution - 1);
                 key = temp.key();
@@ -27,16 +30,35 @@ namespace SLSim
         }
         public static void generateOrganisms(Species spec)
         {
-            for (int i = 0; i < spec.startingPopulation; i++)
+            for (int i = 0; i < Settings.organismNumber; i++)
                 newRandomOrganism(spec);
         }
 
-        public Organism(Species spec)
+        private Organism(Species spec, int sight, double fer, int maxvalue, int speed, int currvalue)
         {
             species = spec;
-            posX = Simulation.random.Next(0, Settings.xResolution - 1);
-            posY = Simulation.random.Next(0, Settings.yResolution - 1);
-
+            sightDistance = sight;
+            ferocity = fer;
+            maxValue = maxvalue;
+            currValue = currvalue;
+            this.speed = speed;
+        }
+        private void mutate() {
+            int mutate = Simulation.random.Next(100);
+            if (Simulation.mutationChance > mutate) {
+                sightDistance += Simulation.random.Next(-1, 1);
+                if (sightDistance == 0) sightDistance = 1;
+            }
+            mutate = Simulation.random.Next(100);
+            if (Simulation.mutationChance > mutate)
+            {
+                speed += Simulation.random.Next(-1, 1);
+                if (speed == 0) speed = 1;
+            }
+            maxValue += Simulation.random.Next(-5, 5);
+            if (maxValue < 10) maxValue = 10;
+            ferocity += (Simulation.random.NextDouble()-0.5)*0.1;
+            if (ferocity < 0.1) ferocity = 0.1;
         }
 
        public Organism(int x, int y, Species spec)
@@ -46,6 +68,29 @@ namespace SLSim
             posY = y;
             fixPosition();
             Simulation.simulationGrid.Add(this.key(), this);
+        }
+
+        private void hunger() {
+            int hunger = (int)(currValue * 0.01 * (ferocity + (0.5 * speed * speed + speed) + sightDistance * 0.5));
+            if (hunger < 1) hunger = 1;
+            currValue -= hunger;
+            if (currValue * 10 < maxValue) {
+                die();
+                if (Simulation.enclosedSystem)
+                {
+                    Simulation.deficit += currValue;
+                }
+            }
+            else if (Simulation.enclosedSystem)
+            {
+                Simulation.deficit += hunger;
+            }
+        }
+
+
+        public double strength()
+        {
+            return currValue * ferocity;
         }
 
         void randomMovement() 
@@ -60,17 +105,10 @@ namespace SLSim
 
             Simulation.simulationGrid.Add(this.key(), this);
         }
-
         public void act()
         {
-
-            life--;
-            if (life < 0)
-            {
-                die();
-            } else {
+            for(int i = 0; i < speed; i++) {
                 Tuple<int, int> interest = getInterest();
-
                 if (!(interest == null))
                 {
                     target_movement(interest);
@@ -78,19 +116,8 @@ namespace SLSim
                 else
                     random_movement();
             }
-        }
-
-        public void devour(Organism prey)
-        {
-            var preyX = prey.posX;
-            var preyY = prey.posY;
-
-            prey.die();
-
-            Console.WriteLine(this.species.name + " has devoured "+prey.species.name);
-
-            move(preyX, preyY);
-            multiply();
+            hunger();
+                
         }
 
         public void eat(Food food)
@@ -101,6 +128,17 @@ namespace SLSim
             food.destroy();
             move(foodX, foodY);
             Food.newRandomFood();
+            multiply();
+        }
+
+        public void devour(Organism prey)
+        {
+            var preyX = prey.posX;
+            var preyY = prey.posY;
+
+            prey.die();
+
+            move(preyX, preyY);
             multiply();
         }
 
@@ -123,7 +161,6 @@ namespace SLSim
                 }
             }
         }
-
 
         void die()
         {
@@ -201,6 +238,19 @@ namespace SLSim
             }
         }
 
+        void random_movement(int seconds, int speed)
+        {
+            int milliseconds_passed = 0;
+            long time_in_milliseconds = seconds * 1000;
+
+            while (milliseconds_passed < time_in_milliseconds)
+            {
+                random_movement();
+                Thread.Sleep(speed);
+                milliseconds_passed = milliseconds_passed + speed;
+            }
+        }
+
         private void random_movement()
         {
             double randomDouble;
@@ -248,15 +298,10 @@ namespace SLSim
 
             if (Simulation.simulationGrid.ContainsKey(encode(currentX, currentY)))
             {
-                if (this.species.isHerbivore && Simulation.simulationGrid[encode(currentX, currentY)] is Food)
+                if (Simulation.simulationGrid[encode(currentX, currentY)] is Food)
                 {
                     eat((Food)Simulation.simulationGrid[encode(currentX, currentY)]);
-                }
-
-                else if (this.species.isCarnivore && Simulation.simulationGrid[encode(currentX, currentY)] is Organism && ((Organism)Simulation.simulationGrid[encode(currentX, currentY)]).species != this.species)
-                {
-                    devour((Organism)Simulation.simulationGrid[encode(currentX, currentY)]);
-                }
+                }  
             }
 
             else
