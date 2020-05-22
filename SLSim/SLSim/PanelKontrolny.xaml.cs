@@ -69,5 +69,7 @@ namespace SLSim
             PanelGatunkow panelGatunkow = new PanelGatunkow();
             panelGatunkow.Show();
         }
+
+
     }
 }

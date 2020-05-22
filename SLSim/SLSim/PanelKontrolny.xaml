@@ -5,36 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
-        Title="Panel Kontrolny" Height="380" Width="300">
+        Title="Panel Kontrolny" Height="416.2" Width="510.2">
     <Grid x:Name="Panel" Background="LightGray" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="205*"/>
-            <RowDefinition/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="140*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,40,0,0" TextWrapping="Wrap" Text="Początkowa ilość pożywienia:" VerticalAlignment="Top" Width="210"/>
-        <TextBox x:Name="food" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="185,40,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
-        <Button Content="Zapisz" HorizontalAlignment="Left" Margin="185,85.6,0,0" VerticalAlignment="Top" Width="95" Height="39" Click="Zapisz" Grid.Row="3" />
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Ilość gatunków:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="22,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"><Run Text="Rozmiar elementów:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,44.6,0,0" TextWrapping="Wrap" Text="X:" VerticalAlignment="Top" Width="210" Grid.Row="3"/>
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,69.6,0,0" TextWrapping="Wrap" Text="Y:" VerticalAlignment="Top" Width="210" Grid.Row="3"/>
-        <TextBox x:Name="x" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="45,44.6,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417" Grid.Row="3"/>
-        <TextBox x:Name="y" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="45,69.6,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417" Grid.Row="3"/>
-        <RadioButton x:Name="piatka" Content="Mały" HorizontalAlignment="Left" Margin="46,164,0,0" VerticalAlignment="Top" Checked="piatka_Checked" Height="31" Width="61"/>
-        <RadioButton x:Name="dycha" Content="Średni&#xA;" HorizontalAlignment="Left" Margin="45,179,0,0" VerticalAlignment="Top" Checked="dycha_Checked" Height="31" Width="52" IsChecked="True" Grid.RowSpan="3" />
-        <RadioButton x:Name="dwie" Content="Duży" HorizontalAlignment="Left" Margin="45,195,0,0" VerticalAlignment="Top" Checked="dwie_Checked" Height="31" Width="52" Grid.RowSpan="4" />
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="25,9.6,0,0" TextWrapping="Wrap" Text="Ilość kroków na tik:" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.476,3.32" Grid.Row="3"/>
-        <TextBox x:Name="spt" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="135,9.6,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417" Grid.Row="3"/>
-        <ComboBox x:Name="ilegatunkow" Margin="110,65,133.6,109.8" RenderTransformOrigin="0.615,0.054">
+        <GroupBox Header="Pożywienie" HorizontalAlignment="Left" Height="120" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
+
+        <RadioButton GroupName="pojawianiePozywienia" Content="ilość pożywienia co tick" Margin="20,100,313.8,189.2"/>
+
+
+
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,30,0,0" TextWrapping="Wrap" Text="Początkowa ilość pożywienia:" VerticalAlignment="Top" Width="210"/>
+        <TextBox x:Name="food" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="185,30,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <Button Content="Zapisz" HorizontalAlignment="Left" Margin="385,2.4,0,0" VerticalAlignment="Top" Width="95" Height="39" Click="Zapisz" Grid.Row="3" />
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="270,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Ilość gatunków:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="25,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"><Run Text="Rozmiar elementów:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="30,250,0,0" TextWrapping="Wrap" Text="X:" VerticalAlignment="Top" Width="210"/>
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="30,275,0,0" TextWrapping="Wrap" Text="Y:" VerticalAlignment="Top" Width="210"/>
+        <TextBox x:Name="x" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="55,250,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <TextBox x:Name="y" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="55,275,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <RadioButton GroupName="wyborrozmiaru" x:Name="piatka" Content="Mały" HorizontalAlignment="Left" Margin="48,188,0,0" VerticalAlignment="Top" Checked="piatka_Checked" Height="31" Width="61"/>
+        <RadioButton GroupName="wyborrozmiaru" x:Name="dycha" Content="Średni&#xA;" HorizontalAlignment="Left" Margin="48,203,0,0" VerticalAlignment="Top" Checked="dycha_Checked" Height="31" Width="52" IsChecked="True" />
+        <RadioButton GroupName="wyborrozmiaru" x:Name="dwie" Content="Duży" HorizontalAlignment="Left" Margin="48,219,0,0" VerticalAlignment="Top" Checked="dwie_Checked" Height="31" Width="52" />
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="185,215,0,0" TextWrapping="Wrap" Text="Ilość kroków na tik:" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.476,3.32"/>
+        <TextBox x:Name="spt" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,215,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <ComboBox x:Name="ilegatunkow" Margin="360,39,91.8,267.6" RenderTransformOrigin="0.615,0.054">
             <ComboBoxItem x:Name="jeden" Content="1"/>
             <ComboBoxItem x:Name="dwa" Content="2"/>
             <ComboBoxItem x:Name="trzy" Content="3"/>
             <ComboBoxItem x:Name="cztery" Content="4"/>
             <ComboBoxItem x:Name="piec" Content="5"/>
         </ComboBox>
-        <Button Content="Ustaw statystyki gatunków" HorizontalAlignment="Left" Margin="35,106,0,0" VerticalAlignment="Top" Width="180" Height="19" Click="spiciesStats"/>
+        <Button Content="Ustaw statystyki gatunków" HorizontalAlignment="Left" Margin="270,75,0,0" VerticalAlignment="Top" Width="190" Height="29" Click="spiciesStats"/>
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"><Run Text="Sposób pojawiania się pożywienia:"/></TextBlock>
+        <TextBox x:Name="food_Copy" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="175,100,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <GroupBox Header="Organizmy" HorizontalAlignment="Left" Height="120" Margin="250,10,0,0" VerticalAlignment="Top" Width="240"/>
+        <GroupBox Header="Symulacja" HorizontalAlignment="Left" Height="175" Margin="10,140,0,0" VerticalAlignment="Top" Width="480">
+            <GridSplitter HorizontalAlignment="Left" Height="135" Margin="140,10,0,0" VerticalAlignment="Top" Width="5"/>
+        </GroupBox>
+        <TextBlock HorizontalAlignment="Left" Margin="183,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="197"><Run Text="Maksymalna ilość ticków na sekunde:"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="spt_Copy" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,180,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość" Margin="20,82,321.8,222.6"/>
 
 
     </Grid>
