@@ -25,32 +25,10 @@ namespace SLSim
         //FoodGeneration generowaniePozywienia;
         Plansza plansza;
         
-
         public MainWindow()
         {
-
             InitializeComponent();
-            
-
-
-
-
-            /* commit - pozywienie v1:
-             *  - na razie generowane tylko raz - trzeba dodać następne wywołania co określoną ilość czasu
-             *  - na razie podane wartości rozmiaru mapy i ilości na sztywno
-             *  
-             */
-            /*generowaniePozywienia = new FoodGeneration(10, MyCanvas, 980, 460);
-            generowaniePozywienia.generujPozywienie();
-            /*GenerowaniePozywienia generowaniePozywienia = new GenerowaniePozywienia(5,10, MyCanvas, 980, 460);
-            generowaniePozywienia.generujPozywienieLosowa();*/
-
         }
-
-
-
-
-
 
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
         {
@@ -82,7 +60,6 @@ namespace SLSim
             Simulation.t1.IsEnabled = true;
             Simulation.t1.Tick += new EventHandler(dispatcherTimer_Tick);
             Simulation.t1.Start();
-            
 
         }
 
@@ -99,8 +76,6 @@ namespace SLSim
             Simulation.t1.Stop();
         }
 
-        
-
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {       
              plansza.czyscPlansze();
@@ -110,7 +85,6 @@ namespace SLSim
             
         }
 
-
         private void nextTik(object sender, RoutedEventArgs e)
         {    
             plansza.czyscPlansze();
@@ -118,8 +92,7 @@ namespace SLSim
                 Simulation.nextStep();
             plansza.rysujPlansze(Simulation.simulationGrid);
         }
-
-        
+ 
         private void showStats(object sender, RoutedEventArgs e)
         {
             stats s = new stats();

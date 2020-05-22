@@ -55,10 +55,20 @@ namespace SLSim
                 speed += Simulation.random.Next(-1, 1);
                 if (speed == 0) speed = 1;
             }
-            maxValue += Simulation.random.Next(-5, 5);
-            if (maxValue < 10) maxValue = 10;
-            power += (Simulation.random.NextDouble()-0.5)*0.1;
-            if (power < 0.1) power = 0.1;
+            mutate = Simulation.random.Next(100);
+            if (Simulation.mutationChance > mutate)
+            {
+                maxValue += Simulation.random.Next(-5, 5);
+                if (maxValue < 10) maxValue = 10; ;
+            }
+            mutate = Simulation.random.Next(100);
+            if (Simulation.mutationChance > mutate)
+            {
+                power += (Simulation.random.NextDouble() - 0.5) * 0.1;
+                if (power < 0.1) power = 0.1;
+            }
+            
+            
         }
 
        public Organism(int x, int y, Species spec)
@@ -71,11 +81,7 @@ namespace SLSim
         }
 
         private void hunger() {
-            int omnivorePenalty = 1;
-            if (species.isCarnivore && species.isHerbivore) omnivorePenalty = 2;
-            int hunger = (int)(currValue * 0.005 * (power + (0.5 * speed * speed + speed) + sightDistance * 0.5)*omnivorePenalty);
-            if (hunger < 1) hunger = 1;
-            currValue -= hunger;
+
             if (currValue * 10 < maxValue) {
                 if (Simulation.enclosedSystem)
                 {
@@ -83,9 +89,18 @@ namespace SLSim
                 }
                 die();
             }
-            else if (Simulation.enclosedSystem)
+            else
             {
-                Simulation.deficit += hunger;
+                int omnivorePenalty = 1;
+                if (species.isCarnivore && species.isHerbivore) omnivorePenalty = 2;
+                int hunger = (int)(currValue * 0.005 * omnivorePenalty*
+                    (power + (0.5 * speed * speed + speed) + sightDistance * 0.5));
+                if (hunger < 1) hunger = 1;
+                if (Simulation.enclosedSystem)
+                { 
+                    Simulation.deficit += hunger;
+                }
+                currValue -= hunger;
             }
         }
 
@@ -95,31 +110,18 @@ namespace SLSim
             return currValue * power;
         }
 
-        void randomMovement() 
-        {
-            Simulation.simulationGrid.Remove(this.key());
-
-            if(Simulation.random.Next(0, 1)==0)
-                posX += (Simulation.random.Next(1, 2) * 2) - 3;
-            else
-                posY += (Simulation.random.Next(1, 2) * 2) - 3;
-            fixPosition();
-
-            Simulation.simulationGrid.Add(this.key(), this);
-        }
         public void act()
         {
             for(int i = 0; i < speed; i++) {
                 Tuple<int, int> interest = getInterest();
-                if (!(interest == null))
+                if (interest != null)
                 {
-                    target_movement(interest);
+                    targetMovement(interest);
                 }
                 else
-                    random_movement();
+                    randomMovement();
             }
-            hunger();
-                
+            hunger();        
         }
 
         public void eat(Food food)
@@ -204,31 +206,27 @@ namespace SLSim
 
             for (var x = 1; x < sightDistance; x++) {
                 for (var y = 0; y <= x; y++) {
-
                     for (var i = -1; i < 2; i += 2){
                         for (var j = -1; j < 2; j += 2){
-
                             if (Simulation.simulationGrid.ContainsKey(encode(posX + (x - y) * i, posY + y * j)) && checkInterest(Simulation.simulationGrid[encode(posX + (x - y) * i, posY + y * j)]))
                                 return Tuple.Create(posX + (x - y) * i, posY + y * j);
-                            
                         }
                     }
-
                 }
             }
             return null;
         }
 
         private bool checkInterest(SimObject o) {
-            if (this.species.isHerbivore)
-                return o is Food;
-            else if (this.species.isCarnivore)
-                if (o is Organism)
-                    return ((Organism)o).species != this.species;
+            if (species.isHerbivore && o is Food)
+                return true;
+            if (species.isCarnivore)
+                if (o is Organism && ((Organism)o).species != species)
+                    return strength() > ((Organism)o).strength();
             return false;
         }
 
-        void target_movement(Tuple<int, int> interest)
+        void targetMovement(Tuple<int, int> interest)
         {
             var pointX = interest.Item1;
             var pointY = interest.Item2;
@@ -251,7 +249,7 @@ namespace SLSim
             }
         }
 
-        private void random_movement()
+        private void randomMovement()
         {
             double randomDouble;
             randomDouble = Simulation.random.NextDouble();

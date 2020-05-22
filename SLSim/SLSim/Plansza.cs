@@ -18,15 +18,10 @@ namespace SLSim
 
         Ellipse ellipse;
         Rectangle rectangle;
-
-        /*zrobiłem to na canvasie bo wydało się to proste
-         * jak ma być inaczej to dajcie znać
-         * a na razie do testowania waszych roziązań i tak się nada*/
         Canvas canvas;
 
 		public Plansza(Canvas canvas) { 
            this.canvas = canvas;
-
         }
 
         public void rysujPlansze(Dictionary<int, SimObject> simulationGrid){

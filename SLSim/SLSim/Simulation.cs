@@ -28,6 +28,7 @@ namespace SLSim
         public static void nextStep()
         {
             List<Organism> organisms = new List<Organism>();
+            organisms = organisms.OrderBy(x => x.speed).ToList();
             foreach(KeyValuePair<int, SimObject> kvp in simulationGrid)
                 if (kvp.Value is Organism)
                 {
