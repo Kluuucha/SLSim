@@ -7,6 +7,7 @@ namespace SLSim
     public class Organism : SimObject
     {
         private int sightDistance = 7;
+        private int life = 15;
         enum Directions { up, down, left, right, no};
         public Species species { get; protected set; }
 
@@ -62,13 +63,21 @@ namespace SLSim
 
         public void act()
         {
-            Tuple<int, int> interest = getInterest();
-            if (!(interest == null))
+
+            life--;
+            if (life < 0)
             {
-                target_movement(interest);
+                die();
+            } else {
+                Tuple<int, int> interest = getInterest();
+
+                if (!(interest == null))
+                {
+                    target_movement(interest);
+                }
+                else
+                    random_movement();
             }
-            else
-                random_movement();
         }
 
         public void devour(Organism prey)

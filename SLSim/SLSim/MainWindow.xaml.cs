@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
+using System.Windows.Threading;
 
 namespace SLSim
 {
@@ -23,13 +24,17 @@ namespace SLSim
     {
         //FoodGeneration generowaniePozywienia;
         Plansza plansza;
+        
 
         public MainWindow()
         {
 
             InitializeComponent();
-
             
+
+
+
+
             /* commit - pozywienie v1:
              *  - na razie generowane tylko raz - trzeba dodać następne wywołania co określoną ilość czasu
              *  - na razie podane wartości rozmiaru mapy i ilości na sztywno
@@ -44,40 +49,69 @@ namespace SLSim
 
 
 
+
+
+
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
         {
             PanelKontrolny panel = new PanelKontrolny();
             panel.Show();
-
         }
 
         private void StartSymulacji(object sender, RoutedEventArgs e)
         {
             plansza = new Plansza(MyCanvas);
-
-            Species spec1 = new Species(Colors.Red,"Species 1", Settings.breedingChance, Settings.organismNumber, true, true);
-            Species spec2 = new Species(Colors.Blue, "Species 2", Settings.breedingChance, Settings.organismNumber);
-            Species spec3 = new Species(Colors.Orange, "Species 3", Settings.breedingChance, Settings.organismNumber);
+            Simulation.t1 = new System.Windows.Threading.DispatcherTimer();
 
             Food.generateFood();
-
-            Organism.generateOrganisms(spec1);
-            Organism.generateOrganisms(spec2);
-            Organism.generateOrganisms(spec3);
-
+            Organism.generateOrganisms();
             plansza.rysujPlansze(Simulation.simulationGrid);
             NT.Visibility = Visibility.Visible;
             PT.Visibility = Visibility.Hidden;
             S.Visibility = Visibility.Visible;
+
+            Simulation.t1.Interval = TimeSpan.FromMilliseconds(1000 / Settings.maximumTicsPerSecond);
+            Simulation.t1.IsEnabled = true;
+            Simulation.t1.Tick += new EventHandler(dispatcherTimer_Tick);
+            Simulation.t1.Start();
+            
+
         }
 
-        private void nextTik(object sender, RoutedEventArgs e)
+        private void StartSymulacjiWCzasieRzeczywistym(object sender, RoutedEventArgs e)
         {
+            Simulation.t1.Interval = TimeSpan.FromMilliseconds(1000/Settings.maximumTicsPerSecond);
+            Simulation.t1.IsEnabled = true;
+            Simulation.t1.Tick += new EventHandler(dispatcherTimer_Tick);
+            Simulation.t1.Start();
+        }
+
+        private void StopSymulacjiWCzasieRzeczywistym(object sender, RoutedEventArgs e)
+        {
+            Simulation.t1.Stop();
+        }
+
+        
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {       
+             plansza.czyscPlansze();
+            //for(int i=0;i<10;i++)
+            Simulation.nextStep();
+            plansza.rysujPlansze(Simulation.simulationGrid);
+            
+        }
+
+
+        private void nextTik(object sender, RoutedEventArgs e)
+        {    
             plansza.czyscPlansze();
-            for(int i=0;i<Settings.stepsPerTic;i++)
-                Simulation.nextStep();
+            //for(int i=0;i<10;i++)
+            Simulation.nextStep();
             plansza.rysujPlansze(Simulation.simulationGrid);
         }
+
+        
         private void showStats(object sender, RoutedEventArgs e)
         {
             stats s = new stats();
