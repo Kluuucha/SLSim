@@ -8,7 +8,7 @@
         Title="PanelGatunkow" Height="450" Width="800">
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="420" Margin="0,0,-1,0" VerticalAlignment="Top" Width="795">
-            <TabItem Header="Gatunek nr 1">
+            <TabItem x:Name="jeden" Header="Gatunek nr 1">
                 <Grid Background="#FFE5E5E5" Margin="-5,0,0,0">
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="207,57,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60"/>
                     <TextBlock HorizontalAlignment="Left" Margin="36,60,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top"/>
@@ -27,7 +27,16 @@
                     <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="320"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Gatunek nr 2">
+            <TabItem x:Name="dwa" Header="Gatunek nr 2">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="trzy" Header="Gatunek nr 3">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="cztery" Header="Gatunek nr 4">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="piec" Header="Gatunek nr 5">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>

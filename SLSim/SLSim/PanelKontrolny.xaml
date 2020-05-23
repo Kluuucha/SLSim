@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <GroupBox Header="Pożywienie" HorizontalAlignment="Left" Height="120" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
 
-        <RadioButton GroupName="pojawianiePozywienia" Content="ilość pożywienia co tick" Margin="20,100,313.8,189.2"/>
+        <RadioButton GroupName="pojawianiePozywienia" Content="ilość pożywienia co tick" Margin="20,100,313.8,189.2" Checked="AddNumberOfFood"/>
 
 
 
@@ -42,14 +42,14 @@
         </ComboBox>
         <Button Content="Ustaw statystyki gatunków" HorizontalAlignment="Left" Margin="270,75,0,0" VerticalAlignment="Top" Width="190" Height="29" Click="spiciesStats"/>
         <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"><Run Text="Sposób pojawiania się pożywienia:"/></TextBlock>
-        <TextBox x:Name="food_Copy" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="175,100,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <TextBox x:Name="foodPerTick" Visibility="Hidden" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="175,100,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
         <GroupBox Header="Organizmy" HorizontalAlignment="Left" Height="120" Margin="250,10,0,0" VerticalAlignment="Top" Width="240"/>
         <GroupBox Header="Symulacja" HorizontalAlignment="Left" Height="175" Margin="10,140,0,0" VerticalAlignment="Top" Width="480">
             <GridSplitter HorizontalAlignment="Left" Height="135" Margin="140,10,0,0" VerticalAlignment="Top" Width="5"/>
         </GroupBox>
         <TextBlock HorizontalAlignment="Left" Margin="183,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="197"><Run Text="Maksymalna ilość ticków na sekunde:"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="spt_Copy" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,180,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
-        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość" Margin="20,82,321.8,222.6"/>
+        <TextBox x:Name="mtps" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,180,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość" Margin="20,82,321.8,222.6" Checked="stalaIlosc"/>
 
 
     </Grid>

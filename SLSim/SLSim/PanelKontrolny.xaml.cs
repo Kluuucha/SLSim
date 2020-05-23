@@ -21,9 +21,12 @@ namespace SLSim
     {
         int elementS = 10;
         double snr = 0;
+        bool addfpt = false;
         public PanelKontrolny()
         {
             InitializeComponent();
+            mtps.Text = Settings.maximumTicsPerSecond.ToString();
+            foodPerTick.Text = Settings.foodPerTic.ToString();
             food.Text = Settings.foodNumber.ToString();
             x.Text = Settings.xResolution.ToString();
             y.Text = Settings.yResolution.ToString();
@@ -35,6 +38,10 @@ namespace SLSim
 
         private void Zapisz(object sender, RoutedEventArgs e)
         {
+            if(addfpt) Settings.foodPerTic = int.Parse(foodPerTick.Text);
+           
+
+            Settings.maximumTicsPerSecond = int.Parse(mtps.Text);
             int jedzenie = int.Parse(food.Text);
             Settings.foodNumber = jedzenie;
             int newX = int.Parse(x.Text);
@@ -66,10 +73,28 @@ namespace SLSim
 
         private void spiciesStats(object sender, RoutedEventArgs e)
         {
+            if (ilegatunkow.SelectedItem == jeden) Settings.numberOfSpecies = 1;
+            if (ilegatunkow.SelectedItem == dwa) Settings.numberOfSpecies = 2;
+            if (ilegatunkow.SelectedItem == trzy) Settings.numberOfSpecies = 3;
+            if (ilegatunkow.SelectedItem == cztery) Settings.numberOfSpecies = 4;
+            if (ilegatunkow.SelectedItem == piec) Settings.numberOfSpecies = 5;
             PanelGatunkow panelGatunkow = new PanelGatunkow();
             panelGatunkow.Show();
         }
 
-
+        private void stalaIlosc(object sender, RoutedEventArgs e)
+        {
+            Settings.closedSystem = true;
+            Settings.addNumberOfFoodPerTick = false;
+            addfpt = false;
+            foodPerTick.Visibility = Visibility.Hidden;
+        }
+        public void AddNumberOfFood(object sender, RoutedEventArgs e)
+        {
+            Settings.closedSystem = false;
+            Settings.addNumberOfFoodPerTick = true;
+            addfpt = true;
+            foodPerTick.Visibility = Visibility.Visible;
+        }
     }
 }
