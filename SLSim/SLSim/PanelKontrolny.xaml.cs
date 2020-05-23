@@ -30,6 +30,10 @@ namespace SLSim
             x.Text = Settings.xResolution.ToString();
             y.Text = Settings.yResolution.ToString();
             elementS = Settings.elementSize;
+
+            if (elementS == 5) piatka.IsChecked = true;
+            else if (elementS == 10) dycha.IsChecked = true;
+            else dwie.IsChecked = true;
          
             spt.Text = Settings.elementSize.ToString();
             ilegatunkow.SelectedItem = jeden;

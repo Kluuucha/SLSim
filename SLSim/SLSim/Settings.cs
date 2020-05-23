@@ -21,7 +21,7 @@ namespace SLSim
         public static bool addNumberOfFoodPerTick = false;
 
         //TODO: usunąć po wprowadzeniu panelu edycji pojedynczego gatunku
-        public static int organismNumber = 10; //przeniesione do Species.startingPopulation 
-        public static double breedingChance = 0.5; //przeniesione do Species.breedingChance
+       // public static int organismNumber = 10; //przeniesione do Species.startingPopulation 
+        //public static double breedingChance = 0.5; //przeniesione do Species.breedingChance
     }
 }

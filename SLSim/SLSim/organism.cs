@@ -30,7 +30,7 @@ namespace SLSim
         }
         public static void generateOrganisms(Species spec)
         {
-            for (int i = 0; i < Settings.organismNumber; i++)
+            for (int i = 0; i < spec.startingPopulation; i++)
                 newRandomOrganism(spec);
         }
 
@@ -45,12 +45,12 @@ namespace SLSim
         }
         private void mutate() {
             int mutate = Simulation.random.Next(100);
-            if (Simulation.mutationChance > mutate) {
+            if (species.mutationChance > mutate) {
                 sightDistance += Simulation.random.Next(-1, 1);
                 if (sightDistance == 0) sightDistance = 1;
             }
             mutate = Simulation.random.Next(100);
-            if (Simulation.mutationChance > mutate)
+            if (species.mutationChance > mutate)
             {
                 speed += Simulation.random.Next(-1, 1);
                 if (speed == 0) speed = 1;

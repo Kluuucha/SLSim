@@ -29,6 +29,11 @@ namespace SLSim
         public MainWindow()
         {
             InitializeComponent();
+            Simulation.speciesList[0] = new Species(Colors.Red, "Gatunek 1");
+            Simulation.speciesList[1] = new Species(Colors.Blue, "Gatunek 2");
+            Simulation.speciesList[2] = new Species(Colors.Orange, "Gatunek 3");
+            Simulation.speciesList[3] = new Species(Colors.Violet, "Gatunek 4");
+            Simulation.speciesList[4] = new Species(Colors.DarkGreen, "Gatunek 5");
 
         }
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
@@ -42,15 +47,14 @@ namespace SLSim
             plansza = new Plansza(MyCanvas);
             Simulation.t1 = new System.Windows.Threading.DispatcherTimer();
 
-            Species spec1 = new Species(Colors.Red, "Species 1", Settings.breedingChance, Settings.organismNumber, true, true);
-            Species spec2 = new Species(Colors.Blue, "Species 2", Settings.breedingChance, Settings.organismNumber);
-            Species spec3 = new Species(Colors.Orange, "Species 3", Settings.breedingChance, Settings.organismNumber);
 
             Food.generateFood();
 
-            Organism.generateOrganisms(spec1);
-            Organism.generateOrganisms(spec2);
-            Organism.generateOrganisms(spec3);
+            for(int i = 0; i < Settings.numberOfSpecies; i++)
+            {
+                Organism.generateOrganisms(Simulation.speciesList[i]);
+            }
+
 
             plansza.rysujPlansze(Simulation.simulationGrid);
             NT.Visibility = Visibility.Visible;
@@ -60,6 +64,7 @@ namespace SLSim
 
             startSym.Visibility = Visibility.Visible;
             start.Visibility = Visibility.Hidden;
+
             
 
         }
@@ -73,6 +78,7 @@ namespace SLSim
 
             startSym.Visibility = Visibility.Hidden;
             pauza.Visibility = Visibility.Visible;
+            S.Visibility = Visibility.Hidden;
         }
 
         private void StopSymulacjiWCzasieRzeczywistym(object sender, RoutedEventArgs e)
@@ -80,6 +86,7 @@ namespace SLSim
             Simulation.t1.Stop();
             startSym.Visibility = Visibility.Visible;
             pauza.Visibility = Visibility.Hidden;
+            S.Visibility = Visibility.Visible;
         }
 
         

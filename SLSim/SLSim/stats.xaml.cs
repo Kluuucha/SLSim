@@ -28,7 +28,7 @@ namespace SLSim
             int ifd = Simulation.simulationGrid.Where(kpv => kpv.Value is Food).Count();
             fd.Text = ifd.ToString();
 
-            fd_Copy.Text = Settings.breedingChance.ToString();
+           // fd_Copy.Text = Settings.breedingChance.ToString();
             fd_Copy1.Text = Settings.stepsPerTic.ToString();
             fd_Copy2.Text = Settings.elementSize.ToString();
         }

@@ -14,7 +14,8 @@ namespace SLSim
         public static Dictionary<int, SimObject> simulationGrid = new Dictionary<int, SimObject>();
         public static DispatcherTimer t1 = new System.Windows.Threading.DispatcherTimer();
         public static bool enclosedSystem = true;
-        public static int mutationChance;
+        public static Species[] speciesList = new Species[5];
+        //public static int mutationChance;
         public static void generateOrganisms(int quantity, Species spec) {
             for (int i = 0; i < quantity; i++) {
                 Organism.generateOrganisms(spec);
