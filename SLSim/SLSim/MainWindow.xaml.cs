@@ -31,7 +31,6 @@ namespace SLSim
             InitializeComponent();
 
         }
-
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
         {
             PanelKontrolny panel = new PanelKontrolny();

@@ -47,9 +47,9 @@
         <GroupBox Header="Symulacja" HorizontalAlignment="Left" Height="175" Margin="10,140,0,0" VerticalAlignment="Top" Width="480">
             <GridSplitter HorizontalAlignment="Left" Height="135" Margin="140,10,0,0" VerticalAlignment="Top" Width="5"/>
         </GroupBox>
-        <TextBlock HorizontalAlignment="Left" Margin="183,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="197"><Run Text="Maksymalna ilość ticków na sekunde:"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="mtps" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,180,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
-        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość" Margin="20,82,321.8,222.6" Checked="stalaIlosc"/>
+        <TextBlock HorizontalAlignment="Left" Margin="183,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="197"><Run Text="Maksymalna ilość ticków na sekunde:"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="mtps" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,190,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
+        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość" Margin="20,82,321.8,222.6" Checked="stalaIlosc" IsChecked="True"/>
 
 
     </Grid>

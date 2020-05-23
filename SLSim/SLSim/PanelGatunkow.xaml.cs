@@ -19,6 +19,14 @@ namespace SLSim
     /// </summary>
     public partial class PanelGatunkow : Window
     {
+        double szansaNamutacje;
+        bool miesozerca = false;
+        bool roslinozerca = true;
+        int maxSpeed;
+        int power;
+        int range;
+
+
         public PanelGatunkow()
         {
             InitializeComponent();
@@ -44,6 +52,13 @@ namespace SLSim
             {
                 piec.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            szansaNamutacje = Math.Round(szansaNaMutacjeSlider.Value,2);
+            SzansaNaMutacjeValue.Text = (szansaNamutacje*100).ToString()+"%";
+
         }
     }
 }

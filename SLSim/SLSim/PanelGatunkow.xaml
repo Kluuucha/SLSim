@@ -5,15 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
-        Title="PanelGatunkow" Height="450" Width="800">
+        Title="PanelGatunkow" Height="485" Width="420">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="420" Margin="0,0,-1,0" VerticalAlignment="Top" Width="795">
+        <Grid Background="LightGray">
+            <Button Content="Zapisz" HorizontalAlignment="Left" Margin="280,405,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+
+        </Grid>
+
+        <TabControl HorizontalAlignment="Left" Height="400" Margin="0,0,-1,0" VerticalAlignment="Top" Width="795">
             <TabItem x:Name="jeden" Header="Gatunek nr 1">
                 <Grid Background="#FFE5E5E5" Margin="-5,0,0,0">
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="207,57,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="36,60,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="332,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
-                    <ComboBox HorizontalAlignment="Left" Margin="367,55,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="137*"/>
+                        <ColumnDefinition Width="657*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
+                    <ComboBox HorizontalAlignment="Left" Margin="52,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2">
                         <ComboBoxItem x:Name="green" Content="Zielony" />
                         <ComboBoxItem x:Name="red" Content="Czerwony"/>
                         <ComboBoxItem x:Name="blue" Content="Niebieski"/>
@@ -22,9 +31,35 @@
 
 
                     </ComboBox>
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="37,30,0,0"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="132,30,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120"/>
-                    <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="320"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="112,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="245" Grid.ColumnSpan="2">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="164,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="11,137,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top"/>
+                            <Slider x:Name="szansaNaMutacjeSlider" HorizontalAlignment="Left" Maximum="1" Minimum="0" Margin="24,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.75,-0.944" Width="175" Height="25" ValueChanged="Slider_ValueChanged"/>
+                            <TextBlock x:Name="SzansaNaMutacjeValue" HorizontalAlignment="Left" Margin="108,197,0,0" TextWrapping="Wrap" Text="0%" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
+                        <Grid>
+                            <RadioButton Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" />
+                            <RadioButton Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top"/>
+                            <RadioButton Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </GroupBox>
+
+
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="dwa" Header="Gatunek nr 2">

@@ -20,7 +20,6 @@ namespace SLSim
     public partial class PanelKontrolny : Window
     {
         int elementS = 10;
-        double snr = 0;
         bool addfpt = false;
         public PanelKontrolny()
         {
@@ -31,7 +30,7 @@ namespace SLSim
             x.Text = Settings.xResolution.ToString();
             y.Text = Settings.yResolution.ToString();
             elementS = Settings.elementSize;
-            snr = Settings.breedingChance;
+         
             spt.Text = Settings.elementSize.ToString();
             ilegatunkow.SelectedItem = jeden;
         }
@@ -49,7 +48,6 @@ namespace SLSim
             int newY = int.Parse(y.Text);
             Settings.yResolution = newY;
             Settings.elementSize = elementS;
-            Settings.breedingChance = snr;
             int newspt = int.Parse(spt.Text);
             Settings.stepsPerTic = newspt;
             Close();
