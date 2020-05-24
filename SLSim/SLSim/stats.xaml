@@ -5,20 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
-        Title="Statystyki" Height="300" Width="300">
-    <Grid Background="LightGray">
-        <TextBlock HorizontalAlignment="Left" Margin="25,40,0,0" TextWrapping="Wrap" Text="Ilość organizmów na planszy:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="org" HorizontalAlignment="Left" Margin="190,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="25,64,0,0" TextWrapping="Wrap" Text="Ilość pożywienia na planszy:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="fd" HorizontalAlignment="Left" Margin="191,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <Button Content="Zamknij" HorizontalAlignment="Left" Margin="205,235,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBlock x:Name="fd_Copy" HorizontalAlignment="Left" Margin="160,100,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="fd_Copy1" HorizontalAlignment="Left" Margin="160,119,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.125,4.7"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,99,0,0" TextWrapping="Wrap" Text="Szansa na rozmnażanie:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,120,0,0" TextWrapping="Wrap" Text="ilość kroków na tik:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="19,139,0,0" TextWrapping="Wrap" Text="rozmiar elementu:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="fd_Copy2" HorizontalAlignment="Left" Margin="160,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.125,4.7"/>
+        Title="Statystyki" Height="310" Width="400">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="240" Margin="0,0,0,0" VerticalAlignment="Top" Width="388" RenderTransformOrigin="0.35,0.325">
+            <TabItem Header="Ogólne">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="22,40,0,0" TextWrapping="Wrap" Text="Ilość pożywienia na planszy:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,19,0,0" TextWrapping="Wrap" Text="Łączna ilość organizmów na planszy:" VerticalAlignment="Top" Width="200"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,61,0,0" TextWrapping="Wrap" Text="Ilość kroków na tick:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,80,0,0" TextWrapping="Wrap" Text="Początkowa ilość gatunków:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,101,0,0" TextWrapping="Wrap" Text="Ilość gatunków na planszy:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock x:Name="iloscOrganizmow" HorizontalAlignment="Right" Margin="0,19,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="iloscPozywienia" HorizontalAlignment="Right" Margin="303,40,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="krokiNaTick" HorizontalAlignment="Right" Margin="302,61,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="iloscGatonkowPocz" HorizontalAlignment="Right" Margin="302,80,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="iloscGatonkowNaPlanszy" HorizontalAlignment="Right" Margin="302,101,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="jeden" Header="Gatunek 1">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem  x:Name="dwa" Header="Gatunek 2">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="trzy" Header="Gatunek 3">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="cztery" Header="Gatunek 4">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="piec" Header="Gatunek 5">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid>
+            <Button Content="Zamknij" HorizontalAlignment="Left" Margin="295,245,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
-
+        </Grid>
     </Grid>
+
+
 </Window>
