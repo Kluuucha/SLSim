@@ -6,9 +6,9 @@ namespace SLSim
 {
     public class Organism : SimObject
     {
-        private int sightDistance, currValue, maxValue;
+        public int sightDistance, currValue, maxValue;
         public int speed { get; private set; }
-        private double ferocity;
+        public double ferocity;
         enum Directions { up, down, left, right, no};
 
         public Species species { get; protected set; }

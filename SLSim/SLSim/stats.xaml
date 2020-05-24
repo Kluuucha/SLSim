@@ -23,7 +23,31 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="jeden" Header="Gatunek 1">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="mVal" HorizontalAlignment="right" Margin="0,9,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="speed" HorizontalAlignment="right" Margin="0,30,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="power" HorizontalAlignment="right" Margin="0,51,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="range" HorizontalAlignment="right" Margin="0,72,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                        </Grid>
+
+                    </GroupBox>
+                    <TextBlock x:Name="name" HorizontalAlignment="right" Margin="0,10,100,0" TextWrapping="Wrap" TextAlignment="left" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="170"/>
+                    <TextBlock x:Name="liczOs" HorizontalAlignment="right" Margin="0,30,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="195"/>
+                    <TextBlock x:Name="Odrzywianie" HorizontalAlignment="right" Margin="0,50,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="205"/>
+                    <TextBlock x:Name="Mutacja" HorizontalAlignment="right" Margin="0,70,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="215"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="253,114,0,0" TextWrapping="Wrap" Text="Kolor:" VerticalAlignment="Top"/>
+                    <Rectangle x:Name="kolor" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Margin="347,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1,0.75"/>
+                </Grid>
             </TabItem>
             <TabItem  x:Name="dwa" Header="Gatunek 2">
                 <Grid Background="#FFE5E5E5"/>
