@@ -13,9 +13,10 @@ namespace SLSim
 
         public Species species { get; protected set; }
 
-        public static Organism newRandomOrganism(Species spec, int sight = 7, double fer = 1, int maxvalue = 50, int speed = 3, int currvalue=25)
+        public static Organism newRandomOrganism(Species spec)
         {
-            Organism temp = new Organism(spec,sight,fer,maxvalue,speed,currvalue);
+            //Organism temp = new Organism(spec,sight,fer,maxvalue,speed,currvalue);
+            Organism temp = new Organism(spec,spec.seeRange,spec.power,spec.maxValue,spec.speed,spec.maxValue/2);
             int key = 0;
             do
             {

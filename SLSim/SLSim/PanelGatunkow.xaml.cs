@@ -333,7 +333,7 @@ namespace SLSim
             }
             if (Settings.numberOfSpecies >= 3)
             {
-                Simulation.speciesList[2].mutationChance = szansaNamutacje1;
+                Simulation.speciesList[2].mutationChance = szansaNamutacje2;
                 Simulation.speciesList[2].name = name2.Text;
                 Simulation.speciesList[2].power = int.Parse(pow2.Text);
                 Simulation.speciesList[2].seeRange = int.Parse(ran2.Text);
