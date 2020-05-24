@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
         Title="PanelGatunkow" Height="485" Width="420">
-    <Window.Resources>
-        <local:listakolorow x:Key="mylistakolorow"></local:listakolorow>
-    </Window.Resources>
+
     <Grid>
+        <Grid.Resources>
+
+        </Grid.Resources>
         <Grid Background="LightGray">
             <Button Content="Zapisz" HorizontalAlignment="Left" Margin="280,405,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Zapisz"/>
 
@@ -25,7 +26,14 @@
                     <TextBox x:Name="starPop" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="1"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
-                    <ComboBox x:Name="kolor" ItemsSource="{StaticResource mylistakolorow}" IsReadOnly="true" HorizontalAlignment="Left" Margin="52,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged"/>
+                    <ComboBox x:Name="kolor" IsReadOnly="true" HorizontalAlignment="Left" Margin="52,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="white" Content="Biały" />
+                        <ComboBoxItem x:Name="red" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black" Content="Czarny"/>
+                    </ComboBox>
 
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0"/>
                     <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="112,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
@@ -68,8 +76,13 @@
                     <TextBox x:Name="starPop1" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
-                    <ComboBox x:Name="kolor1"  ItemsSource="{StaticResource mylistakolorow}" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
-
+                    <ComboBox x:Name="kolor1"  HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+                        <ComboBoxItem x:Name="white1" Content="Biały" />
+                        <ComboBoxItem x:Name="red1" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue1" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange1" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet1" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black1" Content="Czarny"/>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="name1" HorizontalAlignment="Left" Height="23" Margin="85,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
@@ -91,9 +104,9 @@
                     </GroupBox>
                     <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
                         <Grid>
-                            <RadioButton x:Name="r1" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros1"/>
-                            <RadioButton x:Name="w1" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz1"/>
-                            <RadioButton x:Name="m1" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie1"/>
+                            <RadioButton x:Name="r1" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w1" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m1" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
 
                         </Grid>
                     </GroupBox>
@@ -112,8 +125,13 @@
                     <TextBox x:Name="starPop2" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
-                    <ComboBox x:Name="kolor2"  ItemsSource="{StaticResource mylistakolorow}" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
-
+                    <ComboBox x:Name="kolor2"   HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+                        <ComboBoxItem x:Name="white2" Content="Biały" />
+                        <ComboBoxItem x:Name="red2" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue2" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange2" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet2" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black2" Content="Czarny"/>
 
 
                     </ComboBox>
@@ -137,9 +155,9 @@
                     </GroupBox>
                     <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
                         <Grid>
-                            <RadioButton x:Name="r2" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros2"/>
-                            <RadioButton x:Name="w2" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz2"/>
-                            <RadioButton x:Name="m2" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie2"/>
+                            <RadioButton x:Name="r2" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w2" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m2" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
 
                         </Grid>
                     </GroupBox>
@@ -158,9 +176,14 @@
                     <TextBox x:Name="starPop3" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
-                    <ComboBox x:Name="kolor3"  ItemsSource="{StaticResource mylistakolorow}" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+                    <ComboBox x:Name="kolor3"   HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
 
-
+                        <ComboBoxItem x:Name="white3" Content="Biały" />
+                        <ComboBoxItem x:Name="red3" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue3" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange3" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet3" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black3" Content="Czarny"/>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="name3" HorizontalAlignment="Left" Height="23" Margin="85,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
@@ -182,9 +205,9 @@
                     </GroupBox>
                     <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
                         <Grid>
-                            <RadioButton x:Name="r3" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros3"/>
-                            <RadioButton x:Name="w3" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz3"/>
-                            <RadioButton x:Name="m3" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie3"/>
+                            <RadioButton x:Name="r3" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w3" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m3" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
 
                         </Grid>
                     </GroupBox>
@@ -203,10 +226,15 @@
                     <TextBox x:Name="starPop4" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
-                    <ComboBox x:Name="kolor4"  ItemsSource="{StaticResource mylistakolorow}" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+                    <ComboBox x:Name="kolor4"   HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
 
 
-
+                        <ComboBoxItem x:Name="white4" Content="Biały" />
+                        <ComboBoxItem x:Name="red4" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue4" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange4" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet4" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black4" Content="Czarny"/>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="name4" HorizontalAlignment="Left" Height="23" Margin="85,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
@@ -228,9 +256,9 @@
                     </GroupBox>
                     <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
                         <Grid>
-                            <RadioButton x:Name="r4" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros4"/>
-                            <RadioButton x:Name="w4" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz4"/>
-                            <RadioButton x:Name="m4" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie4"/>
+                            <RadioButton x:Name="r4" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w4" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m4" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
 
                         </Grid>
                     </GroupBox>

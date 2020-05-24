@@ -33,7 +33,7 @@ namespace SLSim
             Simulation.speciesList[1] = new Species(Colors.Blue, "Gatunek 2");
             Simulation.speciesList[2] = new Species(Colors.Orange, "Gatunek 3");
             Simulation.speciesList[3] = new Species(Colors.Violet, "Gatunek 4");
-            Simulation.speciesList[4] = new Species(Colors.DarkGreen, "Gatunek 5");
+            Simulation.speciesList[4] = new Species(Colors.White, "Gatunek 5");
 
         }
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
