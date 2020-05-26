@@ -1,0 +1,273 @@
+﻿<Window x:Class="SLSim.PanelGatunkow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SLSim"
+        mc:Ignorable="d"
+        Title="PanelGatunkow" Height="485" Width="420">
+
+    <Grid>
+        <Grid.Resources>
+
+        </Grid.Resources>
+        <Grid Background="LightGray">
+            <Button Content="Zapisz" HorizontalAlignment="Left" Margin="280,405,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Zapisz"/>
+
+        </Grid>
+
+        <TabControl HorizontalAlignment="Left" Height="400" Margin="0,0,-1,0" VerticalAlignment="Top" Width="795">
+            <TabItem x:Name="jeden" Header="Gatunek nr 1">
+                <Grid Background="#FFE5E5E5" Margin="-5,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="137*"/>
+                        <ColumnDefinition Width="657*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="starPop" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
+                    <ComboBox x:Name="kolor" IsReadOnly="true" HorizontalAlignment="Left" Margin="52,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="white" Content="Biały" />
+                        <ComboBoxItem x:Name="red" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black" Content="Czarny"/>
+                    </ComboBox>
+
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0"/>
+                    <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="112,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="245" Grid.ColumnSpan="2">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBox x:Name="mVal" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="speed" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="pow" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="ran" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="11,137,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top"/>
+                            <Slider x:Name="szansaNaMutacjeSlider" HorizontalAlignment="Left" Maximum="1" Minimum="0" Margin="24,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.75,-0.944" Width="175" Height="25" ValueChanged="Slider_ValueChanged"/>
+                            <TextBlock x:Name="SzansaNaMutacjeValue" HorizontalAlignment="Left" Margin="108,197,0,0" TextWrapping="Wrap" Text="0%" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
+                        <Grid>
+                            <RadioButton x:Name="r" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top"  Checked="ros"/>
+                            <RadioButton x:Name="w" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
+
+                        </Grid>
+                    </GroupBox>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="dwa" Header="Gatunek nr 2">
+                <Grid Background="#FFE5E5E5" Margin="-5,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="657*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="starPop1" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
+                    <ComboBox x:Name="kolor1"  HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+                        <ComboBoxItem x:Name="white1" Content="Biały" />
+                        <ComboBoxItem x:Name="red1" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue1" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange1" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet1" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black1" Content="Czarny"/>
+                    </ComboBox>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="name1" HorizontalAlignment="Left" Height="23" Margin="85,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="245" Grid.ColumnSpan="3">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBox x:Name="mVal1" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="speed1" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="pow1" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="ran1" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="11,137,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top"/>
+                            <Slider x:Name="szansaNaMutacjeSlider1" HorizontalAlignment="Left" Maximum="1" Minimum="0" Margin="24,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.75,-0.944" Width="175" Height="25" ValueChanged="Slider_ValueChanged"/>
+                            <TextBlock x:Name="SzansaNaMutacjeValue1" HorizontalAlignment="Left" Margin="108,197,0,0" TextWrapping="Wrap" Text="0%" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
+                        <Grid>
+                            <RadioButton x:Name="r1" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w1" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m1" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
+
+                        </Grid>
+                    </GroupBox>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="trzy" Header="Gatunek nr 3">
+                <Grid Background="#FFE5E5E5" Margin="-5,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="657*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="starPop2" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
+                    <ComboBox x:Name="kolor2"   HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+                        <ComboBoxItem x:Name="white2" Content="Biały" />
+                        <ComboBoxItem x:Name="red2" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue2" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange2" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet2" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black2" Content="Czarny"/>
+
+
+                    </ComboBox>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="name2" HorizontalAlignment="Left" Height="23" Margin="85,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="245" Grid.ColumnSpan="3">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBox x:Name="mVal2" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="speed2" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="pow2" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="ran2" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="11,137,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top"/>
+                            <Slider x:Name="szansaNaMutacjeSlider2" HorizontalAlignment="Left" Maximum="1" Minimum="0" Margin="24,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.75,-0.944" Width="175" Height="25" ValueChanged="Slider_ValueChanged"/>
+                            <TextBlock x:Name="SzansaNaMutacjeValue2" HorizontalAlignment="Left" Margin="108,197,0,0" TextWrapping="Wrap" Text="0%" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
+                        <Grid>
+                            <RadioButton x:Name="r2" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w2" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m2" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
+
+                        </Grid>
+                    </GroupBox>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="cztery" Header="Gatunek nr 4">
+                <Grid Background="#FFE5E5E5" Margin="-5,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="657*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="starPop3" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
+                    <ComboBox x:Name="kolor3"   HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+
+                        <ComboBoxItem x:Name="white3" Content="Biały" />
+                        <ComboBoxItem x:Name="red3" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue3" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange3" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet3" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black3" Content="Czarny"/>
+                    </ComboBox>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="name3" HorizontalAlignment="Left" Height="23" Margin="85,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="245" Grid.ColumnSpan="3">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBox x:Name="mVal3" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="speed3" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="pow3" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="ran3" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="11,137,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top"/>
+                            <Slider x:Name="szansaNaMutacjeSlider3" HorizontalAlignment="Left" Maximum="1" Minimum="0" Margin="24,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.75,-0.944" Width="175" Height="25" ValueChanged="Slider_ValueChanged"/>
+                            <TextBlock x:Name="SzansaNaMutacjeValue3" HorizontalAlignment="Left" Margin="108,197,0,0" TextWrapping="Wrap" Text="0%" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
+                        <Grid>
+                            <RadioButton x:Name="r3" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w3" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m3" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
+
+                        </Grid>
+                    </GroupBox>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="piec" Header="Gatunek nr 5">
+                <Grid Background="#FFE5E5E5" Margin="-5,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="657*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="starPop4" HorizontalAlignment="Left" Height="23" Margin="60,42,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="0" VerticalAlignment="Top" Width="60" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,44,0,0" TextWrapping="Wrap" Text="Ilość początkowych osobników:" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.714,0.625" Grid.ColumnSpan="2"><Run Text="Kolor"/><Run Text=":"/></TextBlock>
+                    <ComboBox x:Name="kolor4"   HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1">
+
+
+                        <ComboBoxItem x:Name="white4" Content="Biały" />
+                        <ComboBoxItem x:Name="red4" Content="Czerwony"/>
+                        <ComboBoxItem x:Name="blue4" Content="Niebieski"/>
+                        <ComboBoxItem x:Name="orange4" Content="Pomarańczowy" />
+                        <ComboBoxItem x:Name="violet4" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="black4" Content="Czarny"/>
+                    </ComboBox>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="name4" HorizontalAlignment="Left" Height="23" Margin="85,15,0,0" TextWrapping="Wrap" Text="Gatunek" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <GroupBox Header="Statystyki:" HorizontalAlignment="Left" Height="260" Margin="12,110,0,0" VerticalAlignment="Top" Width="245" Grid.ColumnSpan="3">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBox x:Name="mVal4" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="speed4" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="pow4" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBox x:Name="ran4" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="11,137,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top"/>
+                            <Slider x:Name="szansaNaMutacjeSlider4" HorizontalAlignment="Left" Maximum="1" Minimum="0" Margin="24,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.75,-0.944" Width="175" Height="25" ValueChanged="Slider_ValueChanged"/>
+                            <TextBlock x:Name="SzansaNaMutacjeValue4" HorizontalAlignment="Left" Margin="108,197,0,0" TextWrapping="Wrap" Text="0%" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Column="2" Header="Sposób pożywiania" HorizontalAlignment="Left" Height="100" Margin="125,110,0,0" VerticalAlignment="Top" Width="135">
+                        <Grid>
+                            <RadioButton x:Name="r4" Content="Roślinożerca" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ros"/>
+                            <RadioButton x:Name="w4" Content="Wszystkożerca" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Checked="wsz"/>
+                            <RadioButton x:Name="m4" Content="Mięsożerca" HorizontalAlignment="Left" Margin="19,53,0,0" VerticalAlignment="Top" Checked="mie"/>
+
+                        </Grid>
+                    </GroupBox>
+
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

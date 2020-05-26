@@ -25,11 +25,17 @@ namespace SLSim
         //FoodGeneration generowaniePozywienia;
         Plansza plansza;
         
+
         public MainWindow()
         {
             InitializeComponent();
-        }
+            Simulation.speciesList[0] = new Species(Colors.Red, "Gatunek 1");
+            Simulation.speciesList[1] = new Species(Colors.Blue, "Gatunek 2");
+            Simulation.speciesList[2] = new Species(Colors.Orange, "Gatunek 3");
+            Simulation.speciesList[3] = new Species(Colors.Violet, "Gatunek 4");
+            Simulation.speciesList[4] = new Species(Colors.White, "Gatunek 5");
 
+        }
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
         {
             PanelKontrolny panel = new PanelKontrolny();
@@ -41,25 +47,25 @@ namespace SLSim
             plansza = new Plansza(MyCanvas);
             Simulation.t1 = new System.Windows.Threading.DispatcherTimer();
 
-            Species spec1 = new Species(Colors.Red, "Species 1", Settings.breedingChance, Settings.organismNumber, true,false);
-            Species spec2 = new Species(Colors.Blue, "Species 2", Settings.breedingChance, Settings.organismNumber);
-            Species spec3 = new Species(Colors.Orange, "Species 3", Settings.breedingChance, Settings.organismNumber,true);
 
             Food.generateFood();
 
-            Organism.generateOrganisms(spec1);
-            Organism.generateOrganisms(spec2);
-            Organism.generateOrganisms(spec3);
+            for(int i = 0; i < Settings.numberOfSpecies; i++)
+            {
+                Organism.generateOrganisms(Simulation.speciesList[i]);
+            }
+
 
             plansza.rysujPlansze(Simulation.simulationGrid);
             NT.Visibility = Visibility.Visible;
             PT.Visibility = Visibility.Hidden;
             S.Visibility = Visibility.Visible;
 
-            Simulation.t1.Interval = TimeSpan.FromMilliseconds(1000 / Settings.maximumTicsPerSecond);
-            Simulation.t1.IsEnabled = true;
-            Simulation.t1.Tick += new EventHandler(dispatcherTimer_Tick);
-            Simulation.t1.Start();
+
+            startSym.Visibility = Visibility.Visible;
+            start.Visibility = Visibility.Hidden;
+
+            
 
         }
 
@@ -69,12 +75,23 @@ namespace SLSim
             Simulation.t1.IsEnabled = true;
             Simulation.t1.Tick += new EventHandler(dispatcherTimer_Tick);
             Simulation.t1.Start();
+
+            startSym.Visibility = Visibility.Hidden;
+            pauza.Visibility = Visibility.Visible;
+            S.Visibility = Visibility.Hidden;
+            NT.Visibility = Visibility.Hidden;
         }
 
         private void StopSymulacjiWCzasieRzeczywistym(object sender, RoutedEventArgs e)
         {
             Simulation.t1.Stop();
+            startSym.Visibility = Visibility.Visible;
+            pauza.Visibility = Visibility.Hidden;
+            S.Visibility = Visibility.Visible;
+            NT.Visibility = Visibility.Visible;
         }
+
+        
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {       
@@ -85,6 +102,7 @@ namespace SLSim
             
         }
 
+
         private void nextTik(object sender, RoutedEventArgs e)
         {    
             plansza.czyscPlansze();
@@ -92,7 +110,8 @@ namespace SLSim
                 Simulation.nextStep();
             plansza.rysujPlansze(Simulation.simulationGrid);
         }
- 
+
+        
         private void showStats(object sender, RoutedEventArgs e)
         {
             stats s = new stats();

@@ -14,9 +14,11 @@
 
         </Canvas>
         <Button x:Name="PT" Content="Panel Kontrolny" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="otworzPanelKontrolny"/>
-        <Button Content="Start Symulacji" HorizontalAlignment="Left" Margin="10,415,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="StartSymulacji"/>
+        <Button x:Name="start" Content="Generuj symulacje" HorizontalAlignment="Left" Margin="10,415,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="StartSymulacji"/>
         <Button x:Name="NT" Content="Następny Tik" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,365,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="nextTik"/>
         <Button x:Name="S" Content="Statystyki" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="showStats"/>
+        <Button x:Name="pauza" Content="Pauza" HorizontalAlignment="Left" Visibility="Hidden" Margin="10,415,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="StopSymulacjiWCzasieRzeczywistym"/>
+        <Button x:Name="startSym" Content="Start" HorizontalAlignment="Left" Visibility="Hidden" Margin="10,415,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="StartSymulacjiWCzasieRzeczywistym"/>
 
     </Grid>
 </Window>

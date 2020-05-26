@@ -5,20 +5,164 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SLSim"
         mc:Ignorable="d"
-        Title="Statystyki" Height="300" Width="300">
-    <Grid Background="LightGray">
-        <TextBlock HorizontalAlignment="Left" Margin="25,40,0,0" TextWrapping="Wrap" Text="Ilość organizmów na planszy:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="org" HorizontalAlignment="Left" Margin="190,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="25,64,0,0" TextWrapping="Wrap" Text="Ilość pożywienia na planszy:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="fd" HorizontalAlignment="Left" Margin="191,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <Button Content="Zamknij" HorizontalAlignment="Left" Margin="205,235,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBlock x:Name="fd_Copy" HorizontalAlignment="Left" Margin="160,100,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="fd_Copy1" HorizontalAlignment="Left" Margin="160,119,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.125,4.7"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,99,0,0" TextWrapping="Wrap" Text="Szansa na rozmnażanie:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,120,0,0" TextWrapping="Wrap" Text="ilość kroków na tik:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="19,139,0,0" TextWrapping="Wrap" Text="rozmiar elementu:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="fd_Copy2" HorizontalAlignment="Left" Margin="160,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.125,4.7"/>
+        Title="Statystyki" Height="310" Width="400">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="240" Margin="0,0,0,0" VerticalAlignment="Top" Width="388" RenderTransformOrigin="0.35,0.325">
+            <TabItem Header="Ogólne">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="22,40,0,0" TextWrapping="Wrap" Text="Ilość pożywienia na planszy:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,19,0,0" TextWrapping="Wrap" Text="Łączna ilość organizmów na planszy:" VerticalAlignment="Top" Width="200"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,61,0,0" TextWrapping="Wrap" Text="Ilość kroków na tick:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,80,0,0" TextWrapping="Wrap" Text="Początkowa ilość gatunków:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,101,0,0" TextWrapping="Wrap" Text="Ilość gatunków na planszy:" VerticalAlignment="Top" Width="160"/>
+                    <TextBlock x:Name="iloscOrganizmow" HorizontalAlignment="Right" Margin="0,19,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="iloscPozywienia" HorizontalAlignment="Right" Margin="303,40,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="krokiNaTick" HorizontalAlignment="Right" Margin="302,61,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="iloscGatonkowPocz" HorizontalAlignment="Right" Margin="302,80,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="iloscGatonkowNaPlanszy" HorizontalAlignment="Right" Margin="302,101,21,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="jeden" Header="Gatunek 1">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="mVal" HorizontalAlignment="right" Margin="0,9,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="speed" HorizontalAlignment="right" Margin="0,30,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="power" HorizontalAlignment="right" Margin="0,51,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="range" HorizontalAlignment="right" Margin="0,72,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                        </Grid>
 
+                    </GroupBox>
+                    <TextBlock x:Name="name" HorizontalAlignment="right" Margin="0,10,100,0" TextWrapping="Wrap" TextAlignment="left" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="170"/>
+                    <TextBlock x:Name="liczOs" HorizontalAlignment="right" Margin="0,30,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="195"/>
+                    <TextBlock x:Name="Odrzywianie" HorizontalAlignment="right" Margin="0,50,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="205"/>
+                    <TextBlock x:Name="Mutacja" HorizontalAlignment="right" Margin="0,70,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="215"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="253,114,0,0" TextWrapping="Wrap" Text="Kolor:" VerticalAlignment="Top"/>
+                    <Rectangle x:Name="kolor" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Margin="347,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1,0.75"/>
+                </Grid>
+            </TabItem>
+            <TabItem  x:Name="dwa" Header="Gatunek 2">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="mVal1" HorizontalAlignment="right" Margin="0,9,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="speed1" HorizontalAlignment="right" Margin="0,30,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="power1" HorizontalAlignment="right" Margin="0,51,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="range1" HorizontalAlignment="right" Margin="0,72,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                        </Grid>
 
+                    </GroupBox>
+                    <TextBlock x:Name="name1" HorizontalAlignment="right" Margin="0,10,100,0" TextWrapping="Wrap" TextAlignment="left" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="170"/>
+                    <TextBlock x:Name="liczOs1" HorizontalAlignment="right" Margin="0,30,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="195"/>
+                    <TextBlock x:Name="Odrzywianie1" HorizontalAlignment="right" Margin="0,50,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="205"/>
+                    <TextBlock x:Name="Mutacja1" HorizontalAlignment="right" Margin="0,70,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="215"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="253,114,0,0" TextWrapping="Wrap" Text="Kolor:" VerticalAlignment="Top"/>
+                    <Rectangle x:Name="kolor1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Margin="347,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1,0.75"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="trzy" Header="Gatunek 3">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="mVal2" HorizontalAlignment="right" Margin="0,9,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="speed2" HorizontalAlignment="right" Margin="0,30,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="power2" HorizontalAlignment="right" Margin="0,51,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="range2" HorizontalAlignment="right" Margin="0,72,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                        </Grid>
+
+                    </GroupBox>
+                    <TextBlock x:Name="name2" HorizontalAlignment="right" Margin="0,10,100,0" TextWrapping="Wrap" TextAlignment="left" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="170"/>
+                    <TextBlock x:Name="liczOs2" HorizontalAlignment="right" Margin="0,30,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="195"/>
+                    <TextBlock x:Name="Odrzywianie2" HorizontalAlignment="right" Margin="0,50,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="205"/>
+                    <TextBlock x:Name="Mutacja2" HorizontalAlignment="right" Margin="0,70,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="215"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="253,114,0,0" TextWrapping="Wrap" Text="Kolor:" VerticalAlignment="Top"/>
+                    <Rectangle x:Name="kolor2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Margin="347,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1,0.75"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="cztery" Header="Gatunek 4">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="mVal3" HorizontalAlignment="right" Margin="0,9,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="speed3" HorizontalAlignment="right" Margin="0,30,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="power3" HorizontalAlignment="right" Margin="0,51,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="range3" HorizontalAlignment="right" Margin="0,72,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                        </Grid>
+
+                    </GroupBox>
+                    <TextBlock x:Name="name3" HorizontalAlignment="right" Margin="0,10,100,0" TextWrapping="Wrap" TextAlignment="left" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="170"/>
+                    <TextBlock x:Name="liczOs3" HorizontalAlignment="right" Margin="0,30,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="195"/>
+                    <TextBlock x:Name="Odrzywianie3" HorizontalAlignment="right" Margin="0,50,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="205"/>
+                    <TextBlock x:Name="Mutacja3" HorizontalAlignment="right" Margin="0,70,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="215"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="253,114,0,0" TextWrapping="Wrap" Text="Kolor:" VerticalAlignment="Top"/>
+                    <Rectangle x:Name="kolor3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Margin="347,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1,0.75"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="piec" Header="Gatunek 5">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="mVal4" HorizontalAlignment="right" Margin="0,9,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="speed4" HorizontalAlignment="right" Margin="0,30,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="power4" HorizontalAlignment="right" Margin="0,51,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                            <TextBlock x:Name="range4" HorizontalAlignment="right" Margin="0,72,9,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="50"/>
+                        </Grid>
+
+                    </GroupBox>
+                    <TextBlock x:Name="name4" HorizontalAlignment="right" Margin="0,10,100,0" TextWrapping="Wrap" TextAlignment="left" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="170"/>
+                    <TextBlock x:Name="liczOs4" HorizontalAlignment="right" Margin="0,30,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="195"/>
+                    <TextBlock x:Name="Odrzywianie4" HorizontalAlignment="right" Margin="0,50,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="205"/>
+                    <TextBlock x:Name="Mutacja4" HorizontalAlignment="right" Margin="0,70,15,0" TextWrapping="Wrap" TextAlignment="Right" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="6.385,-1.125" Width="215"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="253,114,0,0" TextWrapping="Wrap" Text="Kolor:" VerticalAlignment="Top"/>
+                    <Rectangle x:Name="kolor4" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Margin="347,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1,0.75"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid>
+            <Button Content="Zamknij" HorizontalAlignment="Left" Margin="295,245,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+        </Grid>
     </Grid>
+
+
 </Window>

@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Organism.cs" />
+    <Compile Include="PanelGatunkow.xaml.cs">
+      <DependentUpon>PanelGatunkow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PanelKontrolny.xaml.cs">
       <DependentUpon>PanelKontrolny.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PanelGatunkow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PanelKontrolny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

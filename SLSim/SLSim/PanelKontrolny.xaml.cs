@@ -20,32 +20,38 @@ namespace SLSim
     public partial class PanelKontrolny : Window
     {
         int elementS = 10;
-        double snr = 0;
+        bool addfpt = false;
         public PanelKontrolny()
         {
             InitializeComponent();
+            mtps.Text = Settings.maximumTicsPerSecond.ToString();
+            foodPerTick.Text = Settings.foodPerTic.ToString();
             food.Text = Settings.foodNumber.ToString();
-            organism.Text = Settings.organismNumber.ToString();
             x.Text = Settings.xResolution.ToString();
             y.Text = Settings.yResolution.ToString();
             elementS = Settings.elementSize;
-            snr = Settings.breedingChance;
+
+            if (elementS == 5) piatka.IsChecked = true;
+            else if (elementS == 10) dycha.IsChecked = true;
+            else dwie.IsChecked = true;
+         
             spt.Text = Settings.elementSize.ToString();
-            snrs.Value = Settings.breedingChance;
+            ilegatunkow.SelectedItem = jeden;
         }
 
         private void Zapisz(object sender, RoutedEventArgs e)
         {
+            if(addfpt) Settings.foodPerTic = int.Parse(foodPerTick.Text);
+           
+
+            Settings.maximumTicsPerSecond = int.Parse(mtps.Text);
             int jedzenie = int.Parse(food.Text);
             Settings.foodNumber = jedzenie;
-            int organizmy = int.Parse(organism.Text);
-            Settings.organismNumber = organizmy;
             int newX = int.Parse(x.Text);
             Settings.xResolution = newX;
             int newY = int.Parse(y.Text);
             Settings.yResolution = newY;
             Settings.elementSize = elementS;
-            Settings.breedingChance = snr;
             int newspt = int.Parse(spt.Text);
             Settings.stepsPerTic = newspt;
             Close();
@@ -67,11 +73,30 @@ namespace SLSim
             elementS = 20;
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void spiciesStats(object sender, RoutedEventArgs e)
         {
-            double v = Math.Round(snrs.Value, 2);
-            val.Text = v.ToString();
-            snr = v;
+            if (ilegatunkow.SelectedItem == jeden) Settings.numberOfSpecies = 1;
+            if (ilegatunkow.SelectedItem == dwa) Settings.numberOfSpecies = 2;
+            if (ilegatunkow.SelectedItem == trzy) Settings.numberOfSpecies = 3;
+            if (ilegatunkow.SelectedItem == cztery) Settings.numberOfSpecies = 4;
+            if (ilegatunkow.SelectedItem == piec) Settings.numberOfSpecies = 5;
+            PanelGatunkow panelGatunkow = new PanelGatunkow();
+            panelGatunkow.Show();
+        }
+
+        private void stalaIlosc(object sender, RoutedEventArgs e)
+        {
+            Settings.closedSystem = true;
+            Settings.addNumberOfFoodPerTick = false;
+            addfpt = false;
+            foodPerTick.Visibility = Visibility.Hidden;
+        }
+        public void AddNumberOfFood(object sender, RoutedEventArgs e)
+        {
+            Settings.closedSystem = false;
+            Settings.addNumberOfFoodPerTick = true;
+            addfpt = true;
+            foodPerTick.Visibility = Visibility.Visible;
         }
     }
 }
