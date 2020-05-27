@@ -42,10 +42,10 @@ namespace SLSim
                 }
             }
             if (enclosedSystem) {
-                Food.generateFood((int)deficit / defFoodValue, defFoodValue);
+                Food.generateFood((int)deficit / defFoodValue);
                 deficit %= defFoodValue;
             }else{
-                Food.generateFood(foodPerTick, defFoodValue);
+                Food.generateFood(foodPerTick);
             }
 
         }

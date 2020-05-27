@@ -25,34 +25,34 @@ namespace SLSim
 
         Brush b;
 
-        int mv1 = 0;
-        int s1 = 0;
+        double mv1 = 0;
+        double s1 = 0;
         double p1 = 0;
-        int r1 = 0;
+        double r1 = 0;
         int gat1 = 0;
 
-        int mv2 = 0;
-        int s2 = 0;
+        double mv2 = 0;
+        double s2 = 0;
         double p2 = 0;
-        int r2 = 0;
+        double r2 = 0;
         int gat2 = 0;
 
-        int mv3 = 0;
-        int s3 = 0;
+        double mv3 = 0;
+        double s3 = 0;
         double p3 = 0;
-        int r3 = 0;
+        double r3 = 0;
         int gat5 = 0;
 
-        int mv4 = 0;
-        int s4 = 0;
+        double mv4 = 0;
+        double s4 = 0;
         double p4 = 0;
-        int r4 = 0;
+        double r4 = 0;
         int gat3 = 0;
 
-        int mv5 = 0;
-        int s5 = 0;
+        double mv5 = 0;
+        double s5 = 0;
         double p5 = 0;
-        int r5 = 0;
+        double r5 = 0;
         int gat4 = 0;
 
         int ileNaPlaszy = 0;
@@ -101,7 +101,7 @@ namespace SLSim
                         gat1++;
                         mv1 += pom.maxValue;
                         s1 += pom.speed;
-                        p1 += pom.ferocity; //Dawid to chyba usiebie zmienił na power albo coś
+                        p1 += pom.ferocity;
                         r1 += pom.sightDistance;
 
 
@@ -172,10 +172,10 @@ namespace SLSim
 
                 if(gat1 > 0)
                 {
-                    mVal.Text = (mv1 / gat1).ToString();
-                    speed.Text = (s1 / gat1).ToString();
+                    mVal.Text = Math.Round(mv1 / gat1, 2).ToString();
+                    speed.Text = Math.Round(s1 / gat1, 2).ToString();
                     power.Text = Math.Round(p1 / gat1, 2).ToString();
-                    range.Text = (r1 / gat1).ToString();
+                    range.Text = Math.Round(r1 / gat1, 2).ToString();
                 }
                 else
                 {
@@ -220,10 +220,10 @@ namespace SLSim
                 
                 if(gat2 > 0)
                 {
-                    mVal1.Text = (mv2 / gat2).ToString();
-                    speed1.Text = (s2 / gat2).ToString();
+                    mVal1.Text = Math.Round(mv2 / gat2, 2).ToString();
+                    speed1.Text = Math.Round(s2 / gat2, 2).ToString();
                     power1.Text = Math.Round(p2 / gat2, 2).ToString();
-                    range1.Text = (r2 / gat2).ToString();
+                    range1.Text = Math.Round(r2 / gat2, 2).ToString();
                 }
                 else
                 {
@@ -267,10 +267,10 @@ namespace SLSim
 
                 if (gat3 > 0)
                 {
-                    mVal2.Text = (mv3/ gat3).ToString();
-                    speed2.Text = (s3 / gat3).ToString();
+                    mVal2.Text = Math.Round(mv3/ gat3, 2).ToString();
+                    speed2.Text = Math.Round(s3 / gat3, 2).ToString();
                     power2.Text = Math.Round(p3 / gat3, 2).ToString();
-                    range2.Text = (r3 / gat3).ToString();
+                    range2.Text = Math.Round(r3 / gat3, 2).ToString();
                 }
                 else
                 {
@@ -315,10 +315,10 @@ namespace SLSim
 
                 if (gat4 > 0)
                 {
-                    mVal3.Text = (mv4 / gat4).ToString();
-                    speed3.Text = (s4 / gat4).ToString();
+                    mVal3.Text = Math.Round(mv4 / gat4, 2).ToString();
+                    speed3.Text = Math.Round(s4 / gat4, 2).ToString();
                     power3.Text = Math.Round(p4 / gat4, 2).ToString();
-                    range3.Text = (r4 / gat4).ToString();
+                    range3.Text = Math.Round(r4 / gat4, 2).ToString();
                 }
                 else
                 {
@@ -365,10 +365,10 @@ namespace SLSim
 
                 if (gat5 > 0)
                 {
-                    mVal4.Text = (mv5 / gat5).ToString();
-                    speed4.Text = (s5 / gat5).ToString();
+                    mVal4.Text = Math.Round(mv5 / gat5, 2).ToString();
+                    speed4.Text = Math.Round(s5 / gat5, 2).ToString();
                     power4.Text = Math.Round(p5 / gat5, 2).ToString();
-                    range4.Text = (r5 / gat5).ToString();
+                    range4.Text = Math.Round(r5 / gat5, 2).ToString();
                 }
                 else
                 {
