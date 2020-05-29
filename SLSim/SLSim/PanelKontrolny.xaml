@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <GroupBox Header="Pożywienie" HorizontalAlignment="Left" Height="120" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
 
-        <RadioButton GroupName="pojawianiePozywienia" Content="ilość pożywienia co tick" Margin="20,100,313.8,189.2" Checked="AddNumberOfFood"/>
+        <RadioButton GroupName="pojawianiePozywienia" Content="Nowe pożywienie co tick" Margin="20,100,313.8,189.2" Checked="AddNumberOfFood"/>
 
 
 
@@ -31,7 +31,7 @@
         <RadioButton GroupName="wyborrozmiaru" x:Name="piatka" Content="Mały" HorizontalAlignment="Left" Margin="48,188,0,0" VerticalAlignment="Top" Checked="piatka_Checked" Height="31" Width="61"/>
         <RadioButton GroupName="wyborrozmiaru" x:Name="dycha" Content="Średni&#xA;" HorizontalAlignment="Left" Margin="48,203,0,0" VerticalAlignment="Top" Checked="dycha_Checked" Height="31" Width="52" IsChecked="True" />
         <RadioButton GroupName="wyborrozmiaru" x:Name="dwie" Content="Duży" HorizontalAlignment="Left" Margin="48,219,0,0" VerticalAlignment="Top" Checked="dwie_Checked" Height="31" Width="52" />
-        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="185,215,0,0" TextWrapping="Wrap" Text="Ilość kroków na tik:" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.476,3.32"/>
+        <TextBlock HorizontalAlignment="Left"  Height="30" Margin="185,215,0,0" TextWrapping="Wrap" Text="Ilość kroków na tick:" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.476,3.32"/>
         <TextBox x:Name="spt" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,215,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
         <ComboBox x:Name="ilegatunkow" Margin="360,39,91.8,267.6" RenderTransformOrigin="0.615,0.054">
             <ComboBoxItem x:Name="jeden" Content="1"/>
@@ -40,16 +40,16 @@
             <ComboBoxItem x:Name="cztery" Content="4"/>
             <ComboBoxItem x:Name="piec" Content="5"/>
         </ComboBox>
-        <Button Content="Ustaw statystyki gatunków" HorizontalAlignment="Left" Margin="270,75,0,0" VerticalAlignment="Top" Width="190" Height="29" Click="spiciesStats"/>
+        <Button Content="Ustawienia statystyk gatunków" HorizontalAlignment="Left" Margin="270,75,0,0" VerticalAlignment="Top" Width="190" Height="29" Click="spiciesStats"/>
         <TextBlock HorizontalAlignment="Left"  Height="30" Margin="20,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"><Run Text="Sposób pojawiania się pożywienia:"/></TextBlock>
         <TextBox x:Name="foodPerTick" Visibility="Hidden" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="175,100,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
         <GroupBox Header="Organizmy" HorizontalAlignment="Left" Height="120" Margin="250,10,0,0" VerticalAlignment="Top" Width="240"/>
-        <GroupBox Header="Symulacja" HorizontalAlignment="Left" Height="175" Margin="10,140,0,0" VerticalAlignment="Top" Width="480">
+        <GroupBox Header="Symulacja" HorizontalAlignment="Left" Height="176" Margin="10,140,0,0" VerticalAlignment="Top" Width="480">
             <GridSplitter HorizontalAlignment="Left" Height="135" Margin="140,10,0,0" VerticalAlignment="Top" Width="5"/>
         </GroupBox>
-        <TextBlock HorizontalAlignment="Left" Margin="183,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="197"><Run Text="Maksymalna ilość ticków na sekunde:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="185,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="197"><Run Text="Maksymalna ilość ticków na sekundę:"/><LineBreak/><Run/></TextBlock>
         <TextBox x:Name="mtps" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,190,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
-        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość" Margin="20,82,321.8,222.6" Checked="stalaIlosc" IsChecked="True"/>
+        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość materii" Margin="20,82,321.8,222.6" Checked="stalaIlosc" IsChecked="True"/>
         <Button Content="Przywróć ustawienia domyślne" HorizontalAlignment="Left" Margin="180,2,0,0" VerticalAlignment="Top" Width="195" Height="40" Click="ResStats" Grid.Row="3" />
 
 

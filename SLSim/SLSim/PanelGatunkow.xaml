@@ -42,7 +42,7 @@
                             <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
-                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
                             <TextBox x:Name="mVal" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="speed" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="pow" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
@@ -91,7 +91,7 @@
                             <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
-                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
                             <TextBox x:Name="mVal1" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="speed1" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="pow1" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
@@ -130,7 +130,7 @@
                         <ComboBoxItem x:Name="red2" Content="Czerwony"/>
                         <ComboBoxItem x:Name="blue2" Content="Niebieski"/>
                         <ComboBoxItem x:Name="orange2" Content="Pomarańczowy" />
-                        <ComboBoxItem x:Name="violet2" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="violet2" Content="Fioletowy"/>
                         <ComboBoxItem x:Name="black2" Content="Czarny"/>
 
 
@@ -142,7 +142,7 @@
                             <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
-                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
                             <TextBox x:Name="mVal2" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="speed2" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="pow2" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
@@ -182,7 +182,7 @@
                         <ComboBoxItem x:Name="red3" Content="Czerwony"/>
                         <ComboBoxItem x:Name="blue3" Content="Niebieski"/>
                         <ComboBoxItem x:Name="orange3" Content="Pomarańczowy" />
-                        <ComboBoxItem x:Name="violet3" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="violet3" Content="Fioletowy"/>
                         <ComboBoxItem x:Name="black3" Content="Czarny"/>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
@@ -192,7 +192,7 @@
                             <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
-                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
                             <TextBox x:Name="mVal3" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="speed3" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="pow3" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
@@ -233,7 +233,7 @@
                         <ComboBoxItem x:Name="red4" Content="Czerwony"/>
                         <ComboBoxItem x:Name="blue4" Content="Niebieski"/>
                         <ComboBoxItem x:Name="orange4" Content="Pomarańczowy" />
-                        <ComboBoxItem x:Name="violet4" Content="Fioloetowy"/>
+                        <ComboBoxItem x:Name="violet4" Content="Fioletowy"/>
                         <ComboBoxItem x:Name="black4" Content="Czarny"/>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" Margin="17,15,0,0" Grid.ColumnSpan="2"/>
@@ -243,7 +243,7 @@
                             <TextBlock HorizontalAlignment="Left" Margin="26,33,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top" RenderTransformOrigin="0.396,0"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="26,83,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
-                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Maksymalna wartość:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="26,8,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top" RenderTransformOrigin="0.355,-4.699"/>
                             <TextBox x:Name="mVal4" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="speed4" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
                             <TextBox x:Name="pow4" HorizontalAlignment="Left" TextAlignment="Right" Height="20" Margin="164,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="55"/>
