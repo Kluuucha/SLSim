@@ -64,6 +64,7 @@ namespace SLSim
             startSym.Visibility = Visibility.Visible;
             start.Visibility = Visibility.Hidden;
             Restart.Visibility = Visibility.Visible;
+           
 
             
 
@@ -80,7 +81,8 @@ namespace SLSim
             pauza.Visibility = Visibility.Visible;
             S.Visibility = Visibility.Hidden;
             NT.Visibility = Visibility.Hidden;
-            Restart.Visibility = Visibility.Visible;
+            Restart.Visibility = Visibility.Hidden;
+           
         }
 
         private void StopSymulacjiWCzasieRzeczywistym(object sender, RoutedEventArgs e)
@@ -90,7 +92,7 @@ namespace SLSim
             pauza.Visibility = Visibility.Hidden;
             S.Visibility = Visibility.Visible;
             NT.Visibility = Visibility.Visible;
-            Restart.Visibility = Visibility.Hidden;
+            Restart.Visibility = Visibility.Visible;
         }
 
         
