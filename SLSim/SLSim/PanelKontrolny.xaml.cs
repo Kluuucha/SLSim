@@ -36,7 +36,12 @@ namespace SLSim
             else dwie.IsChecked = true;
          
             spt.Text = Settings.elementSize.ToString();
-            ilegatunkow.SelectedItem = jeden;
+            if(Settings.numberOfSpecies ==1)  ilegatunkow.SelectedItem = jeden;
+            else if (Settings.numberOfSpecies == 2) ilegatunkow.SelectedItem = dwa;
+            else if (Settings.numberOfSpecies == 3) ilegatunkow.SelectedItem = trzy;
+            else if (Settings.numberOfSpecies == 4) ilegatunkow.SelectedItem = cztery;
+            else if (Settings.numberOfSpecies == 5) ilegatunkow.SelectedItem = piec;
+
         }
 
         private void Zapisz(object sender, RoutedEventArgs e)
@@ -97,6 +102,61 @@ namespace SLSim
             Settings.addNumberOfFoodPerTick = true;
             addfpt = true;
             foodPerTick.Visibility = Visibility.Visible;
+        }
+
+        private void ResStats(object sender, RoutedEventArgs e)
+        {
+            Settings.xResolution = 100;
+            Settings.yResolution = 50;
+            Settings.elementSize = 10;
+            Settings.foodNumber = 200;
+            Settings.stepsPerTic = 10;
+            Settings.maximumTicsPerSecond = 10;
+            Settings.foodPerTic = 20;
+            Settings.closedSystem = true;
+            Settings.addNumberOfFoodPerTick = false;
+
+            Simulation.speciesList[0].color = Colors.Red;
+            Simulation.speciesList[0].name = "Gatunek 1";
+            Simulation.speciesList[1].color = Colors.Blue;
+            Simulation.speciesList[1].name = "Gatunek 2";
+            Simulation.speciesList[2].color = Colors.Orange;
+            Simulation.speciesList[2].name = "Gatunek 3";
+            Simulation.speciesList[3].color = Colors.Violet;
+            Simulation.speciesList[3].name = "Gatunek 4";
+            Simulation.speciesList[4].color = Colors.White;
+            Simulation.speciesList[4].name = "Gatunek 5";
+
+            for (int i = 0; i < 5; i++)
+            {
+                Simulation.speciesList[i].speed = 3;
+                Simulation.speciesList[i].maxValue = 50;
+                Simulation.speciesList[i].seeRange = 7;
+                Simulation.speciesList[i].power = 1;
+                Simulation.speciesList[i].mutationChance = 0.5;
+                Simulation.speciesList[i].breedingChance = 0.5;
+                Simulation.speciesList[i].startingPopulation = 10;
+                Simulation.speciesList[i].isCarnivore = false;
+                Simulation.speciesList[i].isHerbivore = true;
+            }
+
+            mtps.Text = Settings.maximumTicsPerSecond.ToString();
+            foodPerTick.Text = Settings.foodPerTic.ToString();
+            food.Text = Settings.foodNumber.ToString();
+            x.Text = Settings.xResolution.ToString();
+            y.Text = Settings.yResolution.ToString();
+            elementS = Settings.elementSize;
+
+            if (elementS == 5) piatka.IsChecked = true;
+            else if (elementS == 10) dycha.IsChecked = true;
+            else dwie.IsChecked = true;
+
+            spt.Text = Settings.elementSize.ToString();
+            if (Settings.numberOfSpecies == 1) ilegatunkow.SelectedItem = jeden;
+            else if (Settings.numberOfSpecies == 2) ilegatunkow.SelectedItem = dwa;
+            else if (Settings.numberOfSpecies == 3) ilegatunkow.SelectedItem = trzy;
+            else if (Settings.numberOfSpecies == 4) ilegatunkow.SelectedItem = cztery;
+            else if (Settings.numberOfSpecies == 5) ilegatunkow.SelectedItem = piec;
         }
     }
 }

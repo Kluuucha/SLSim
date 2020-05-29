@@ -89,6 +89,7 @@ namespace SLSim
             pauza.Visibility = Visibility.Hidden;
             S.Visibility = Visibility.Visible;
             NT.Visibility = Visibility.Visible;
+            Restart.Visibility = Visibility.Hidden;
         }
 
         
@@ -129,40 +130,8 @@ namespace SLSim
             startSym.Visibility = Visibility.Hidden;
             start.Visibility = Visibility.Visible;
             Restart.Visibility = Visibility.Hidden;
-
-            Settings.xResolution = 100;
-            Settings.yResolution = 50;
-            Settings.elementSize = 10;
-            Settings.foodNumber = 200;
-            Settings.stepsPerTic = 10;
-            Settings.maximumTicsPerSecond = 10;
-            Settings.foodPerTic = 20;
-            Settings.closedSystem = true;
-            Settings.addNumberOfFoodPerTick = false;
-
-            Simulation.speciesList[0].color = Colors.Red;
-            Simulation.speciesList[0].name = "Gatunek 1";
-            Simulation.speciesList[1].color = Colors.Blue;
-            Simulation.speciesList[1].name = "Gatunek 2";
-            Simulation.speciesList[2].color = Colors.Orange;
-            Simulation.speciesList[2].name = "Gatunek 3";
-            Simulation.speciesList[3].color = Colors.Violet;
-            Simulation.speciesList[3].name = "Gatunek 4";
-            Simulation.speciesList[4].color = Colors.White;
-            Simulation.speciesList[4].name = "Gatunek 5";
-
-            for (int i = 0; i < 5; i++)
-            {
-                Simulation.speciesList[i].speed = 3;
-                Simulation.speciesList[i].maxValue = 50;
-                Simulation.speciesList[i].seeRange = 7;
-                Simulation.speciesList[i].power = 1;
-                Simulation.speciesList[i].mutationChance = 0.5;
-                Simulation.speciesList[i].breedingChance = 0.5;
-                Simulation.speciesList[i].startingPopulation = 10;
-                Simulation.speciesList[i].isCarnivore = false;
-                Simulation.speciesList[i].isHerbivore = true;
-            }
+            pauza.Visibility = Visibility.Hidden;
+        
 
         }
     }
