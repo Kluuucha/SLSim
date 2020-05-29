@@ -11,7 +11,6 @@ namespace SLSim
             int key = 0;
             do
             {
-                
                 temp.posX = Simulation.random.Next(Settings.xResolution - 1);
                 temp.posY = Simulation.random.Next(Settings.yResolution - 1);
                 key = temp.key();

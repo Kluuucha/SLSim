@@ -88,7 +88,7 @@ namespace SLSim
 
             if (currValue * 10 < maxValue)
             {
-                if (Simulation.enclosedSystem)
+                if (Settings.closedSystem)
                 {
                     Simulation.deficit += currValue;
                 }
@@ -101,7 +101,7 @@ namespace SLSim
                 int hunger = (int)(currValue * 0.005 * omnivorePenalty *
                     (ferocity + (0.2 * speed * speed + speed) + sightDistance * 0.5));
                 if (hunger < 1) hunger = 1;
-                if (Simulation.enclosedSystem)
+                if (Settings.closedSystem)
                 {
                     Simulation.deficit += hunger;
                 }
@@ -159,7 +159,7 @@ namespace SLSim
             var foodY = food.posY;
             if (!species.isHerbivore)
             {
-                if (Simulation.enclosedSystem) Simulation.deficit += Simulation.defFoodValue;
+                if (Settings.closedSystem) Simulation.deficit += Simulation.defFoodValue;
             }
             else
             {

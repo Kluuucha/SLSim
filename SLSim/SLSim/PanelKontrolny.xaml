@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <GroupBox Header="Pożywienie" HorizontalAlignment="Left" Height="120" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
 
-        <RadioButton GroupName="pojawianiePozywienia" Content="Nowe pożywienie co tick" Margin="20,100,313.8,189.2" Checked="AddNumberOfFood"/>
+        <RadioButton GroupName="pojawianiePozywienia" x:Name="FPT" Content="Nowe pożywienie co tick" Margin="20,100,313.8,189.2" Checked="AddNumberOfFood"/>
 
 
 
@@ -49,7 +49,7 @@
         </GroupBox>
         <TextBlock HorizontalAlignment="Left" Margin="185,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="197"><Run Text="Maksymalna ilość ticków na sekundę:"/><LineBreak/><Run/></TextBlock>
         <TextBox x:Name="mtps" HorizontalAlignment="Left" BorderBrush="Black" Height="20" Margin="390,190,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.538,-0.417"/>
-        <RadioButton GroupName="pojawianiePozywienia" Content="Stała ilość materii" Margin="20,82,321.8,222.6" Checked="stalaIlosc" IsChecked="True"/>
+        <RadioButton x:Name="SIM" GroupName="pojawianiePozywienia" Content="Stała ilość materii" Margin="20,82,321.8,222.6" Checked="stalaIlosc"/>
         <Button Content="Przywróć ustawienia domyślne" HorizontalAlignment="Left" Margin="180,2,0,0" VerticalAlignment="Top" Width="195" Height="40" Click="ResStats" Grid.Row="3" />
 
 

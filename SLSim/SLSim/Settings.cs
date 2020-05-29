@@ -18,7 +18,6 @@ namespace SLSim
         public static int numberOfSpecies = 1;
 
         public static bool closedSystem = true;
-        public static bool addNumberOfFoodPerTick = false;
 
         //TODO: usunąć po wprowadzeniu panelu edycji pojedynczego gatunku
        // public static int organismNumber = 10; //przeniesione do Species.startingPopulation 
