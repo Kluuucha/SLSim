@@ -25,12 +25,12 @@
             <TabItem x:Name="jeden" Header="Gatunek 1">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjących osobników:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
                         <Grid>
-                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
@@ -52,12 +52,12 @@
             <TabItem  x:Name="dwa" Header="Gatunek 2">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjących osobników:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
                         <Grid>
-                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
@@ -79,12 +79,12 @@
             <TabItem x:Name="trzy" Header="Gatunek 3">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjących osobników:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
                         <Grid>
-                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
@@ -106,12 +106,12 @@
             <TabItem x:Name="cztery" Header="Gatunek 4">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjących osobników:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
                         <Grid>
-                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
@@ -133,12 +133,12 @@
             <TabItem x:Name="piec" Header="Gatunek 5">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Nazwa gatunku:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjąch osobnków:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="17,30,0,0" TextWrapping="Wrap" Text="Liczba żyjących osobników:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,50,0,0" TextWrapping="Wrap" Text="Sposób odżywiania się:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,70,0,0" TextWrapping="Wrap" Text="Szansa na mutacje:" VerticalAlignment="Top" RenderTransformOrigin="0.714,0.312"/>
                     <GroupBox Header="Średnie statystyki dla gatunku" HorizontalAlignment="Left" Height="120" Margin="17,90,0,0" VerticalAlignment="Top" Width="220">
                         <Grid>
-                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Maksymalna wartośc:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="7,9,0,0" TextWrapping="Wrap" Text="Próg rozmnażania:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="7,30,0,0" TextWrapping="Wrap" Text="Szybkość:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,51,0,0" TextWrapping="Wrap" Text="Moc:" VerticalAlignment="Top"/>
                             <TextBlock HorizontalAlignment="Left" Margin="8,72,0,0" TextWrapping="Wrap" Text="Zasięg wzroku:" VerticalAlignment="Top"/>
