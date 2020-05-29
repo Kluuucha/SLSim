@@ -34,7 +34,6 @@ namespace SLSim
             Simulation.speciesList[2] = new Species(Colors.Orange, "Gatunek 3");
             Simulation.speciesList[3] = new Species(Colors.Violet, "Gatunek 4");
             Simulation.speciesList[4] = new Species(Colors.White, "Gatunek 5");
-
         }
         private void otworzPanelKontrolny(object sender, RoutedEventArgs e)
         {
@@ -64,6 +63,7 @@ namespace SLSim
 
             startSym.Visibility = Visibility.Visible;
             start.Visibility = Visibility.Hidden;
+            Restart.Visibility = Visibility.Visible;
 
             
 
@@ -116,6 +116,54 @@ namespace SLSim
         {
             stats s = new stats();
             s.Show();
+        }
+
+        private void RestartSym(object sender, RoutedEventArgs e)
+        {
+            Simulation.t1.Stop();
+            plansza.czyscPlansze();
+            Simulation.simulationGrid.Clear();
+            NT.Visibility = Visibility.Hidden;
+            PT.Visibility = Visibility.Visible;
+            S.Visibility = Visibility.Hidden;
+            startSym.Visibility = Visibility.Hidden;
+            start.Visibility = Visibility.Visible;
+            Restart.Visibility = Visibility.Hidden;
+
+            Settings.xResolution = 100;
+            Settings.yResolution = 50;
+            Settings.elementSize = 10;
+            Settings.foodNumber = 200;
+            Settings.stepsPerTic = 10;
+            Settings.maximumTicsPerSecond = 10;
+            Settings.foodPerTic = 20;
+            Settings.closedSystem = true;
+            Settings.addNumberOfFoodPerTick = false;
+
+            Simulation.speciesList[0].color = Colors.Red;
+            Simulation.speciesList[0].name = "Gatunek 1";
+            Simulation.speciesList[1].color = Colors.Blue;
+            Simulation.speciesList[1].name = "Gatunek 2";
+            Simulation.speciesList[2].color = Colors.Orange;
+            Simulation.speciesList[2].name = "Gatunek 3";
+            Simulation.speciesList[3].color = Colors.Violet;
+            Simulation.speciesList[3].name = "Gatunek 4";
+            Simulation.speciesList[4].color = Colors.White;
+            Simulation.speciesList[4].name = "Gatunek 5";
+
+            for (int i = 0; i < 5; i++)
+            {
+                Simulation.speciesList[i].speed = 3;
+                Simulation.speciesList[i].maxValue = 50;
+                Simulation.speciesList[i].seeRange = 7;
+                Simulation.speciesList[i].power = 1;
+                Simulation.speciesList[i].mutationChance = 0.5;
+                Simulation.speciesList[i].breedingChance = 0.5;
+                Simulation.speciesList[i].startingPopulation = 10;
+                Simulation.speciesList[i].isCarnivore = false;
+                Simulation.speciesList[i].isHerbivore = true;
+            }
+
         }
     }
 }

@@ -19,6 +19,7 @@
         <Button x:Name="S" Content="Statystyki" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="showStats"/>
         <Button x:Name="pauza" Content="Pauza" HorizontalAlignment="Left" Visibility="Hidden" Margin="10,415,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="StopSymulacjiWCzasieRzeczywistym"/>
         <Button x:Name="startSym" Content="Start" HorizontalAlignment="Left" Visibility="Hidden" Margin="10,415,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="StartSymulacjiWCzasieRzeczywistym"/>
+        <Button x:Name="Restart" Content="Restart" HorizontalAlignment="Left" Visibility="Hidden" Margin="10,65,0,0" VerticalAlignment="Top" Width="175" Height="40" Click="RestartSym"/>
 
     </Grid>
 </Window>
