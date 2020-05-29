@@ -34,7 +34,7 @@ namespace SLSim
             if (elementS == 5) piatka.IsChecked = true;
             else if (elementS == 10) dycha.IsChecked = true;
             else dwie.IsChecked = true;
-         
+            
             spt.Text = Settings.elementSize.ToString();
             if(Settings.numberOfSpecies ==1)  ilegatunkow.SelectedItem = jeden;
             else if (Settings.numberOfSpecies == 2) ilegatunkow.SelectedItem = dwa;
@@ -42,6 +42,16 @@ namespace SLSim
             else if (Settings.numberOfSpecies == 4) ilegatunkow.SelectedItem = cztery;
             else if (Settings.numberOfSpecies == 5) ilegatunkow.SelectedItem = piec;
 
+            if (!Settings.closedSystem) {
+                FPT.IsChecked = true;
+                SIM.IsChecked = false;
+            }
+            else
+            {
+                FPT.IsChecked = false;
+                SIM.IsChecked = true;
+            }
+            
         }
 
         private void Zapisz(object sender, RoutedEventArgs e)
@@ -97,14 +107,12 @@ namespace SLSim
         private void stalaIlosc(object sender, RoutedEventArgs e)
         {
             Settings.closedSystem = true;
-            Settings.addNumberOfFoodPerTick = false;
             addfpt = false;
             foodPerTick.Visibility = Visibility.Hidden;
         }
         public void AddNumberOfFood(object sender, RoutedEventArgs e)
         {
             Settings.closedSystem = false;
-            Settings.addNumberOfFoodPerTick = true;
             addfpt = true;
             foodPerTick.Visibility = Visibility.Visible;
         }
@@ -119,7 +127,6 @@ namespace SLSim
             Settings.maximumTicsPerSecond = 10;
             Settings.foodPerTic = 20;
             Settings.closedSystem = true;
-            Settings.addNumberOfFoodPerTick = false;
             Settings.numberOfSpecies = 1;
 
             Simulation.speciesList[0].color = Colors.Red;
@@ -163,6 +170,9 @@ namespace SLSim
             else if (Settings.numberOfSpecies == 3) ilegatunkow.SelectedItem = trzy;
             else if (Settings.numberOfSpecies == 4) ilegatunkow.SelectedItem = cztery;
             else if (Settings.numberOfSpecies == 5) ilegatunkow.SelectedItem = piec;
+
+            FPT.IsChecked = false;
+            SIM.IsChecked = true;
         }
     }
 }
