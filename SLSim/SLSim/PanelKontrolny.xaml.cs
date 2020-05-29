@@ -59,6 +59,11 @@ namespace SLSim
             Settings.elementSize = elementS;
             int newspt = int.Parse(spt.Text);
             Settings.stepsPerTic = newspt;
+            if (ilegatunkow.SelectedItem == jeden) Settings.numberOfSpecies = 1;
+            if (ilegatunkow.SelectedItem == dwa) Settings.numberOfSpecies = 2;
+            if (ilegatunkow.SelectedItem == trzy) Settings.numberOfSpecies = 3;
+            if (ilegatunkow.SelectedItem == cztery) Settings.numberOfSpecies = 4;
+            if (ilegatunkow.SelectedItem == piec) Settings.numberOfSpecies = 5;
             Close();
 
         }
@@ -115,6 +120,7 @@ namespace SLSim
             Settings.foodPerTic = 20;
             Settings.closedSystem = true;
             Settings.addNumberOfFoodPerTick = false;
+            Settings.numberOfSpecies = 1;
 
             Simulation.speciesList[0].color = Colors.Red;
             Simulation.speciesList[0].name = "Gatunek 1";
